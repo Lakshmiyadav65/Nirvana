@@ -1,23 +1,39 @@
 @import "tailwindcss";
 
+/*
+ * Palette: "Sustainable Luxury" — warm cream base + earthy olive green,
+ * adapted from the provided reference image (colors only; layout unchanged).
+ *
+ * NOTE: the token NAMES `charcoal` and `gold` are retained from the original
+ * theme so the swap is centralized here and cascades to every page. Their
+ * meaning is now:
+ *   charcoal* = deep forest/olive (dark surfaces + dark text)
+ *   gold*     = olive-green accent
+ */
 @theme {
-  --color-charcoal-light: #2a2a2a;
-  --color-charcoal: #1a1a1a;
-  --color-charcoal-dark: #111111;
-  --color-charcoal-pure: #0b0b0b;
+  /* Dark surfaces + dark text (deep forest / olive) */
+  --color-charcoal-light: #3d4828;
+  --color-charcoal: #2e3719;
+  --color-charcoal-dark: #232a13;
+  --color-charcoal-pure: #1b2010;
 
-  --color-gold-light: #dfc298;
-  --color-gold: #c89d5e;
-  --color-gold-dark: #ad8043;
-  --color-gold-luxury: #d4af37;
-  --color-gold-bronze: #b38f4d;
+  /* Accent (olive green) */
+  --color-gold-light: #9aa86a;
+  --color-gold: #66753f;
+  --color-gold-dark: #4c5930;
+  --color-gold-luxury: #7c8c4b;
+  --color-gold-bronze: #5d6a3c;
+
+  /* Warm base + alt surface */
+  --color-cream: #f1efe6;
+  --color-sand: #e7e4d8;
 
   --font-sans: "Inter", sans-serif;
   --font-serif: "Playfair Display", serif;
   --font-display: "Outfit", sans-serif;
 
-  --shadow-luxury: 0 10px 30px -10px rgba(200, 157, 94, 0.15);
-  --shadow-luxury-lg: 0 20px 40px -15px rgba(200, 157, 94, 0.25);
+  --shadow-luxury: 0 10px 30px -10px rgba(94, 107, 61, 0.18);
+  --shadow-luxury-lg: 0 20px 40px -15px rgba(94, 107, 61, 0.28);
 }
 
 @layer base {
@@ -27,7 +43,7 @@
   }
 
   body {
-    @apply bg-white text-charcoal font-sans antialiased selection:bg-gold/30 selection:text-charcoal;
+    @apply bg-cream text-charcoal font-sans antialiased selection:bg-gold/30 selection:text-charcoal;
   }
 
   /* Custom Premium Scrollbar */
@@ -37,33 +53,33 @@
   }
 
   ::-webkit-scrollbar-track {
-    background: #111111;
+    background: #232a13;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #c89d5e;
+    background: #66753f;
     border-radius: 4px;
-    border: 2px solid #111111;
+    border: 2px solid #232a13;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #d4af37;
+    background: #7c8c4b;
   }
 }
 
 /* Glassmorphism helpers */
 .glass-panel {
-  background: rgba(26, 26, 26, 0.7);
+  background: rgba(46, 55, 25, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 157, 94, 0.15);
+  border: 1px solid rgba(94, 107, 61, 0.2);
 }
 
 .glass-panel-light {
-  background: rgba(255, 255, 255, 0.7);
+  background: rgba(241, 239, 230, 0.7);
   backdrop-filter: blur(12px);
   -webkit-backdrop-filter: blur(12px);
-  border: 1px solid rgba(200, 157, 94, 0.1);
+  border: 1px solid rgba(94, 107, 61, 0.12);
 }
 
 /* Custom styling for Swiper pagination */
@@ -73,7 +89,7 @@
 }
 
 .swiper-pagination-bullet-active {
-  background: #c89d5e !important;
+  background: #66753f !important;
   opacity: 1 !important;
   width: 24px !important;
   border-radius: 4px !important;

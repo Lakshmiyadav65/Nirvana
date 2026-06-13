@@ -21,7 +21,7 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="pt-32 pb-20 text-center bg-white min-h-[60vh] flex flex-col justify-center items-center">
+      <div className="pt-32 pb-20 text-center bg-cream min-h-[60vh] flex flex-col justify-center items-center">
         <h2 className="font-display text-2xl font-bold mb-4">Project Not Found</h2>
         <p className="text-gray-500 mb-8">The project you are looking for does not exist or has been relocated.</p>
         <Button to="/projects" variant="outline">
@@ -68,7 +68,7 @@ export default function ProjectDetails() {
       </section>
 
       {/* Title & Metadata Summary */}
-      <section className="py-12 bg-white border-b border-gray-100">
+      <section className="py-12 bg-cream border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6">
 
@@ -82,7 +82,7 @@ export default function ProjectDetails() {
             </div>
 
             {/* Quick Metadata Row */}
-            <div className="grid grid-cols-3 gap-6 md:gap-12 bg-[#fafafa] border border-gold/15 p-6 min-w-full lg:min-w-[450px]">
+            <div className="grid grid-cols-3 gap-6 md:gap-12 bg-sand border border-gold/15 p-6 min-w-full lg:min-w-[450px]">
               <div>
                 <span className="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mb-1">Location</span>
                 <span className="flex items-center gap-1.5 font-display text-xs text-charcoal-dark font-bold uppercase tracking-wider">
@@ -113,7 +113,7 @@ export default function ProjectDetails() {
       </section>
 
       {/* Main Details and Specs Grid */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
 
           {/* Main Description */}
@@ -147,7 +147,7 @@ export default function ProjectDetails() {
 
           {/* Side Panel: Tech Specifications */}
           <div className="lg:col-span-5 flex flex-col space-y-8">
-            <div className="bg-[#fafafa] border border-gold/15 p-8">
+            <div className="bg-sand border border-gold/15 p-8">
               <h3 className="font-display text-lg font-bold uppercase tracking-wider text-charcoal-dark border-b border-gold/15 pb-3 mb-6">
                 Technical Specifications
               </h3>

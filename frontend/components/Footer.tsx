@@ -134,7 +134,7 @@ export const Footer: React.FC = () => {
                 type="email"
                 placeholder="Your email address"
                 required
-                className="w-full bg-[#222222] border border-gold/10 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
+                className="w-full bg-charcoal-light border border-gold/10 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
               />
               <button
                 type="submit"

@@ -39,7 +39,7 @@ export const Services: React.FC = () => {
       </section>
 
       {/* Intro section */}
-      <section className="py-16 md:py-24 bg-white border-b border-gray-100">
+      <section className="py-16 md:py-24 bg-cream border-b border-gray-100">
         <div className="max-w-4xl mx-auto px-6 text-center flex flex-col items-center">
           <p className="text-gray-600 font-light text-base md:text-lg leading-relaxed">
             At Nirvana Builders &amp; Developers, we deliver premium construction and real estate services under strict timelines, compliance standards, and ethical joint-ventures. Here is an overview of what we bring to every concrete foundation.
@@ -48,7 +48,7 @@ export const Services: React.FC = () => {
       </section>
 
       {/* Services List Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
 
@@ -59,7 +59,7 @@ export const Services: React.FC = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: (idx % 2) * 0.1 }}
                 key={s.id}
-                className="border border-gold/15 bg-white p-8 sm:p-10 hover:shadow-luxury hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
+                className="border border-gold/15 bg-cream p-8 sm:p-10 hover:shadow-luxury hover:border-gold/30 transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="flex items-center gap-4 mb-6">

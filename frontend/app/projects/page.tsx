@@ -59,7 +59,7 @@ export const Projects: React.FC = () => {
       </section>
 
       {/* Filters & Search Block */}
-      <section className="py-12 bg-white border-b border-gray-100 sticky top-[72px] sm:top-[76px] z-30 shadow-sm backdrop-blur-md bg-white/95">
+      <section className="py-12 bg-cream border-b border-gray-100 sticky top-[72px] sm:top-[76px] z-30 shadow-sm backdrop-blur-md bg-cream/95">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-6 justify-between items-center">
 
           {/* Tabs */}
@@ -86,7 +86,7 @@ export const Projects: React.FC = () => {
               placeholder="Search project, sector, year..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-[#fcfcfc] border border-gray-200 text-xs pl-10 pr-4 py-3 rounded-none focus:outline-none focus:border-gold text-charcoal"
+              className="w-full bg-cream border border-gray-200 text-xs pl-10 pr-4 py-3 rounded-none focus:outline-none focus:border-gold text-charcoal"
             />
             <Search className="absolute left-3 top-3.5 text-gray-400" size={14} />
           </div>
@@ -95,7 +95,7 @@ export const Projects: React.FC = () => {
       </section>
 
       {/* Project Grid Section */}
-      <section className="py-20 md:py-28 bg-[#fafafa]">
+      <section className="py-20 md:py-28 bg-sand">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
 
           {filteredProjects.length === 0 ? (
@@ -117,7 +117,7 @@ export const Projects: React.FC = () => {
                     transition={{ duration: 0.3 }}
                     key={project.id}
                   >
-                    <Link href={`/projects/${project.id}`} className="group block bg-white border border-gray-100 hover:border-gold/30 hover:shadow-luxury transition-all duration-300">
+                    <Link href={`/projects/${project.id}`} className="group block bg-cream border border-gray-100 hover:border-gold/30 hover:shadow-luxury transition-all duration-300">
                       {/* Image block */}
                       <div className="h-64 overflow-hidden relative bg-charcoal">
                         <img

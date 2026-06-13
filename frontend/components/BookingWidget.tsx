@@ -129,7 +129,7 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                   Thank you, <span className="text-white">{confirmation.name}</span>. Your site visit is reserved. A confirmation has been sent to <span className="text-gold">{confirmation.email}</span>.
                 </p>
 
-                <div className="w-full max-w-md bg-[#181818] border border-gold/10 p-6 text-left space-y-4 mb-8">
+                <div className="w-full max-w-md bg-charcoal-dark border border-gold/10 p-6 text-left space-y-4 mb-8">
                   <div className="flex justify-between items-center border-b border-gold/10 pb-3">
                     <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Project</span>
                     <span className="font-display text-sm text-white font-semibold">{confirmation.planName}</span>
@@ -233,7 +233,7 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="bg-[#181818] border border-gold/15 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
+                      className="bg-charcoal-dark border border-gold/15 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
                     />
                   </div>
                   <div className="flex flex-col">
@@ -247,7 +247,7 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="bg-[#181818] border border-gold/15 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
+                      className="bg-charcoal-dark border border-gold/15 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
                     />
                   </div>
                 </div>

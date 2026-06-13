@@ -122,7 +122,7 @@ export const Gallery: React.FC = () => {
       </section>
 
       {/* Filter Tabs */}
-      <section className="py-12 bg-white border-b border-gray-100 flex justify-center">
+      <section className="py-12 bg-cream border-b border-gray-100 flex justify-center">
         <div className="flex flex-wrap justify-center gap-2 px-6">
           {tabs.map((tab) => (
             <button
@@ -141,7 +141,7 @@ export const Gallery: React.FC = () => {
       </section>
 
       {/* Masonry Grid */}
-      <section className="py-20 md:py-28 bg-[#fafafa]">
+      <section className="py-20 md:py-28 bg-sand">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
 
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
@@ -149,7 +149,7 @@ export const Gallery: React.FC = () => {
               <div
                 key={item.id}
                 onClick={() => openLightbox(index)}
-                className="break-inside-avoid relative overflow-hidden group cursor-pointer border border-gray-100 bg-white"
+                className="break-inside-avoid relative overflow-hidden group cursor-pointer border border-gray-100 bg-cream"
               >
                 <img
                   src={item.url}

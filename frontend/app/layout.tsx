@@ -26,8 +26,8 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body className="bg-[#fcfcfc] text-[#1a1a1a] antialiased overflow-x-hidden">
-        <div className="flex flex-col min-h-screen bg-white text-charcoal">
+      <body className="bg-cream text-charcoal antialiased overflow-x-hidden">
+        <div className="flex flex-col min-h-screen bg-cream text-charcoal">
           <ScrollToTop />
           <Navbar />
 

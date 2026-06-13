@@ -63,7 +63,7 @@ export const About: React.FC = () => {
       </section>
 
       {/* Main Intro Story */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
@@ -108,7 +108,7 @@ export const About: React.FC = () => {
               transition={{ duration: 0.6 }}
               className="lg:col-span-5 relative"
             >
-              <div className="border border-gold/20 p-2 bg-white relative z-10">
+              <div className="border border-gold/20 p-2 bg-cream relative z-10">
                 <img
                   src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80"
                   alt="Construction Engineering Plan"
@@ -156,7 +156,7 @@ export const About: React.FC = () => {
       </section>
 
       {/* Timeline Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
 
           <div className="max-w-3xl mx-auto text-center mb-20 flex flex-col items-center">
@@ -186,7 +186,7 @@ export const About: React.FC = () => {
                         whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
                         transition={{ duration: 0.6 }}
-                        className="bg-[#fafafa] border border-gold/10 p-6 shadow-luxury"
+                        className="bg-sand border border-gold/10 p-6 shadow-luxury"
                       >
                         <span className="font-display font-extrabold text-gold text-lg block mb-1">
                           {item.year}
@@ -243,7 +243,7 @@ export const About: React.FC = () => {
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
-            className="border border-gold/15 p-2 bg-[#222222]"
+            className="border border-gold/15 p-2 bg-charcoal-light"
           >
             <img
               src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?auto=format&fit=crop&w=800&q=80"

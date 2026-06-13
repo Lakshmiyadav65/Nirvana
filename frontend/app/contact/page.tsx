@@ -62,7 +62,7 @@ export const Contact: React.FC = () => {
       </section>
 
       {/* Main Details and Form Grid */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
 
           {/* Contact Details Column */}
@@ -79,7 +79,7 @@ export const Contact: React.FC = () => {
 
             <div className="space-y-6">
 
-              <div className="flex gap-4 border border-gray-100 p-6 bg-[#fafafa] transition-all duration-300 hover:border-gold/30">
+              <div className="flex gap-4 border border-gray-100 p-6 bg-sand transition-all duration-300 hover:border-gold/30">
                 <MapPin size={24} className="text-gold shrink-0 mt-1" />
                 <div>
                   <h4 className="font-display text-sm font-bold text-charcoal-dark uppercase tracking-wider mb-2">Corporate Office</h4>
@@ -89,7 +89,7 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4 border border-gray-100 p-6 bg-[#fafafa] transition-all duration-300 hover:border-gold/30">
+              <div className="flex gap-4 border border-gray-100 p-6 bg-sand transition-all duration-300 hover:border-gold/30">
                 <Phone size={24} className="text-gold shrink-0 mt-1" />
                 <div>
                   <h4 className="font-display text-sm font-bold text-charcoal-dark uppercase tracking-wider mb-2">Phone Lines</h4>
@@ -100,7 +100,7 @@ export const Contact: React.FC = () => {
                 </div>
               </div>
 
-              <div className="flex gap-4 border border-gray-100 p-6 bg-[#fafafa] transition-all duration-300 hover:border-gold/30">
+              <div className="flex gap-4 border border-gray-100 p-6 bg-sand transition-all duration-300 hover:border-gold/30">
                 <Mail size={24} className="text-gold shrink-0 mt-1" />
                 <div>
                   <h4 className="font-display text-sm font-bold text-charcoal-dark uppercase tracking-wider mb-2">Email Inbox</h4>
@@ -132,7 +132,7 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Contact Form Column */}
-          <div className="lg:col-span-7 bg-[#fafafa] border border-gray-100 p-8 sm:p-12">
+          <div className="lg:col-span-7 bg-sand border border-gray-100 p-8 sm:p-12">
             <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold block mb-3">Enquiry Form</span>
             <h2 className="font-display text-2xl font-bold text-charcoal-dark uppercase tracking-wider mb-8">
               Send a Message
@@ -161,7 +161,7 @@ export const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleInputChange}
                     required
-                    className="bg-white border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
+                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -173,7 +173,7 @@ export const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleInputChange}
                     required
-                    className="bg-white border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
+                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
                   />
                 </div>
               </div>
@@ -188,7 +188,7 @@ export const Contact: React.FC = () => {
                     value={formData.phone}
                     onChange={handleInputChange}
                     required
-                    className="bg-white border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
+                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
                   />
                 </div>
                 <div className="flex flex-col">
@@ -198,7 +198,7 @@ export const Contact: React.FC = () => {
                     name="interest"
                     value={formData.interest}
                     onChange={handleInputChange}
-                    className="bg-white border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
+                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
                   >
                     {projectInterests.map((item, idx) => (
                       <option key={idx} value={item}>{item}</option>
@@ -216,7 +216,7 @@ export const Contact: React.FC = () => {
                   onChange={handleInputChange}
                   rows={6}
                   required
-                  className="bg-white border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal resize-none"
+                  className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal resize-none"
                 ></textarea>
               </div>
 

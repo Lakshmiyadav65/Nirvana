@@ -144,7 +144,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* About Preview Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
 
@@ -156,7 +156,7 @@ export const Home: React.FC = () => {
               transition={{ duration: 0.8 }}
               className="lg:col-span-6 relative"
             >
-              <div className="relative z-10 border border-gold/20 p-2 bg-white">
+              <div className="relative z-10 border border-gold/20 p-2 bg-cream">
                 <img
                   src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
                   alt="Modern Residence"
@@ -263,7 +263,7 @@ export const Home: React.FC = () => {
               {featuredProjects.map((project) => (
                 <SwiperSlide key={project.id}>
                   <Link href={`/projects/${project.id}`} className="group block h-full">
-                    <div className="bg-[#1e1e1e] border border-gold/10 hover:border-gold/30 transition-all duration-500 overflow-hidden relative shadow-luxury">
+                    <div className="bg-charcoal-light border border-gold/10 hover:border-gold/30 transition-all duration-500 overflow-hidden relative shadow-luxury">
                       {/* Image container */}
                       <div className="overflow-hidden h-64 relative">
                         <img
@@ -307,7 +307,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Services Grid Section */}
-      <section className="py-20 md:py-32 bg-white">
+      <section className="py-20 md:py-32 bg-cream">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
 
           <div className="max-w-3xl mx-auto text-center mb-20 flex flex-col items-center">
@@ -408,7 +408,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* Call To Action Banner */}
-      <section className="relative py-24 bg-white overflow-hidden flex items-center justify-center">
+      <section className="relative py-24 bg-cream overflow-hidden flex items-center justify-center">
         {/* Background elements */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 transform origin-top-right"></div>
 
