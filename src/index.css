@@ -1,0 +1,81 @@
+@import "tailwindcss";
+
+@theme {
+  --color-charcoal-light: #2a2a2a;
+  --color-charcoal: #1a1a1a;
+  --color-charcoal-dark: #111111;
+  --color-charcoal-pure: #0b0b0b;
+
+  --color-gold-light: #dfc298;
+  --color-gold: #c89d5e;
+  --color-gold-dark: #ad8043;
+  --color-gold-luxury: #d4af37;
+  --color-gold-bronze: #b38f4d;
+
+  --font-sans: "Inter", sans-serif;
+  --font-serif: "Playfair Display", serif;
+  --font-display: "Outfit", sans-serif;
+
+  --shadow-luxury: 0 10px 30px -10px rgba(200, 157, 94, 0.15);
+  --shadow-luxury-lg: 0 20px 40px -15px rgba(200, 157, 94, 0.25);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+  
+  body {
+    @apply bg-white text-charcoal font-sans antialiased selection:bg-gold/30 selection:text-charcoal;
+  }
+
+  /* Custom Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #111111;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #c89d5e;
+    border-radius: 4px;
+    border: 2px solid #111111;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #d4af37;
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(26, 26, 26, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 157, 94, 0.15);
+}
+
+.glass-panel-light {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(200, 157, 94, 0.1);
+}
+
+/* Custom styling for Swiper pagination */
+.swiper-pagination-bullet {
+  background: #ffffff !important;
+  opacity: 0.4 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #c89d5e !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
