@@ -29,7 +29,6 @@ export const Counter: React.FC<CounterProps> = ({
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
 
-        // Easing out function
         const easeOutQuad = (t: number) => t * (2 - t);
         const currentCount = Math.floor(easeOutQuad(progress) * (value - startValue) + startValue);
 
@@ -46,10 +45,10 @@ export const Counter: React.FC<CounterProps> = ({
 
   return (
     <div ref={ref} className="text-center md:text-left">
-      <span className="font-display font-bold text-4xl sm:text-5xl md:text-6xl text-gold-luxury tracking-tight block mb-2">
+      <span className="font-serif text-4xl sm:text-5xl text-gold tracking-tight block mb-1">
         {count.toLocaleString()}{suffix}
       </span>
-      <span className="font-sans text-xs uppercase tracking-widest text-gray-400 font-semibold">
+      <span className="font-display text-[11px] uppercase tracking-[0.18em] text-charcoal/55 font-medium">
         {label}
       </span>
     </div>

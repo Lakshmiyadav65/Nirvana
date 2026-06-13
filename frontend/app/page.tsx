@@ -4,18 +4,23 @@ import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { ArrowRight, Star, Building2, Home as HomeIcon, Award, ShieldCheck } from 'lucide-react';
+import { Autoplay, Pagination } from 'swiper/modules';
+import { ArrowRight, ArrowUpRight, Star, MapPin, Minimize2, Building2, Home as HomeIcon, Award, ShieldCheck, Leaf } from 'lucide-react';
 import Button from '@/components/Button';
 import Counter from '@/components/Counter';
 import { projectsData } from '@/data/projects';
 import { testimonialsData } from '@/data/testimonials';
 import { servicesData } from '@/data/services';
 
-// Swiper Styles
 import 'swiper/css';
 import 'swiper/css/pagination';
-import 'swiper/css/navigation';
+
+const fadeUp = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, amount: 0.2 },
+  transition: { duration: 0.7, ease: 'easeOut' as const },
+};
 
 export const Home: React.FC = () => {
   const featuredProjects = projectsData.filter(
@@ -23,406 +28,308 @@ export const Home: React.FC = () => {
   );
 
   const stats = [
-    { value: 16, suffix: "+", label: "Projects Completed" },
-    { value: 2, suffix: "", label: "Ongoing Projects" },
-    { value: 300000, suffix: "+ Sft", label: "Built-up Area" },
-    { value: 38, suffix: "+", label: "Independent Houses" },
-    { value: 10, suffix: "+ Yrs", label: "Construction Excellence" }
+    { value: 16, suffix: '+', label: 'Projects Completed' },
+    { value: 2, suffix: '', label: 'Ongoing Projects' },
+    { value: 300000, suffix: '+ Sft', label: 'Built-up Area' },
+    { value: 38, suffix: '+', label: 'Independent Houses' },
+    { value: 10, suffix: '+ Yrs', label: 'Construction Excellence' },
   ];
 
-  const heroImages = [
-    "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1613977257363-707ba9348227?auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80",
-    "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1920&q=80"
-  ];
+  const heroImage = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80';
+  const bentoSpan = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7'];
 
   return (
-    <div className="relative overflow-x-hidden">
+    <div className="relative overflow-x-hidden bg-cream">
 
-      {/* Hero Section */}
-      <section className="relative h-screen w-full bg-charcoal-dark flex items-center overflow-hidden">
-        {/* Background Swiper Slideshow */}
-        <div className="absolute inset-0 z-0">
-          <Swiper
-            modules={[Autoplay, Pagination]}
-            autoplay={{ delay: 5000, disableOnInteraction: false }}
-            pagination={{ clickable: true }}
-            effect="fade"
-            className="h-full w-full"
+      {/* ───────────────── Hero ───────────────── */}
+      <section className="relative pt-32 md:pt-40 pb-16 md:pb-24">
+        {/* soft decorative wash */}
+        <div className="absolute top-24 -right-32 w-[36rem] h-[36rem] rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+        <div className="absolute -bottom-24 -left-32 w-[30rem] h-[30rem] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
+          {/* Text */}
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            className="lg:col-span-6"
           >
-            {heroImages.map((img, i) => (
-              <SwiperSlide key={i}>
-                <div
-                  className="h-full w-full bg-cover bg-center transition-transform duration-[10000ms] scale-105"
-                  style={{
-                    backgroundImage: `linear-gradient(to bottom, rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.85)), url(${img})`
-                  }}
-                />
-              </SwiperSlide>
-            ))}
-          </Swiper>
-        </div>
-
-        {/* Floating background lines */}
-        <div className="absolute inset-0 pointer-events-none z-10 flex justify-between px-6 md:px-12 opacity-15">
-          <div className="w-[1px] h-full bg-gold/30"></div>
-          <div className="w-[1px] h-full bg-gold/30 hidden md:block"></div>
-          <div className="w-[1px] h-full bg-gold/30 hidden md:block"></div>
-          <div className="w-[1px] h-full bg-gold/30"></div>
-        </div>
-
-        {/* Content Container */}
-        <div className="max-w-7xl mx-auto px-6 md:px-12 w-full z-20 pt-20">
-          <div className="max-w-3xl">
-            <motion.span
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="inline-block text-xs uppercase tracking-[0.3em] text-gold font-bold mb-4"
-            >
-              Crafting Architectural Masterpieces
-            </motion.span>
-
-            <motion.h1
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="font-display text-4xl sm:text-6xl md:text-7xl font-bold text-white tracking-tight leading-none mb-6"
-            >
-              Nirvana Builders <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-gold-light via-gold to-gold-dark">
-                &amp; Developers
-              </span>
-            </motion.h1>
-
-            <motion.p
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="text-gray-300 font-sans text-base sm:text-lg md:text-xl font-light mb-10 leading-relaxed max-w-xl"
-            >
+            <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
+              <Leaf size={14} /> Crafting Architectural Masterpieces
+            </span>
+            <h1 className="font-serif text-5xl sm:text-6xl lg:text-[4.5rem] leading-[1.02] text-charcoal mb-7">
+              Nirvana Builders
+              <span className="block italic text-gold">&amp; Developers</span>
+            </h1>
+            <p className="text-charcoal/65 text-base sm:text-lg font-light leading-relaxed max-w-xl mb-9">
               Building Excellence with Trust, Quality &amp; Modern Living. Discover our luxury apartments, independent villas, and commercial properties.
-            </motion.p>
-
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.6 }}
-              className="flex flex-wrap gap-4 sm:gap-6"
-            >
-              <Button to="/projects" variant="primary" icon={<ArrowRight size={14} />}>
+            </p>
+            <div className="flex flex-wrap items-center gap-4">
+              <Button to="/projects" variant="primary" icon={<ArrowRight size={16} />}>
                 View Projects
               </Button>
-              <Button to="/contact" variant="glass">
+              <Button to="/contact" variant="outline">
                 Contact Us
               </Button>
-            </motion.div>
-          </div>
-        </div>
+            </div>
+          </motion.div>
 
-        {/* Scroll Down Indicator */}
-        <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold mb-2">Scroll Down</span>
+          {/* Image */}
           <motion.div
-            animate={{ y: [0, 8, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1.5 h-6 bg-gold rounded-full"
-          />
+            initial={{ opacity: 0, scale: 0.96 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
+            className="lg:col-span-6 relative"
+          >
+            <div className="relative rounded-[2.5rem] overflow-hidden shadow-luxury-lg aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]">
+              <img src={heroImage} alt="Luxury Nirvana residence" className="w-full h-full object-cover" />
+              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-pure/30 to-transparent" />
+            </div>
+            {/* Floating stat card */}
+            <div className="absolute -bottom-6 -left-4 sm:left-6 bg-cream rounded-2xl shadow-luxury-lg border border-charcoal/5 px-6 py-5 flex items-center gap-4">
+              <span className="font-serif text-4xl text-gold leading-none">10+</span>
+              <span className="font-display text-[11px] uppercase tracking-[0.16em] text-charcoal/60 leading-tight">
+                Years of<br />Trust &amp; Reliability
+              </span>
+            </div>
+          </motion.div>
         </div>
       </section>
 
-      {/* Stats Counter Section */}
-      <section className="bg-charcoal py-16 md:py-24 border-b border-gold/10">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-2 md:grid-cols-5 gap-8 md:gap-4 items-center">
-            {stats.map((s, idx) => (
-              <Counter key={idx} value={s.value} suffix={s.suffix} label={s.label} />
+      {/* ───────────────── Stats ───────────────── */}
+      <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
+        <motion.div
+          {...fadeUp}
+          className="rounded-[2rem] bg-sand/70 border border-charcoal/5 px-8 sm:px-12 py-12 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 md:divide-x md:divide-charcoal/10"
+        >
+          {stats.map((s, idx) => (
+            <div key={idx} className="md:px-4 first:md:pl-0">
+              <Counter value={s.value} suffix={s.suffix} label={s.label} />
+            </div>
+          ))}
+        </motion.div>
+      </section>
+
+      {/* ───────────────── About preview ───────────────── */}
+      <section className="py-12 md:py-20">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-12 gap-14 items-center">
+          <motion.div {...fadeUp} className="lg:col-span-6 relative">
+            <div className="rounded-[2.5rem] overflow-hidden aspect-[5/4] shadow-luxury">
+              <img
+                src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                alt="Modern Residence"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -z-10 -top-6 -left-6 w-2/3 h-2/3 rounded-[2.5rem] bg-gold/10 hidden sm:block" />
+          </motion.div>
+
+          <motion.div {...fadeUp} className="lg:col-span-6 flex flex-col space-y-6">
+            <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display">About Nirvana</span>
+            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">
+              Responsible Building, Sustainable Practices
+            </h2>
+            <p className="text-charcoal/65 leading-relaxed font-light text-lg">
+              “Nirvana Builders &amp; Developers has a history of responsible business conduct and strongly believes that true business success is measured not only by profits but also by sustainable and ethical practices.”
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-2">
+              <div className="flex gap-4">
+                <div className="w-11 h-11 rounded-full bg-gold/12 flex items-center justify-center text-gold shrink-0">
+                  <Award size={18} />
+                </div>
+                <div>
+                  <h4 className="font-display font-semibold text-sm text-charcoal mb-1">Our Mission</h4>
+                  <p className="text-[13px] text-charcoal/55 leading-relaxed font-light">
+                    To provide active, value-added services to customers without compromising quality.
+                  </p>
+                </div>
+              </div>
+              <div className="flex gap-4">
+                <div className="w-11 h-11 rounded-full bg-gold/12 flex items-center justify-center text-gold shrink-0">
+                  <ShieldCheck size={18} />
+                </div>
+                <div>
+                  <h4 className="font-display font-semibold text-sm text-charcoal mb-1">Our Vision</h4>
+                  <p className="text-[13px] text-charcoal/55 leading-relaxed font-light">
+                    To become a benchmark in building residential and commercial spaces.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-3">
+              <Button to="/about" variant="outline">Read Company Story</Button>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ───────────────── Featured projects (bento) ───────────────── */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div {...fadeUp} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
+            <div>
+              <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Portfolio Highlights</span>
+              <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">Featured Developments</h2>
+            </div>
+            <Link href="/projects" className="group inline-flex items-center gap-2 text-charcoal font-display text-sm hover:text-gold transition-colors">
+              View All Projects
+              <span className="w-9 h-9 rounded-full border border-charcoal/15 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-cream transition-all">
+                <ArrowUpRight size={16} />
+              </span>
+            </Link>
+          </motion.div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+            {featuredProjects.map((project, i) => (
+              <motion.div
+                key={project.id}
+                {...fadeUp}
+                transition={{ duration: 0.7, delay: i * 0.08, ease: 'easeOut' }}
+                className={bentoSpan[i] ?? 'lg:col-span-6'}
+              >
+                <Link href={`/projects/${project.id}`} className="group relative block overflow-hidden rounded-[2rem] h-[360px] md:h-[420px]">
+                  <img
+                    src={project.mainImage}
+                    alt={project.name}
+                    className="w-full h-full object-cover transition-transform duration-[1.2s] group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-charcoal-pure/90 via-charcoal-pure/25 to-transparent" />
+                  <div className="absolute top-5 right-5">
+                    <span className={`text-[10px] uppercase tracking-widest px-3.5 py-1.5 rounded-full font-semibold backdrop-blur-md ${
+                      project.status === 'ongoing' ? 'bg-gold text-cream' : 'bg-cream/15 text-cream border border-cream/25'
+                    }`}>
+                      {project.status === 'ongoing' ? 'Ongoing' : 'Completed'}
+                    </span>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 p-7">
+                    <span className="text-[10px] uppercase tracking-[0.2em] text-gold-light font-semibold font-display block mb-2">
+                      {project.type}
+                    </span>
+                    <h3 className="font-serif text-2xl md:text-3xl text-cream mb-3 leading-tight">{project.name}</h3>
+                    <div className="flex items-center gap-5 text-[12px] text-cream/70 font-light">
+                      <span className="flex items-center gap-1.5"><MapPin size={13} className="text-gold-light" />{project.location.split(',')[0]}</span>
+                      <span className="flex items-center gap-1.5"><Minimize2 size={13} className="text-gold-light" />{project.area}</span>
+                    </div>
+                  </div>
+                </Link>
+              </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* About Preview Section */}
-      <section className="py-20 md:py-32 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-
-            {/* Visual block */}
-            <motion.div
-              initial={{ opacity: 0, x: -50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8 }}
-              className="lg:col-span-6 relative"
-            >
-              <div className="relative z-10 border border-gold/20 p-2 bg-cream">
-                <img
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
-                  alt="Modern Residence"
-                  className="w-full h-[400px] md:h-[500px] object-cover"
-                />
-              </div>
-              {/* Back gold highlight box */}
-              <div className="absolute -top-6 -left-6 w-1/2 h-1/2 bg-gold/10 z-0 hidden sm:block"></div>
-              {/* Floating micro-badge */}
-              <div className="absolute -bottom-8 -right-4 bg-charcoal text-white p-6 shadow-luxury border border-gold/15 hidden md:block">
-                <span className="font-display text-3xl font-bold text-gold block">10+ Yrs</span>
-                <span className="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mt-1">Trust &amp; Reliability</span>
-              </div>
-            </motion.div>
-
-            {/* Description Block */}
-            <motion.div
-              initial={{ opacity: 0, x: 50 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.8, delay: 0.2 }}
-              className="lg:col-span-6 flex flex-col space-y-6"
-            >
-              <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold">About Nirvana</span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal-dark tracking-tight leading-tight">
-                Responsible Building, Sustainable Practices
-              </h2>
-              <p className="text-gray-600 leading-relaxed font-light text-base md:text-lg">
-                “Nirvana Builders &amp; Developers has a history of responsible business conduct and strongly believes that true business success is measured not only by profits but also by sustainable and ethical practices.”
-              </p>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gold/15 flex items-center justify-center text-gold shrink-0">
-                    <Award size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-sm text-charcoal-dark uppercase tracking-wider mb-1">Our Mission</h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">
-                      To provide active, value-added services to customers without compromising quality.
-                    </p>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-10 h-10 rounded-full bg-gold/15 flex items-center justify-center text-gold shrink-0">
-                    <ShieldCheck size={18} />
-                  </div>
-                  <div>
-                    <h4 className="font-display font-bold text-sm text-charcoal-dark uppercase tracking-wider mb-1">Our Vision</h4>
-                    <p className="text-xs text-gray-500 leading-relaxed">
-                      To become a benchmark in building residential and commercial spaces.
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-6">
-                <Button to="/about" variant="outline">
-                  Read Company Story
-                </Button>
-              </div>
-            </motion.div>
-
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Projects Slider */}
-      <section className="py-20 md:py-32 bg-charcoal-dark border-y border-gold/10 text-white">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-          <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
-            <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold block mb-3">Portfolio Highlights</span>
-              <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-                Featured Developments
-              </h2>
-            </div>
-            <Button to="/projects" variant="outline">
-              View All Projects
-            </Button>
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <Swiper
-              modules={[Autoplay, Pagination, Navigation]}
-              spaceBetween={30}
-              slidesPerView={1}
-              autoplay={{ delay: 6000 }}
-              pagination={{ clickable: true }}
-              navigation
-              breakpoints={{
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 }
-              }}
-              className="pb-16"
-            >
-              {featuredProjects.map((project) => (
-                <SwiperSlide key={project.id}>
-                  <Link href={`/projects/${project.id}`} className="group block h-full">
-                    <div className="bg-charcoal-light border border-gold/10 hover:border-gold/30 transition-all duration-500 overflow-hidden relative shadow-luxury">
-                      {/* Image container */}
-                      <div className="overflow-hidden h-64 relative">
-                        <img
-                          src={project.mainImage}
-                          alt={project.name}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                        />
-                        {/* Overlay status tag */}
-                        <div className="absolute top-4 right-4 bg-charcoal-dark/80 backdrop-blur-md border border-gold/20 text-gold text-[9px] uppercase tracking-widest px-3 py-1 font-bold">
-                          {project.status === 'ongoing' ? 'Ongoing' : 'Completed'}
-                        </div>
-                      </div>
-
-                      {/* Content block */}
-                      <div className="p-6 flex flex-col justify-between">
-                        <div>
-                          <span className="text-[10px] uppercase tracking-wider text-gold font-medium mb-1 block">
-                            {project.type}
-                          </span>
-                          <h3 className="font-display text-lg font-bold text-white group-hover:text-gold transition-colors duration-300 mb-2">
-                            {project.name}
-                          </h3>
-                          <p className="text-gray-400 text-xs line-clamp-2 mb-4 font-light">
-                            {project.description}
-                          </p>
-                        </div>
-
-                        <div className="border-t border-gold/10 pt-4 flex justify-between text-[11px] text-gray-500 font-semibold uppercase tracking-wider">
-                          <span>{project.location.split(',')[0]}</span>
-                          <span>{project.area}</span>
-                        </div>
-                      </div>
-                    </div>
-                  </Link>
-                </SwiperSlide>
-              ))}
-            </Swiper>
-          </motion.div>
-
-        </div>
-      </section>
-
-      {/* Services Grid Section */}
-      <section className="py-20 md:py-32 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-
-          <div className="max-w-3xl mx-auto text-center mb-20 flex flex-col items-center">
-            <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-3">Our Offerings</span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal-dark tracking-tight leading-tight mb-4">
-              Pioneering Real Estate Solutions
-            </h2>
-            <p className="text-gray-600 font-light max-w-xl text-sm sm:text-base">
+      {/* ───────────────── Services ───────────────── */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div {...fadeUp} className="max-w-2xl mb-14">
+            <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Our Offerings</span>
+            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1] mb-5">Pioneering Real Estate Solutions</h2>
+            <p className="text-charcoal/60 font-light text-lg">
               From luxurious apartments and commercial buildings to precision structural planning, we build structures that endure.
             </p>
-          </div>
+          </motion.div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {servicesData.slice(0, 3).map((service, index) => (
               <motion.div
-                initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
                 key={service.id}
-                className="group border border-gold/15 p-8 hover:bg-charcoal hover:border-charcoal transition-all duration-500 flex flex-col justify-between"
+                {...fadeUp}
+                transition={{ duration: 0.7, delay: index * 0.08, ease: 'easeOut' }}
+                className="group bg-sand/60 rounded-[1.75rem] p-9 border border-charcoal/5 hover:bg-charcoal hover:border-charcoal transition-colors duration-500 flex flex-col"
               >
-                <div>
-                  <div className="text-gold mb-6 group-hover:scale-110 transition-transform duration-300">
-                    {index === 0 && <Building2 size={36} strokeWidth={1} />}
-                    {index === 1 && <HomeIcon size={36} strokeWidth={1} />}
-                    {index === 2 && <Award size={36} strokeWidth={1} />}
-                  </div>
-                  <h3 className="font-display text-xl font-bold text-charcoal-dark group-hover:text-white transition-colors duration-300 mb-4 uppercase tracking-wider">
-                    {service.title}
-                  </h3>
-                  <p className="text-gray-500 group-hover:text-gray-300 text-xs leading-relaxed font-light mb-6">
-                    {service.description}
-                  </p>
+                <div className="w-14 h-14 rounded-2xl bg-gold/12 group-hover:bg-gold/20 flex items-center justify-center text-gold mb-7 transition-colors duration-500">
+                  {index === 0 && <Building2 size={26} strokeWidth={1.5} />}
+                  {index === 1 && <HomeIcon size={26} strokeWidth={1.5} />}
+                  {index === 2 && <Award size={26} strokeWidth={1.5} />}
                 </div>
-
-                <Link href="/services" className="text-xs text-gold font-bold uppercase tracking-wider flex items-center gap-2 mt-auto group-hover:translate-x-2 transition-transform duration-300">
+                <h3 className="font-serif text-2xl text-charcoal group-hover:text-cream transition-colors duration-500 mb-3">
+                  {service.title}
+                </h3>
+                <p className="text-charcoal/55 group-hover:text-cream/65 text-sm leading-relaxed font-light mb-7 transition-colors duration-500">
+                  {service.description}
+                </p>
+                <Link href="/services" className="mt-auto inline-flex items-center gap-2 text-[13px] font-display text-gold group-hover:text-gold-light transition-colors">
                   <span>Learn More</span>
-                  <ArrowRight size={12} />
+                  <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
                 </Link>
               </motion.div>
             ))}
           </div>
 
-          <div className="text-center mt-12">
-            <Button to="/services" variant="outline">
-              View All Services
-            </Button>
-          </div>
-
+          <motion.div {...fadeUp} className="text-center mt-12">
+            <Button to="/services" variant="outline">View All Services</Button>
+          </motion.div>
         </div>
       </section>
 
-      {/* Testimonials Glass Slider */}
-      <section className="py-20 md:py-32 bg-charcoal bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-charcoal-light to-charcoal-dark border-t border-gold/10 text-white relative">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
+      {/* ───────────────── Testimonials ───────────────── */}
+      <section className="py-16 md:py-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="relative rounded-[2.5rem] bg-charcoal text-cream overflow-hidden px-6 sm:px-12 py-16 md:py-20">
+            <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+            <div className="relative max-w-3xl mx-auto text-center flex flex-col items-center mb-12">
+              <span className="text-[11px] uppercase tracking-[0.28em] text-gold-light font-semibold font-display block mb-4">Client Endorsements</span>
+              <h2 className="font-serif text-4xl md:text-5xl tracking-tight">Testimonials</h2>
+            </div>
 
-          <div className="max-w-3xl mx-auto text-center mb-16 flex flex-col items-center">
-            <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-3">Client Endorsements</span>
-            <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
-              Testimonials
-            </h2>
-          </div>
-
-          <div className="max-w-4xl mx-auto">
-            <Swiper
-              modules={[Autoplay, Pagination]}
-              autoplay={{ delay: 5000 }}
-              pagination={{ clickable: true }}
-              className="pb-12"
-            >
-              {testimonialsData.map((t) => (
-                <SwiperSlide key={t.id}>
-                  <div className="glass-panel rounded-xl p-8 sm:p-12 text-center border border-gold/10 shadow-luxury flex flex-col items-center">
-                    <div className="flex gap-1 text-gold mb-6">
-                      {[...Array(t.rating)].map((_, i) => (
-                        <Star key={i} size={16} fill="currentColor" />
-                      ))}
+            <div className="max-w-3xl mx-auto">
+              <Swiper
+                modules={[Autoplay, Pagination]}
+                autoplay={{ delay: 5000 }}
+                pagination={{ clickable: true }}
+                className="pb-14"
+              >
+                {testimonialsData.map((t) => (
+                  <SwiperSlide key={t.id}>
+                    <div className="text-center flex flex-col items-center px-2">
+                      <div className="flex gap-1 text-gold-light mb-7">
+                        {[...Array(t.rating)].map((_, i) => (
+                          <Star key={i} size={16} fill="currentColor" />
+                        ))}
+                      </div>
+                      <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-cream/95 leading-relaxed mb-9 max-w-2xl">
+                        “{t.comment}”
+                      </p>
+                      <div>
+                        <h4 className="font-display font-semibold text-sm tracking-wide text-cream mb-1">{t.name}</h4>
+                        <span className="text-[12px] text-gold-light uppercase tracking-wider">
+                          {t.role} &mdash; <span className="text-cream/50">{t.project}</span>
+                        </span>
+                      </div>
                     </div>
-                    <p className="font-serif italic text-lg sm:text-xl md:text-2xl text-gray-200 leading-relaxed mb-8 max-w-2xl font-light">
-                      “{t.comment}”
-                    </p>
-                    <div>
-                      <h4 className="font-display font-bold text-sm tracking-widest uppercase text-white mb-1">
-                        {t.name}
-                      </h4>
-                      <span className="text-xs text-gold uppercase tracking-wider">
-                        {t.role} &mdash; <span className="text-gray-400">{t.project}</span>
-                      </span>
-                    </div>
-                  </div>
-                </SwiperSlide>
-              ))}
-            </Swiper>
+                  </SwiperSlide>
+                ))}
+              </Swiper>
+            </div>
           </div>
-
         </div>
       </section>
 
-      {/* Call To Action Banner */}
-      <section className="relative py-24 bg-cream overflow-hidden flex items-center justify-center">
-        {/* Background elements */}
-        <div className="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 transform origin-top-right"></div>
-
-        <div className="max-w-5xl mx-auto px-6 md:px-12 w-full text-center relative z-10 flex flex-col items-center">
-          <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-4">Start Your Journey</span>
-          <h2 className="font-display text-3xl sm:text-5xl font-bold text-charcoal-dark tracking-tight leading-tight mb-6">
-            Constructing Your Dream Home <br />With Trust &amp; Integrity
-          </h2>
-          <p className="text-gray-600 font-light text-sm sm:text-base max-w-xl mb-10">
-            Consult our expert architecture and development team to outline blueprints, material budgets, and construction timelines for your properties.
-          </p>
-          <Button to="/contact" variant="primary" icon={<ArrowRight size={14} />}>
-            Get Free Consultation
-          </Button>
+      {/* ───────────────── CTA ───────────────── */}
+      <section className="pb-24 md:pb-32 pt-4">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <motion.div
+            {...fadeUp}
+            className="relative rounded-[2.5rem] overflow-hidden bg-charcoal-dark text-cream px-8 sm:px-16 py-16 md:py-24 text-center flex flex-col items-center"
+          >
+            <div className="absolute inset-0 opacity-[0.08] bg-[url('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?auto=format&fit=crop&w=1600&q=80')] bg-cover bg-center" />
+            <div className="absolute -bottom-24 left-1/2 -translate-x-1/2 w-[40rem] h-[40rem] rounded-full bg-gold/10 blur-3xl pointer-events-none" />
+            <div className="relative flex flex-col items-center">
+              <span className="text-[11px] uppercase tracking-[0.28em] text-gold-light font-semibold font-display mb-5">Start Your Journey</span>
+              <h2 className="font-serif text-4xl sm:text-5xl md:text-6xl leading-[1.08] mb-6 max-w-3xl">
+                Constructing Your Dream Home With Trust &amp; Integrity
+              </h2>
+              <p className="text-cream/65 font-light text-base sm:text-lg max-w-xl mb-10">
+                Consult our expert architecture and development team to outline blueprints, material budgets, and construction timelines for your properties.
+              </p>
+              <Button to="/contact" variant="light" icon={<ArrowRight size={16} />}>
+                Get Free Consultation
+              </Button>
+            </div>
+          </motion.div>
         </div>
       </section>
 

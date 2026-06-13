@@ -8,7 +8,7 @@ interface ButtonProps {
   children: React.ReactNode;
   to?: string;
   onClick?: () => void;
-  variant?: 'primary' | 'secondary' | 'outline' | 'glass';
+  variant?: 'primary' | 'secondary' | 'outline' | 'glass' | 'light';
   className?: string;
   type?: 'button' | 'submit' | 'reset';
   icon?: React.ReactNode;
@@ -23,13 +23,15 @@ export const Button: React.FC<ButtonProps> = ({
   type = 'button',
   icon
 }) => {
-  const baseStyles = "relative inline-flex items-center justify-center font-display font-medium uppercase tracking-wider text-xs px-6 py-4 transition-all duration-300 overflow-hidden";
+  const baseStyles =
+    "relative inline-flex items-center justify-center gap-2 font-display font-medium tracking-wide text-[13px] px-7 py-3.5 rounded-full transition-all duration-300";
 
   const variants = {
-    primary: "bg-gold hover:bg-gold-luxury text-charcoal-dark shadow-luxury hover:shadow-luxury-lg",
-    secondary: "bg-charcoal text-white border border-charcoal-light hover:bg-charcoal-light",
-    outline: "border border-gold text-gold hover:bg-gold hover:text-charcoal-dark",
-    glass: "backdrop-blur-md bg-white/10 border border-white/20 text-white hover:bg-cream hover:text-charcoal-dark"
+    primary: "bg-gold text-cream hover:bg-gold-dark shadow-luxury hover:shadow-luxury-lg",
+    secondary: "bg-charcoal text-cream hover:bg-charcoal-light",
+    outline: "border border-gold/40 text-gold hover:bg-gold hover:text-cream",
+    glass: "backdrop-blur-md bg-cream/10 border border-cream/30 text-cream hover:bg-cream hover:text-charcoal",
+    light: "bg-cream text-charcoal hover:bg-gold hover:text-cream shadow-luxury"
   };
 
   const content = (
