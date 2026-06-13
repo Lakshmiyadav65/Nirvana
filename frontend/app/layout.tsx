@@ -4,6 +4,8 @@ import type { ReactNode } from 'react';
 import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ScrollToTop from '@/components/ScrollToTop';
+import SmoothScroll from '@/components/SmoothScroll';
+import ScrollProgress from '@/components/ScrollProgress';
 
 export const metadata: Metadata = {
   title: 'Nirvana Builders & Developers | Luxury Real Estate & Construction Hyderabad',
@@ -26,15 +28,18 @@ export default function RootLayout({ children }: { children: ReactNode }) {
         />
       </head>
       <body className="bg-cream text-charcoal antialiased overflow-x-hidden">
-        <div className="flex flex-col min-h-screen bg-cream text-charcoal">
-          <ScrollToTop />
-          <Navbar />
+        <SmoothScroll>
+          <ScrollProgress />
+          <div className="flex flex-col min-h-screen bg-cream text-charcoal">
+            <ScrollToTop />
+            <Navbar />
 
-          {/* Main Content Area */}
-          <main className="flex-grow">{children}</main>
+            {/* Main Content Area */}
+            <main className="flex-grow">{children}</main>
 
-          <Footer />
-        </div>
+            <Footer />
+          </div>
+        </SmoothScroll>
       </body>
     </html>
   );

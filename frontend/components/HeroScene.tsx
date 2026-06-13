@@ -63,9 +63,9 @@ export default function HeroScene() {
         {/* Giant word */}
         <motion.div style={{ y: wordY }} className="flex-1 flex items-center justify-center">
           <motion.h1
-            initial={{ opacity: 0, scale: 1.05 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1.2, ease: 'easeOut' }}
+            initial={{ opacity: 0, y: 64, scale: 1.06 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
             className="font-serif font-bold text-cream text-center leading-[0.85] tracking-tight whitespace-nowrap text-[clamp(3.5rem,18vw,15rem)] drop-shadow-[0_12px_45px_rgba(11,16,8,0.5)]"
           >
             Nirvana
