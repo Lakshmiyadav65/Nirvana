@@ -1,5 +1,7 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Mail, Phone, MapPin, ArrowRight } from 'lucide-react';
 
 export const Footer: React.FC = () => {
@@ -11,10 +13,10 @@ export const Footer: React.FC = () => {
   return (
     <footer className="bg-charcoal-dark border-t border-gold/15 text-gray-400 font-sans pt-20 pb-10">
       <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
-        
+
         {/* Branding Column */}
         <div className="flex flex-col space-y-6">
-          <Link to="/" className="flex flex-col">
+          <Link href="/" className="flex flex-col">
             <span className="font-display font-bold text-2xl text-white tracking-widest leading-none">
               NIRVANA
             </span>
@@ -53,22 +55,22 @@ export const Footer: React.FC = () => {
           </h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link to="/" className="hover:text-gold transition-colors duration-300">Home</Link>
+              <Link href="/" className="hover:text-gold transition-colors duration-300">Home</Link>
             </li>
             <li>
-              <Link to="/about" className="hover:text-gold transition-colors duration-300">About Us</Link>
+              <Link href="/about" className="hover:text-gold transition-colors duration-300">About Us</Link>
             </li>
             <li>
-              <Link to="/projects" className="hover:text-gold transition-colors duration-300">Our Projects</Link>
+              <Link href="/projects" className="hover:text-gold transition-colors duration-300">Our Projects</Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Services</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Services</Link>
             </li>
             <li>
-              <Link to="/gallery" className="hover:text-gold transition-colors duration-300">Media Gallery</Link>
+              <Link href="/gallery" className="hover:text-gold transition-colors duration-300">Media Gallery</Link>
             </li>
             <li>
-              <Link to="/contact" className="hover:text-gold transition-colors duration-300">Contact Us</Link>
+              <Link href="/contact" className="hover:text-gold transition-colors duration-300">Contact Us</Link>
             </li>
           </ul>
         </div>
@@ -80,22 +82,22 @@ export const Footer: React.FC = () => {
           </h4>
           <ul className="space-y-3 text-sm">
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Residential Apartments</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Residential Apartments</Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Independent Houses</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Independent Houses</Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Commercial Spaces</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Commercial Spaces</Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Duplex Homes</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Duplex Homes</Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Construction Planning</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Construction Planning</Link>
             </li>
             <li>
-              <Link to="/services" className="hover:text-gold transition-colors duration-300">Real Estate Development</Link>
+              <Link href="/services" className="hover:text-gold transition-colors duration-300">Real Estate Development</Link>
             </li>
           </ul>
         </div>
@@ -128,14 +130,14 @@ export const Footer: React.FC = () => {
           <div className="pt-2">
             <span className="block text-xs uppercase tracking-wider text-white font-semibold mb-3">Newsletter</span>
             <form onSubmit={handleSubscribe} className="relative flex">
-              <input 
-                type="email" 
-                placeholder="Your email address" 
+              <input
+                type="email"
+                placeholder="Your email address"
                 required
                 className="w-full bg-[#222222] border border-gold/10 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
               />
-              <button 
-                type="submit" 
+              <button
+                type="submit"
                 className="bg-gold text-charcoal-dark px-4 flex items-center justify-center hover:bg-gold-luxury transition-colors duration-300"
                 aria-label="Subscribe"
               >

@@ -1,5 +1,8 @@
+'use client';
+
 import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X, Phone } from 'lucide-react';
 import Button from './Button';
@@ -7,7 +10,7 @@ import Button from './Button';
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -25,7 +28,7 @@ export const Navbar: React.FC = () => {
   // Close mobile menu on route change
   useEffect(() => {
     setIsOpen(false);
-  }, [location]);
+  }, [pathname]);
 
   const navLinks = [
     { name: 'Home', path: '/' },
@@ -43,14 +46,14 @@ export const Navbar: React.FC = () => {
         animate={{ y: 0 }}
         transition={{ duration: 0.5 }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-          isScrolled 
-            ? 'bg-charcoal-dark/95 backdrop-blur-md border-b border-gold/15 py-4 shadow-luxury' 
+          isScrolled
+            ? 'bg-charcoal-dark/95 backdrop-blur-md border-b border-gold/15 py-4 shadow-luxury'
             : 'bg-transparent py-6'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Logo */}
-          <Link to="/" className="flex flex-col group">
+          <Link href="/" className="flex flex-col group">
             <span className="font-display font-bold text-xl sm:text-2xl text-white tracking-widest leading-none group-hover:text-gold transition-colors duration-300">
               NIRVANA
             </span>
@@ -62,11 +65,11 @@ export const Navbar: React.FC = () => {
           {/* Desktop Nav Links */}
           <div className="hidden lg:flex items-center space-x-8">
             {navLinks.map((link) => {
-              const isActive = location.pathname === link.path;
+              const isActive = pathname === link.path;
               return (
                 <Link
                   key={link.name}
-                  to={link.path}
+                  href={link.path}
                   className={`font-display text-xs uppercase tracking-wider transition-colors duration-300 relative py-1 ${
                     isActive ? 'text-gold' : 'text-gray-300 hover:text-white'
                   }`}
@@ -121,7 +124,7 @@ export const Navbar: React.FC = () => {
                   key={link.name}
                 >
                   <Link
-                    to={link.path}
+                    href={link.path}
                     onClick={() => setIsOpen(false)}
                     className="font-display text-2xl uppercase tracking-widest text-white hover:text-gold transition-colors"
                   >
@@ -129,7 +132,7 @@ export const Navbar: React.FC = () => {
                   </Link>
                 </motion.div>
               ))}
-              
+
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}

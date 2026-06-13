@@ -1,8 +1,10 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Building2, Home, Briefcase, Layers, FileText, Compass, CheckCircle2, ArrowRight } from 'lucide-react';
-import { servicesData } from '../data/services';
-import Button from '../components/Button';
+import { servicesData } from '@/data/services';
+import Button from '@/components/Button';
 
 export const Services: React.FC = () => {
   const getIcon = (name: string) => {
@@ -19,7 +21,7 @@ export const Services: React.FC = () => {
 
   return (
     <div className="pt-20">
-      
+
       {/* Page Header */}
       <section className="bg-charcoal-dark text-white py-24 relative overflow-hidden border-b border-gold/15">
         <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
@@ -28,7 +30,7 @@ export const Services: React.FC = () => {
           <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight mb-4">
             Services
           </h1>
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             className="w-16 h-[1px] bg-gold"
@@ -49,7 +51,7 @@ export const Services: React.FC = () => {
       <section className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            
+
             {servicesData.map((s, idx) => (
               <motion.div
                 initial={{ opacity: 0, y: 30 }}
@@ -68,7 +70,7 @@ export const Services: React.FC = () => {
                       {s.title}
                     </h3>
                   </div>
-                  
+
                   <p className="text-gray-600 font-light text-sm mb-6 leading-relaxed">
                     {s.longDescription}
                   </p>

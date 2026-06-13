@@ -1,6 +1,8 @@
+'use client';
+
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 
 interface ButtonProps {
   children: React.ReactNode;
@@ -22,7 +24,7 @@ export const Button: React.FC<ButtonProps> = ({
   icon
 }) => {
   const baseStyles = "relative inline-flex items-center justify-center font-display font-medium uppercase tracking-wider text-xs px-6 py-4 transition-all duration-300 overflow-hidden";
-  
+
   const variants = {
     primary: "bg-gold hover:bg-gold-luxury text-charcoal-dark shadow-luxury hover:shadow-luxury-lg",
     secondary: "bg-charcoal text-white border border-charcoal-light hover:bg-charcoal-light",
@@ -44,7 +46,7 @@ export const Button: React.FC<ButtonProps> = ({
         whileTap={{ scale: 0.98 }}
         className="inline-block"
       >
-        <Link to={to} className={`${baseStyles} ${variants[variant]} ${className} group`}>
+        <Link href={to} className={`${baseStyles} ${variants[variant]} ${className} group`}>
           {content}
         </Link>
       </motion.div>

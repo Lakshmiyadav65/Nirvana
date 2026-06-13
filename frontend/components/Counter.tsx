@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useEffect, useRef, useState } from 'react';
 import { useInView } from 'framer-motion';
 
@@ -26,11 +28,11 @@ export const Counter: React.FC<CounterProps> = ({
       const step = (timestamp: number) => {
         if (!startTime) startTime = timestamp;
         const progress = Math.min((timestamp - startTime) / duration, 1);
-        
+
         // Easing out function
         const easeOutQuad = (t: number) => t * (2 - t);
         const currentCount = Math.floor(easeOutQuad(progress) * (value - startValue) + startValue);
-        
+
         setCount(currentCount);
 
         if (progress < 1) {

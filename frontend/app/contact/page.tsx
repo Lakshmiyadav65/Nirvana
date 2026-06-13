@@ -1,8 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Phone, MapPin, Send, MessageCircle, AlertCircle } from 'lucide-react';
-import Button from '../components/Button';
-import GlassCard from '../components/GlassCard';
+import Button from '@/components/Button';
+import GlassCard from '@/components/GlassCard';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -46,7 +48,7 @@ export const Contact: React.FC = () => {
 
   return (
     <div className="pt-20">
-      
+
       {/* Page Header */}
       <section className="bg-charcoal-dark text-white py-24 relative overflow-hidden border-b border-gold/15">
         <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
@@ -62,7 +64,7 @@ export const Contact: React.FC = () => {
       {/* Main Details and Form Grid */}
       <section className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
-          
+
           {/* Contact Details Column */}
           <div className="lg:col-span-5 flex flex-col space-y-8">
             <div>
@@ -76,7 +78,7 @@ export const Contact: React.FC = () => {
             </div>
 
             <div className="space-y-6">
-              
+
               <div className="flex gap-4 border border-gray-100 p-6 bg-[#fafafa] transition-all duration-300 hover:border-gold/30">
                 <MapPin size={24} className="text-gold shrink-0 mt-1" />
                 <div>
@@ -117,9 +119,9 @@ export const Contact: React.FC = () => {
               <p className="text-gray-400 text-xs font-light mb-6">
                 Receive instant project brochures and layout documents directly on your WhatsApp chat.
               </p>
-              <a 
-                href="https://wa.me/919948983456?text=Hello%20Nirvana%20Builders,%20I%20am%20interested%20in%20your%20projects." 
-                target="_blank" 
+              <a
+                href="https://wa.me/919948983456?text=Hello%20Nirvana%20Builders,%20I%20am%20interested%20in%20your%20projects."
+                target="_blank"
                 rel="noopener noreferrer"
                 className="w-full inline-flex items-center justify-center font-display font-medium uppercase tracking-wider text-xs px-6 py-4 bg-[#25D366] text-white hover:bg-[#20ba5a] transition-colors duration-300"
               >
@@ -137,7 +139,7 @@ export const Contact: React.FC = () => {
             </h2>
 
             {submitted && (
-              <motion.div 
+              <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="bg-gold/10 border border-gold text-gold text-xs p-4 mb-8 flex items-center gap-3"
@@ -148,7 +150,7 @@ export const Contact: React.FC = () => {
             )}
 
             <form onSubmit={handleSubmit} className="space-y-6">
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div className="flex flex-col">
                   <label htmlFor="name" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Full Name</label>
@@ -235,11 +237,11 @@ export const Contact: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
           <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-bold mb-3">Map Coordinate</span>
           <h3 className="font-display text-xl text-white uppercase tracking-wider mb-6">Interactive Office Location</h3>
-          
+
           <div className="w-full h-80 relative overflow-hidden border border-gold/15 flex items-center justify-center bg-charcoal-dark">
             {/* Visual background map simulation */}
             <div className="absolute inset-0 opacity-25 bg-[radial-gradient(#c89d5e_1px,transparent_1px)] [background-size:16px_16px]"></div>
-            
+
             {/* Elegant glass panel with location facts */}
             <GlassCard hoverEffect={false} className="relative z-10 max-w-sm">
               <MapPin className="text-gold mx-auto mb-4 animate-bounce" size={32} />

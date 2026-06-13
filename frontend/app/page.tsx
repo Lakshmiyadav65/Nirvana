@@ -1,14 +1,16 @@
+'use client';
+
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
 import { ArrowRight, Star, Building2, Home as HomeIcon, Award, ShieldCheck } from 'lucide-react';
-import Button from '../components/Button';
-import Counter from '../components/Counter';
-import { projectsData } from '../data/projects';
-import { testimonialsData } from '../data/testimonials';
-import { servicesData } from '../data/services';
+import Button from '@/components/Button';
+import Counter from '@/components/Counter';
+import { projectsData } from '@/data/projects';
+import { testimonialsData } from '@/data/testimonials';
+import { servicesData } from '@/data/services';
 
 // Swiper Styles
 import 'swiper/css';
@@ -37,7 +39,7 @@ export const Home: React.FC = () => {
 
   return (
     <div className="relative overflow-x-hidden">
-      
+
       {/* Hero Section */}
       <section className="relative h-screen w-full bg-charcoal-dark flex items-center overflow-hidden">
         {/* Background Swiper Slideshow */}
@@ -51,10 +53,10 @@ export const Home: React.FC = () => {
           >
             {heroImages.map((img, i) => (
               <SwiperSlide key={i}>
-                <div 
+                <div
                   className="h-full w-full bg-cover bg-center transition-transform duration-[10000ms] scale-105"
-                  style={{ 
-                    backgroundImage: `linear-gradient(to bottom, rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.85)), url(${img})` 
+                  style={{
+                    backgroundImage: `linear-gradient(to bottom, rgba(18, 18, 18, 0.4), rgba(18, 18, 18, 0.85)), url(${img})`
                   }}
                 />
               </SwiperSlide>
@@ -81,7 +83,7 @@ export const Home: React.FC = () => {
             >
               Crafting Architectural Masterpieces
             </motion.span>
-            
+
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
@@ -122,7 +124,7 @@ export const Home: React.FC = () => {
         {/* Scroll Down Indicator */}
         <div className="absolute bottom-10 left-1/2 transform -translate-x-1/2 z-20 flex flex-col items-center pointer-events-none">
           <span className="text-[10px] uppercase tracking-[0.2em] text-gray-400 font-semibold mb-2">Scroll Down</span>
-          <motion.div 
+          <motion.div
             animate={{ y: [0, 8, 0] }}
             transition={{ repeat: Infinity, duration: 1.5 }}
             className="w-1.5 h-6 bg-gold rounded-full"
@@ -145,9 +147,9 @@ export const Home: React.FC = () => {
       <section className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
-            
+
             {/* Visual block */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -155,9 +157,9 @@ export const Home: React.FC = () => {
               className="lg:col-span-6 relative"
             >
               <div className="relative z-10 border border-gold/20 p-2 bg-white">
-                <img 
-                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80" 
-                  alt="Modern Residence" 
+                <img
+                  src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1200&q=80"
+                  alt="Modern Residence"
                   className="w-full h-[400px] md:h-[500px] object-cover"
                 />
               </div>
@@ -171,7 +173,7 @@ export const Home: React.FC = () => {
             </motion.div>
 
             {/* Description Block */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -185,7 +187,7 @@ export const Home: React.FC = () => {
               <p className="text-gray-600 leading-relaxed font-light text-base md:text-lg">
                 “Nirvana Builders &amp; Developers has a history of responsible business conduct and strongly believes that true business success is measured not only by profits but also by sustainable and ethical practices.”
               </p>
-              
+
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 pt-4">
                 <div className="flex gap-4">
                   <div className="w-10 h-10 rounded-full bg-gold/15 flex items-center justify-center text-gold shrink-0">
@@ -226,7 +228,7 @@ export const Home: React.FC = () => {
       {/* Featured Projects Slider */}
       <section className="py-20 md:py-32 bg-charcoal-dark border-y border-gold/10 text-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
+
           <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
             <div>
               <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold block mb-3">Portfolio Highlights</span>
@@ -260,13 +262,13 @@ export const Home: React.FC = () => {
             >
               {featuredProjects.map((project) => (
                 <SwiperSlide key={project.id}>
-                  <Link to={`/projects/${project.id}`} className="group block h-full">
+                  <Link href={`/projects/${project.id}`} className="group block h-full">
                     <div className="bg-[#1e1e1e] border border-gold/10 hover:border-gold/30 transition-all duration-500 overflow-hidden relative shadow-luxury">
                       {/* Image container */}
                       <div className="overflow-hidden h-64 relative">
-                        <img 
-                          src={project.mainImage} 
-                          alt={project.name} 
+                        <img
+                          src={project.mainImage}
+                          alt={project.name}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                         />
                         {/* Overlay status tag */}
@@ -307,7 +309,7 @@ export const Home: React.FC = () => {
       {/* Services Grid Section */}
       <section className="py-20 md:py-32 bg-white">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
+
           <div className="max-w-3xl mx-auto text-center mb-20 flex flex-col items-center">
             <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-3">Our Offerings</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal-dark tracking-tight leading-tight mb-4">
@@ -341,8 +343,8 @@ export const Home: React.FC = () => {
                     {service.description}
                   </p>
                 </div>
-                
-                <Link to="/services" className="text-xs text-gold font-bold uppercase tracking-wider flex items-center gap-2 mt-auto group-hover:translate-x-2 transition-transform duration-300">
+
+                <Link href="/services" className="text-xs text-gold font-bold uppercase tracking-wider flex items-center gap-2 mt-auto group-hover:translate-x-2 transition-transform duration-300">
                   <span>Learn More</span>
                   <ArrowRight size={12} />
                 </Link>
@@ -362,7 +364,7 @@ export const Home: React.FC = () => {
       {/* Testimonials Glass Slider */}
       <section className="py-20 md:py-32 bg-charcoal bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-charcoal-light to-charcoal-dark border-t border-gold/10 text-white relative">
         <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10">
-          
+
           <div className="max-w-3xl mx-auto text-center mb-16 flex flex-col items-center">
             <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-3">Client Endorsements</span>
             <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold tracking-tight">
@@ -409,7 +411,7 @@ export const Home: React.FC = () => {
       <section className="relative py-24 bg-white overflow-hidden flex items-center justify-center">
         {/* Background elements */}
         <div className="absolute top-0 right-0 w-1/3 h-full bg-gold/5 -skew-x-12 transform origin-top-right"></div>
-        
+
         <div className="max-w-5xl mx-auto px-6 md:px-12 w-full text-center relative z-10 flex flex-col items-center">
           <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-4">Start Your Journey</span>
           <h2 className="font-display text-3xl sm:text-5xl font-bold text-charcoal-dark tracking-tight leading-tight mb-6">

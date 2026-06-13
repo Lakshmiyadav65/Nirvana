@@ -1,8 +1,10 @@
+'use client';
+
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from 'next/link';
 import { Search, MapPin, Minimize2, Calendar } from 'lucide-react';
-import { projectsData } from '../data/projects';
+import { projectsData } from '@/data/projects';
 
 export const Projects: React.FC = () => {
   const [activeFilter, setActiveFilter] = useState<'all' | 'ongoing' | 'completed' | 'residential' | 'commercial' | 'independent'>('all');
@@ -28,7 +30,7 @@ export const Projects: React.FC = () => {
 
     // Search match
     const query = searchQuery.toLowerCase();
-    const matchesSearch = 
+    const matchesSearch =
       project.name.toLowerCase().includes(query) ||
       project.location.toLowerCase().includes(query) ||
       project.type.toLowerCase().includes(query) ||
@@ -39,7 +41,7 @@ export const Projects: React.FC = () => {
 
   return (
     <div className="pt-20">
-      
+
       {/* Page Header */}
       <section className="bg-charcoal-dark text-white py-24 relative overflow-hidden border-b border-gold/15">
         <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
@@ -48,7 +50,7 @@ export const Projects: React.FC = () => {
           <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight mb-4">
             Our Projects
           </h1>
-          <motion.div 
+          <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: 1 }}
             className="w-16 h-[1px] bg-gold"
@@ -59,7 +61,7 @@ export const Projects: React.FC = () => {
       {/* Filters & Search Block */}
       <section className="py-12 bg-white border-b border-gray-100 sticky top-[72px] sm:top-[76px] z-30 shadow-sm backdrop-blur-md bg-white/95">
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col lg:flex-row gap-6 justify-between items-center">
-          
+
           {/* Tabs */}
           <div className="flex flex-wrap justify-center gap-2">
             {filterTabs.map((tab) => (
@@ -95,13 +97,13 @@ export const Projects: React.FC = () => {
       {/* Project Grid Section */}
       <section className="py-20 md:py-28 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
+
           {filteredProjects.length === 0 ? (
             <div className="text-center py-20">
               <span className="text-gray-400 text-sm font-light">No projects found matching the criteria.</span>
             </div>
           ) : (
-            <motion.div 
+            <motion.div
               layout
               className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
             >
@@ -115,19 +117,19 @@ export const Projects: React.FC = () => {
                     transition={{ duration: 0.3 }}
                     key={project.id}
                   >
-                    <Link to={`/projects/${project.id}`} className="group block bg-white border border-gray-100 hover:border-gold/30 hover:shadow-luxury transition-all duration-300">
+                    <Link href={`/projects/${project.id}`} className="group block bg-white border border-gray-100 hover:border-gold/30 hover:shadow-luxury transition-all duration-300">
                       {/* Image block */}
                       <div className="h-64 overflow-hidden relative bg-charcoal">
-                        <img 
-                          src={project.mainImage} 
-                          alt={project.name} 
+                        <img
+                          src={project.mainImage}
+                          alt={project.name}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                           loading="lazy"
                         />
                         {/* Status absolute tag */}
                         <div className={`absolute top-4 right-4 text-[9px] uppercase tracking-widest px-3 py-1 font-bold ${
-                          project.status === 'ongoing' 
-                            ? 'bg-gold text-charcoal-dark' 
+                          project.status === 'ongoing'
+                            ? 'bg-gold text-charcoal-dark'
                             : 'bg-charcoal text-white border border-white/10'
                         }`}>
                           {project.status === 'ongoing' ? 'Ongoing' : 'Completed'}

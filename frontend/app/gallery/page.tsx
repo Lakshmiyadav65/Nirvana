@@ -1,3 +1,5 @@
+'use client';
+
 import React, { useState } from 'react';
 import { AnimatePresence } from 'framer-motion';
 import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
@@ -106,7 +108,7 @@ export const Gallery: React.FC = () => {
 
   return (
     <div className="pt-20">
-      
+
       {/* Page Header */}
       <section className="bg-charcoal-dark text-white py-24 relative overflow-hidden border-b border-gold/15">
         <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
@@ -141,20 +143,20 @@ export const Gallery: React.FC = () => {
       {/* Masonry Grid */}
       <section className="py-20 md:py-28 bg-[#fafafa]">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
-          
+
           <div className="columns-1 sm:columns-2 lg:columns-3 gap-6 space-y-6">
             {filteredItems.map((item, index) => (
-              <div 
-                key={item.id} 
+              <div
+                key={item.id}
                 onClick={() => openLightbox(index)}
                 className="break-inside-avoid relative overflow-hidden group cursor-pointer border border-gray-100 bg-white"
               >
-                <img 
-                  src={item.url} 
-                  alt={item.title} 
+                <img
+                  src={item.url}
+                  alt={item.title}
                   className="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-105"
                 />
-                
+
                 {/* Hover overlay */}
                 <div className="absolute inset-0 bg-charcoal-dark/70 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-between p-6">
                   <div className="flex justify-end">
@@ -181,12 +183,12 @@ export const Gallery: React.FC = () => {
       {/* Lightbox Overlay */}
       <AnimatePresence>
         {lightboxIndex !== null && (
-          <div 
+          <div
             onClick={closeLightbox}
             className="fixed inset-0 z-50 bg-charcoal-dark/95 backdrop-blur-md flex flex-col justify-center items-center p-6"
           >
             {/* Close Button */}
-            <button 
+            <button
               onClick={closeLightbox}
               className="absolute top-6 right-6 text-white/70 hover:text-white transition-colors"
               aria-label="Close Lightbox"
@@ -196,9 +198,9 @@ export const Gallery: React.FC = () => {
 
             {/* Slider Content */}
             <div className="relative max-w-5xl w-full flex items-center justify-center">
-              
+
               {/* Prev Button */}
-              <button 
+              <button
                 onClick={prevImage}
                 className="absolute left-0 w-12 h-12 bg-black/40 border border-white/10 hover:bg-black/60 flex items-center justify-center text-white"
                 aria-label="Previous Image"
@@ -207,13 +209,13 @@ export const Gallery: React.FC = () => {
               </button>
 
               {/* Central Image */}
-              <div 
+              <div
                 onClick={(e) => e.stopPropagation()}
                 className="max-h-[75vh] max-w-full flex flex-col items-center"
               >
-                <img 
-                  src={filteredItems[lightboxIndex].url} 
-                  alt={filteredItems[lightboxIndex].title} 
+                <img
+                  src={filteredItems[lightboxIndex].url}
+                  alt={filteredItems[lightboxIndex].title}
                   className="max-h-[70vh] object-contain border border-gold/10 shadow-luxury-lg"
                 />
                 <div className="text-center pt-4">
@@ -227,7 +229,7 @@ export const Gallery: React.FC = () => {
               </div>
 
               {/* Next Button */}
-              <button 
+              <button
                 onClick={nextImage}
                 className="absolute right-0 w-12 h-12 bg-black/40 border border-white/10 hover:bg-black/60 flex items-center justify-center text-white"
                 aria-label="Next Image"
