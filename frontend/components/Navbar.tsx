@@ -56,12 +56,15 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex flex-col group leading-none">
-            <span className={`font-serif text-2xl sm:text-[26px] tracking-tight transition-colors duration-300 ${overHero ? 'text-cream group-hover:text-gold-light' : 'text-charcoal group-hover:text-gold'}`}>
-              Nirvana
-            </span>
-            <span className={`font-display text-[9px] uppercase tracking-[0.3em] font-semibold mt-0.5 ${overHero ? 'text-cream/75' : 'text-gold'}`}>
-              Builders &amp; Developers
+          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
+            <img src="/logo-mark.png" alt="Nirvana Builders &amp; Developers" className="h-8 sm:h-10 w-auto drop-shadow-sm" />
+            <span className="flex flex-col leading-none">
+              <span className={`font-serif text-xl sm:text-[23px] tracking-tight transition-colors duration-300 ${overHero ? 'text-cream group-hover:text-gold-light' : 'text-charcoal group-hover:text-gold'}`}>
+                Nirvana
+              </span>
+              <span className={`font-display text-[8px] sm:text-[9px] uppercase tracking-[0.26em] font-semibold mt-0.5 ${overHero ? 'text-cream/75' : 'text-gold'}`}>
+                Builders &amp; Developers
+              </span>
             </span>
           </Link>
 

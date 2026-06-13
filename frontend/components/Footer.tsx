@@ -35,11 +35,8 @@ export const Footer: React.FC = () => {
         {/* Top: brand + newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-14 border-b border-cream/10">
           <div className="lg:col-span-6 flex flex-col space-y-6">
-            <Link href="/" className="flex flex-col leading-none">
-              <span className="font-serif text-3xl text-cream">Nirvana</span>
-              <span className="font-display text-[10px] uppercase tracking-[0.3em] text-gold-light font-semibold mt-1">
-                Builders &amp; Developers
-              </span>
+            <Link href="/" className="inline-block">
+              <img src="/logo.png" alt="Nirvana Builders &amp; Developers — Innovative Reality" className="h-24 w-auto" />
             </Link>
             <p className="text-sm leading-relaxed max-w-md text-cream/60">
               Building architectural excellence with trust, quality, and modern living. A history of responsible business conduct and sustainable, ethical practices.

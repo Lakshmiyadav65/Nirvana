@@ -12,7 +12,6 @@ export const metadata: Metadata = {
   keywords:
     'Nirvana Builders, Nirvana Developers, Luxury Apartments Hyderabad, Construction Company Khammam, Real Estate Hyderabad, Residential Apartments, Independent Houses, Commercial Spaces',
   authors: [{ name: 'Nirvana Builders & Developers' }],
-  icons: { icon: '/favicon.svg' },
 };
 
 export default function RootLayout({ children }: { children: ReactNode }) {
