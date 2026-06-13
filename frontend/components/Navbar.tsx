@@ -56,13 +56,15 @@ export const Navbar: React.FC = () => {
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2.5 sm:gap-3 group">
-            <img src="/logo-mark.png" alt="Nirvana Builders &amp; Developers" className="h-8 sm:h-10 w-auto drop-shadow-sm" />
+          <Link href="/" className="flex items-center gap-3 group">
+            <span className="flex items-center justify-center rounded-xl bg-[#08291f] h-11 w-11 shrink-0 ring-1 ring-gold/25 shadow-sm overflow-hidden">
+              <img src="/logo-mark.png" alt="Nirvana Builders & Developers" className="h-7 w-auto" />
+            </span>
             <span className="flex flex-col leading-none">
-              <span className={`font-serif text-xl sm:text-[23px] tracking-tight transition-colors duration-300 ${overHero ? 'text-cream group-hover:text-gold-light' : 'text-charcoal group-hover:text-gold'}`}>
+              <span className={`font-serif text-xl tracking-tight font-semibold transition-colors duration-300 ${overHero ? 'text-cream group-hover:text-gold-light' : 'text-charcoal group-hover:text-gold'}`}>
                 Nirvana
               </span>
-              <span className={`font-display text-[8px] sm:text-[9px] uppercase tracking-[0.26em] font-semibold mt-0.5 ${overHero ? 'text-cream/75' : 'text-gold'}`}>
+              <span className={`font-display text-[8px] sm:text-[9px] uppercase tracking-[0.26em] font-semibold mt-1 ${overHero ? 'text-cream/70' : 'text-gold'}`}>
                 Builders &amp; Developers
               </span>
             </span>

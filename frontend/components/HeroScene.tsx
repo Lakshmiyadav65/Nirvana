@@ -66,7 +66,7 @@ export default function HeroScene() {
             initial={{ opacity: 0, scale: 1.05 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 1.2, ease: 'easeOut' }}
-            className="font-serif text-cream text-center leading-[0.85] whitespace-nowrap text-[clamp(3.5rem,18vw,15rem)] drop-shadow-[0_12px_45px_rgba(11,16,8,0.5)]"
+            className="font-serif font-bold text-cream text-center leading-[0.85] tracking-tight whitespace-nowrap text-[clamp(3.5rem,18vw,15rem)] drop-shadow-[0_12px_45px_rgba(11,16,8,0.5)]"
           >
             Nirvana
           </motion.h1>

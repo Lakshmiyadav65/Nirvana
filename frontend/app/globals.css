@@ -29,7 +29,10 @@
   --color-sand: #e7e4d8;
 
   --font-sans: "Inter", sans-serif;
-  --font-serif: "Playfair Display", serif;
+  /* Display/headline face — a clean modern sans (matches the hero reference),
+     replacing the previous serif so headlines align with the rest of the site.
+     Token name kept as `serif` so the swap stays centralized here. */
+  --font-serif: "Outfit", sans-serif;
   --font-display: "Outfit", sans-serif;
 
   --shadow-luxury: 0 10px 30px -10px rgba(94, 107, 61, 0.18);
@@ -44,6 +47,12 @@
 
   body {
     @apply bg-cream text-charcoal font-sans antialiased selection:bg-gold/30 selection:text-charcoal;
+  }
+
+  /* Headlines: weight + tight tracking for a modern sans display look. */
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: -0.015em;
   }
 
   /* Custom Premium Scrollbar */
