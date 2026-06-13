@@ -11,6 +11,7 @@ import Counter from '@/components/Counter';
 import { projectsData } from '@/data/projects';
 import { testimonialsData } from '@/data/testimonials';
 import { servicesData } from '@/data/services';
+import HeroScene from '@/components/HeroScene';
 
 import 'swiper/css';
 import 'swiper/css/pagination';
@@ -35,67 +36,13 @@ export const Home: React.FC = () => {
     { value: 10, suffix: '+ Yrs', label: 'Construction Excellence' },
   ];
 
-  const heroImage = 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=1400&q=80';
   const bentoSpan = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7'];
 
   return (
     <div className="relative overflow-x-hidden bg-cream">
 
-      {/* ───────────────── Hero ───────────────── */}
-      <section className="relative pt-32 md:pt-40 pb-16 md:pb-24">
-        {/* soft decorative wash */}
-        <div className="absolute top-24 -right-32 w-[36rem] h-[36rem] rounded-full bg-gold/10 blur-3xl pointer-events-none" />
-        <div className="absolute -bottom-24 -left-32 w-[30rem] h-[30rem] rounded-full bg-gold/5 blur-3xl pointer-events-none" />
-
-        <div className="relative max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-12 gap-12 lg:gap-10 items-center">
-          {/* Text */}
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: 'easeOut' }}
-            className="lg:col-span-6"
-          >
-            <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
-              <Leaf size={14} /> Crafting Architectural Masterpieces
-            </span>
-            <h1 className="font-serif text-5xl sm:text-6xl lg:text-[4.5rem] leading-[1.02] text-charcoal mb-7">
-              Nirvana Builders
-              <span className="block italic text-gold">&amp; Developers</span>
-            </h1>
-            <p className="text-charcoal/65 text-base sm:text-lg font-light leading-relaxed max-w-xl mb-9">
-              Building Excellence with Trust, Quality &amp; Modern Living. Discover our luxury apartments, independent villas, and commercial properties.
-            </p>
-            <div className="flex flex-wrap items-center gap-4">
-              <Button to="/projects" variant="primary" icon={<ArrowRight size={16} />}>
-                View Projects
-              </Button>
-              <Button to="/contact" variant="outline">
-                Contact Us
-              </Button>
-            </div>
-          </motion.div>
-
-          {/* Image */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.96 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.9, delay: 0.15, ease: 'easeOut' }}
-            className="lg:col-span-6 relative"
-          >
-            <div className="relative rounded-[2.5rem] overflow-hidden shadow-luxury-lg aspect-[4/5] sm:aspect-[5/4] lg:aspect-[4/5]">
-              <img src={heroImage} alt="Luxury Nirvana residence" className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-gradient-to-t from-charcoal-pure/30 to-transparent" />
-            </div>
-            {/* Floating stat card */}
-            <div className="absolute -bottom-6 -left-4 sm:left-6 bg-cream rounded-2xl shadow-luxury-lg border border-charcoal/5 px-6 py-5 flex items-center gap-4">
-              <span className="font-serif text-4xl text-gold leading-none">10+</span>
-              <span className="font-display text-[11px] uppercase tracking-[0.16em] text-charcoal/60 leading-tight">
-                Years of<br />Trust &amp; Reliability
-              </span>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      {/* ───────────────── Hero (3D scroll scene) ───────────────── */}
+      <HeroScene />
 
       {/* ───────────────── Stats ───────────────── */}
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
