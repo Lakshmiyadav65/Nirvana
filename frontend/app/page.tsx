@@ -3,18 +3,13 @@
 import React from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
-import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay, Pagination } from 'swiper/modules';
-import { ArrowRight, ArrowUpRight, Star, MapPin, Minimize2, Building2, Home as HomeIcon, Award, ShieldCheck, Leaf } from 'lucide-react';
+import { ArrowRight, ArrowUpRight, MapPin, Minimize2, Building2, Home as HomeIcon, Award, ShieldCheck } from 'lucide-react';
 import Button from '@/components/Button';
 import Counter from '@/components/Counter';
 import { projectsData } from '@/data/projects';
-import { testimonialsData } from '@/data/testimonials';
 import { servicesData } from '@/data/services';
 import HeroScene from '@/components/HeroScene';
-
-import 'swiper/css';
-import 'swiper/css/pagination';
+import Testimonials from '@/components/Testimonials';
 
 const fadeUp = {
   initial: { opacity: 0, y: 30 },
@@ -213,47 +208,7 @@ export const Home: React.FC = () => {
       </section>
 
       {/* ───────────────── Testimonials ───────────────── */}
-      <section className="py-16 md:py-24">
-        <div className="max-w-7xl mx-auto px-6 md:px-10">
-          <div className="relative rounded-[2.5rem] bg-charcoal text-cream overflow-hidden px-6 sm:px-12 py-16 md:py-20">
-            <div className="absolute -top-20 -right-20 w-80 h-80 rounded-full bg-gold/10 blur-3xl pointer-events-none" />
-            <div className="relative max-w-3xl mx-auto text-center flex flex-col items-center mb-12">
-              <span className="text-[11px] uppercase tracking-[0.28em] text-gold-light font-semibold font-display block mb-4">Client Endorsements</span>
-              <h2 className="font-serif text-4xl md:text-5xl tracking-tight">Testimonials</h2>
-            </div>
-
-            <div className="max-w-3xl mx-auto">
-              <Swiper
-                modules={[Autoplay, Pagination]}
-                autoplay={{ delay: 5000 }}
-                pagination={{ clickable: true }}
-                className="pb-14"
-              >
-                {testimonialsData.map((t) => (
-                  <SwiperSlide key={t.id}>
-                    <div className="text-center flex flex-col items-center px-2">
-                      <div className="flex gap-1 text-gold-light mb-7">
-                        {[...Array(t.rating)].map((_, i) => (
-                          <Star key={i} size={16} fill="currentColor" />
-                        ))}
-                      </div>
-                      <p className="font-serif italic text-xl sm:text-2xl md:text-3xl text-cream/95 leading-relaxed mb-9 max-w-2xl">
-                        “{t.comment}”
-                      </p>
-                      <div>
-                        <h4 className="font-display font-semibold text-sm tracking-wide text-cream mb-1">{t.name}</h4>
-                        <span className="text-[12px] text-gold-light uppercase tracking-wider">
-                          {t.role} &mdash; <span className="text-cream/50">{t.project}</span>
-                        </span>
-                      </div>
-                    </div>
-                  </SwiperSlide>
-                ))}
-              </Swiper>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Testimonials />
 
       {/* ───────────────── CTA ───────────────── */}
       <section className="pb-24 md:pb-32 pt-4">
