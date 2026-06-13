@@ -95,21 +95,18 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
   };
 
   return (
-    <section id="book" className="py-20 md:py-28 bg-charcoal text-white border-t border-gold/15">
-      <div className="max-w-5xl mx-auto px-6 md:px-12">
+    <section id="book" className="py-20 md:py-28 bg-charcoal text-cream">
+      <div className="max-w-4xl mx-auto px-6 md:px-10">
 
-        {/* Heading */}
         <div className="text-center flex flex-col items-center mb-12">
-          <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold mb-3">Schedule a Visit</span>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-            Book a Site Visit
-          </h2>
-          <p className="text-gray-400 font-light text-sm max-w-xl leading-relaxed">
-            Pick an available slot to tour <span className="text-gold">{planName}</span> with our sales team. Choose a time that suits you and we&apos;ll confirm your appointment.
+          <span className="text-[11px] uppercase tracking-[0.28em] text-gold-light font-semibold font-display mb-4">Schedule a Visit</span>
+          <h2 className="font-serif text-4xl md:text-5xl mb-4">Book a Site Visit</h2>
+          <p className="text-cream/60 font-light text-sm max-w-xl leading-relaxed">
+            Pick an available slot to tour <span className="text-gold-light">{planName}</span> with our sales team. Choose a time that suits you and we&apos;ll confirm your appointment.
           </p>
         </div>
 
-        <div className="bg-charcoal-dark border border-gold/15 p-6 sm:p-10 shadow-luxury">
+        <div className="rounded-[2rem] bg-charcoal-dark border border-cream/10 p-6 sm:p-10">
           <AnimatePresence mode="wait">
             {status === 'success' && confirmation ? (
               <motion.div
@@ -119,32 +116,28 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                 exit={{ opacity: 0 }}
                 className="flex flex-col items-center text-center py-8"
               >
-                <div className="w-16 h-16 rounded-full bg-gold/10 border border-gold/30 flex items-center justify-center text-gold mb-6">
+                <div className="w-16 h-16 rounded-full bg-gold/15 border border-gold/40 flex items-center justify-center text-gold-light mb-6">
                   <CalendarCheck size={32} />
                 </div>
-                <h3 className="font-display text-2xl font-bold uppercase tracking-wider mb-3">
-                  Booking Confirmed
-                </h3>
-                <p className="text-gray-400 font-light text-sm max-w-md mb-8">
-                  Thank you, <span className="text-white">{confirmation.name}</span>. Your site visit is reserved. A confirmation has been sent to <span className="text-gold">{confirmation.email}</span>.
+                <h3 className="font-serif text-3xl mb-3">Booking Confirmed</h3>
+                <p className="text-cream/60 font-light text-sm max-w-md mb-8">
+                  Thank you, <span className="text-cream">{confirmation.name}</span>. Your site visit is reserved. A confirmation has been sent to <span className="text-gold-light">{confirmation.email}</span>.
                 </p>
 
-                <div className="w-full max-w-md bg-charcoal-dark border border-gold/10 p-6 text-left space-y-4 mb-8">
-                  <div className="flex justify-between items-center border-b border-gold/10 pb-3">
-                    <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Project</span>
-                    <span className="font-display text-sm text-white font-semibold">{confirmation.planName}</span>
+                <div className="w-full max-w-md rounded-2xl bg-charcoal/60 border border-cream/10 p-6 text-left space-y-4 mb-8">
+                  <div className="flex justify-between items-center border-b border-cream/10 pb-3">
+                    <span className="text-[11px] uppercase tracking-wider text-cream/45 font-semibold">Project</span>
+                    <span className="font-display text-sm text-cream font-semibold">{confirmation.planName}</span>
                   </div>
                   <div className="flex justify-between items-center">
-                    <span className="text-[10px] uppercase tracking-wider text-gray-500 font-bold">Date &amp; Time</span>
-                    <span className="font-display text-sm text-gold font-semibold flex items-center gap-2">
+                    <span className="text-[11px] uppercase tracking-wider text-cream/45 font-semibold">Date &amp; Time</span>
+                    <span className="font-display text-sm text-gold-light font-semibold flex items-center gap-2">
                       <Clock size={14} /> {confirmation.when}
                     </span>
                   </div>
                 </div>
 
-                <Button onClick={resetForBookAnother} variant="outline">
-                  Book another time
-                </Button>
+                <Button onClick={resetForBookAnother} variant="glass">Book another time</Button>
               </motion.div>
             ) : (
               <motion.form
@@ -157,13 +150,13 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
               >
                 {/* Day selector */}
                 <div>
-                  <span className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gold font-bold mb-4">
+                  <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-gold-light font-semibold mb-4">
                     <Calendar size={14} /> Select a date
                   </span>
                   {dayGroups.length === 0 ? (
-                    <p className="text-gray-500 text-xs font-light">Loading available dates…</p>
+                    <p className="text-cream/40 text-sm font-light">Loading available dates…</p>
                   ) : (
-                    <div className="flex gap-2 overflow-x-auto pb-2">
+                    <div className="flex gap-2.5 overflow-x-auto pb-2">
                       {dayGroups.map((group) => (
                         <button
                           type="button"
@@ -172,10 +165,10 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                             setActiveDayKey(group.key);
                             setSelectedSlotId(null);
                           }}
-                          className={`shrink-0 font-display text-[11px] uppercase tracking-wider px-4 py-3 border transition-all duration-300 ${
+                          className={`shrink-0 font-display text-[12px] tracking-wide px-5 py-2.5 rounded-full border transition-all duration-300 ${
                             activeDayKey === group.key
-                              ? 'bg-gold text-charcoal-dark border-gold font-bold'
-                              : 'bg-transparent text-gray-300 border-gold/15 hover:border-gold/40'
+                              ? 'bg-gold text-cream border-gold font-semibold'
+                              : 'bg-transparent text-cream/70 border-cream/15 hover:border-gold/50'
                           }`}
                         >
                           {group.dateLabel}
@@ -185,10 +178,10 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                   )}
                 </div>
 
-                {/* Time slots for the active day */}
+                {/* Time slots */}
                 {activeGroup && (
                   <div>
-                    <span className="flex items-center gap-2 text-[10px] uppercase tracking-wider text-gold font-bold mb-4">
+                    <span className="flex items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-gold-light font-semibold mb-4">
                       <Clock size={14} /> Available times — {activeGroup.dateLabel}
                     </span>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
@@ -204,12 +197,12 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                               setSelectedSlotId(slot.id);
                               setError(null);
                             }}
-                            className={`font-display text-xs tracking-wide px-2 py-3 border transition-all duration-300 ${
+                            className={`font-display text-[13px] tracking-wide px-2 py-3 rounded-xl border transition-all duration-300 ${
                               isBooked
-                                ? 'border-white/5 text-gray-600 line-through cursor-not-allowed'
+                                ? 'border-cream/5 text-cream/25 line-through cursor-not-allowed'
                                 : isSelected
-                                ? 'bg-gold text-charcoal-dark border-gold font-bold'
-                                : 'bg-transparent text-gray-200 border-gold/15 hover:border-gold/50'
+                                ? 'bg-gold text-cream border-gold font-semibold'
+                                : 'bg-transparent text-cream/80 border-cream/15 hover:border-gold/50'
                             }`}
                           >
                             {formatTime(slot.start)}
@@ -221,11 +214,9 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                 )}
 
                 {/* Customer details */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 border-t border-gold/10 pt-8">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5 border-t border-cream/10 pt-8">
                   <div className="flex flex-col">
-                    <label htmlFor="booking-name" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">
-                      Full Name
-                    </label>
+                    <label htmlFor="booking-name" className="text-[11px] uppercase tracking-wider text-cream/45 font-semibold mb-2">Full Name</label>
                     <input
                       type="text"
                       id="booking-name"
@@ -233,13 +224,11 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       required
-                      className="bg-charcoal-dark border border-gold/15 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
+                      className="bg-charcoal/50 border border-cream/15 text-sm px-4 py-3 rounded-xl focus:outline-none focus:border-gold text-cream placeholder:text-cream/30"
                     />
                   </div>
                   <div className="flex flex-col">
-                    <label htmlFor="booking-email" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">
-                      Email Address
-                    </label>
+                    <label htmlFor="booking-email" className="text-[11px] uppercase tracking-wider text-cream/45 font-semibold mb-2">Email Address</label>
                     <input
                       type="email"
                       id="booking-email"
@@ -247,26 +236,25 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
                       required
-                      className="bg-charcoal-dark border border-gold/15 text-xs px-4 py-3 focus:outline-none focus:border-gold text-white"
+                      className="bg-charcoal/50 border border-cream/15 text-sm px-4 py-3 rounded-xl focus:outline-none focus:border-gold text-cream placeholder:text-cream/30"
                     />
                   </div>
                 </div>
 
-                {/* Selected summary + error */}
                 {selectedSlot && (
-                  <p className="text-xs text-gray-400 font-light flex items-center gap-2">
-                    <CheckCircle2 size={14} className="text-gold" />
-                    Selected: <span className="text-white">{formatDateTime(selectedSlot.start)}</span>
+                  <p className="text-[13px] text-cream/60 font-light flex items-center gap-2">
+                    <CheckCircle2 size={15} className="text-gold-light" />
+                    Selected: <span className="text-cream">{formatDateTime(selectedSlot.start)}</span>
                   </p>
                 )}
                 {error && (
-                  <p className="text-xs text-red-400 font-light flex items-center gap-2">
-                    <AlertCircle size={14} /> {error}
+                  <p className="text-[13px] text-red-300 font-light flex items-center gap-2">
+                    <AlertCircle size={15} /> {error}
                   </p>
                 )}
 
-                <div className="pt-2">
-                  <Button type="submit" variant="primary" className="w-full sm:w-auto" icon={<CalendarCheck size={14} />}>
+                <div className="pt-1">
+                  <Button type="submit" variant="primary" className="w-full sm:w-auto" icon={<CalendarCheck size={15} />}>
                     {status === 'submitting' ? 'Confirming…' : 'Confirm Booking'}
                   </Button>
                 </div>

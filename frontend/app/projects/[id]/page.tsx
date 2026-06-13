@@ -5,12 +5,11 @@ import { useParams } from 'next/navigation';
 import Link from 'next/link';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
-import { ArrowLeft, MapPin, Minimize2, Calendar, FileCheck, CheckCircle2, CalendarCheck } from 'lucide-react';
+import { ArrowLeft, MapPin, Minimize2, Calendar, CheckCircle2, CalendarCheck } from 'lucide-react';
 import { projectsData } from '@/data/projects';
 import Button from '@/components/Button';
 import BookingWidget from '@/components/BookingWidget';
 
-// Swiper Styles
 import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
@@ -21,121 +20,93 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="pt-32 pb-20 text-center bg-cream min-h-[60vh] flex flex-col justify-center items-center">
-        <h2 className="font-display text-2xl font-bold mb-4">Project Not Found</h2>
-        <p className="text-gray-500 mb-8">The project you are looking for does not exist or has been relocated.</p>
-        <Button to="/projects" variant="outline">
-          Back to Projects
-        </Button>
+      <div className="pt-44 pb-28 text-center bg-cream min-h-[60vh] flex flex-col justify-center items-center px-6">
+        <h2 className="font-serif text-4xl text-charcoal mb-4">Project Not Found</h2>
+        <p className="text-charcoal/55 mb-8 max-w-md">The project you are looking for does not exist or has been relocated.</p>
+        <Button to="/projects" variant="outline">Back to Projects</Button>
       </div>
     );
   }
 
   return (
-    <div className="pt-20">
+    <div className="bg-cream">
 
-      {/* Back Navigation Bar */}
-      <div className="bg-charcoal border-b border-gold/15 py-4">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center text-xs text-gray-400">
-          <Link href="/projects" className="flex items-center gap-2 hover:text-white transition-colors duration-300">
-            <ArrowLeft size={14} />
-            <span className="font-display uppercase tracking-widest">Back to Projects</span>
+      {/* Back link */}
+      <section className="pt-28 md:pt-32 pb-2">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
+          <Link href="/projects" className="group inline-flex items-center gap-2 text-charcoal/60 hover:text-gold transition-colors text-sm font-display">
+            <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+            Back to Projects
           </Link>
-          <span className="font-sans uppercase tracking-widest text-gold text-[10px]">
+          <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold font-display">
             {project.status === 'ongoing' ? 'Ongoing Construction' : 'Completed Delivery'}
           </span>
         </div>
-      </div>
-
-      {/* Image Gallery Swiper */}
-      <section className="bg-charcoal-dark relative h-[50vh] sm:h-[60vh] md:h-[70vh]">
-        <Swiper
-          modules={[Autoplay, Pagination, Navigation]}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          pagination={{ clickable: true }}
-          navigation
-          className="h-full w-full"
-        >
-          {project.images.map((img, index) => (
-            <SwiperSlide key={index}>
-              <div
-                className="h-full w-full bg-cover bg-center"
-                style={{ backgroundImage: `url(${img})` }}
-              />
-            </SwiperSlide>
-          ))}
-        </Swiper>
       </section>
 
-      {/* Title & Metadata Summary */}
-      <section className="py-12 bg-cream border-b border-gray-100">
-        <div className="max-w-7xl mx-auto px-6 md:px-12">
-          <div className="flex flex-col lg:flex-row justify-between lg:items-center gap-6">
+      {/* Title */}
+      <section className="pt-6 pb-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold font-display mb-3 block">
+            {project.type}
+          </span>
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal leading-[1.04] max-w-4xl">
+            {project.name}
+          </h1>
+        </div>
+      </section>
 
-            <div>
-              <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-bold mb-2 block">
-                {project.type}
-              </span>
-              <h1 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-charcoal-dark tracking-tight leading-none uppercase">
-                {project.name}
-              </h1>
-            </div>
+      {/* Gallery */}
+      <section className="pb-12">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="rounded-[2.5rem] overflow-hidden h-[52vh] md:h-[64vh] bg-charcoal-dark">
+            <Swiper
+              modules={[Autoplay, Pagination, Navigation]}
+              autoplay={{ delay: 5000, disableOnInteraction: false }}
+              pagination={{ clickable: true }}
+              navigation
+              className="h-full w-full"
+            >
+              {project.images.map((img, index) => (
+                <SwiperSlide key={index}>
+                  <div className="h-full w-full bg-cover bg-center" style={{ backgroundImage: `url(${img})` }} />
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
 
-            {/* Quick Metadata Row */}
-            <div className="grid grid-cols-3 gap-6 md:gap-12 bg-sand border border-gold/15 p-6 min-w-full lg:min-w-[450px]">
-              <div>
-                <span className="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mb-1">Location</span>
-                <span className="flex items-center gap-1.5 font-display text-xs text-charcoal-dark font-bold uppercase tracking-wider">
-                  <MapPin size={12} className="text-gold shrink-0" />
-                  {project.location.split(',')[0]}
-                </span>
+          {/* Quick metadata */}
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 mt-6">
+            {[
+              { label: 'Location', value: project.location.split(',')[0], icon: <MapPin size={15} className="text-gold" /> },
+              { label: 'Built-up Area', value: project.area, icon: <Minimize2 size={15} className="text-gold" /> },
+              { label: 'Delivery', value: project.year, icon: <Calendar size={15} className="text-gold" /> },
+            ].map((m) => (
+              <div key={m.label} className="rounded-2xl bg-sand/50 border border-charcoal/5 px-6 py-5">
+                <span className="text-[10px] uppercase tracking-[0.18em] text-charcoal/45 font-semibold block mb-1.5">{m.label}</span>
+                <span className="flex items-center gap-2 font-serif text-lg text-charcoal">{m.icon}{m.value}</span>
               </div>
-
-              <div className="border-x border-gold/15 px-6 md:px-12">
-                <span className="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mb-1">Built-up Area</span>
-                <span className="flex items-center gap-1.5 font-display text-xs text-charcoal-dark font-bold uppercase tracking-wider">
-                  <Minimize2 size={12} className="text-gold shrink-0" />
-                  {project.area}
-                </span>
-              </div>
-
-              <div>
-                <span className="text-[9px] uppercase tracking-widest text-gray-400 font-semibold block mb-1">Delivery</span>
-                <span className="flex items-center gap-1.5 font-display text-xs text-charcoal-dark font-bold uppercase tracking-wider">
-                  <Calendar size={12} className="text-gold shrink-0" />
-                  {project.year}
-                </span>
-              </div>
-            </div>
-
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Main Details and Specs Grid */}
-      <section className="py-20 md:py-32 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16">
+      {/* Details + Specs */}
+      <section className="pb-20 md:pb-28">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-14">
 
-          {/* Main Description */}
-          <div className="lg:col-span-7 flex flex-col space-y-8">
+          <div className="lg:col-span-7 flex flex-col space-y-10">
             <div>
-              <h2 className="font-display text-2xl font-bold uppercase tracking-wider text-charcoal-dark border-b border-gold/15 pb-3 mb-6">
-                Overview &amp; Architecture
-              </h2>
-              <p className="text-gray-600 leading-relaxed font-light text-base mb-6">
-                {project.description}
-              </p>
+              <h2 className="font-serif text-3xl text-charcoal mb-5">Overview &amp; Architecture</h2>
+              <p className="text-charcoal/65 leading-relaxed font-light text-lg">{project.description}</p>
             </div>
 
-            {/* Features */}
             {project.features && project.features.length > 0 && (
               <div>
-                <h3 className="font-display text-lg font-bold uppercase tracking-wider text-charcoal-dark mb-4">
-                  Key Amenities &amp; Features
-                </h3>
+                <h3 className="font-serif text-2xl text-charcoal mb-5">Key Amenities &amp; Features</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {project.features.map((feature, i) => (
-                    <li key={i} className="flex gap-2 text-sm text-gray-500 font-light">
+                    <li key={i} className="flex gap-2.5 text-[14px] text-charcoal/60 font-light">
                       <CheckCircle2 size={16} className="text-gold shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
@@ -145,67 +116,56 @@ export default function ProjectDetails() {
             )}
           </div>
 
-          {/* Side Panel: Tech Specifications */}
-          <div className="lg:col-span-5 flex flex-col space-y-8">
-            <div className="bg-sand border border-gold/15 p-8">
-              <h3 className="font-display text-lg font-bold uppercase tracking-wider text-charcoal-dark border-b border-gold/15 pb-3 mb-6">
-                Technical Specifications
-              </h3>
-
+          <div className="lg:col-span-5 flex flex-col space-y-6">
+            <div className="rounded-[1.75rem] bg-sand/50 border border-charcoal/5 p-8">
+              <h3 className="font-serif text-2xl text-charcoal border-b border-charcoal/10 pb-4 mb-5">Technical Specifications</h3>
               <ul className="space-y-4">
                 {project.specs && project.specs.length > 0 ? (
                   project.specs.map((spec, i) => (
-                    <li key={i} className="flex flex-col border-b border-gray-100 pb-3 last:border-0 last:pb-0">
-                      <span className="text-[10px] uppercase tracking-wider text-gold font-bold mb-1">
-                        {spec.label}
-                      </span>
-                      <span className="text-xs text-gray-600 font-light leading-relaxed">
-                        {spec.value}
-                      </span>
+                    <li key={i} className="flex flex-col border-b border-charcoal/8 pb-3 last:border-0 last:pb-0">
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">{spec.label}</span>
+                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">{spec.value}</span>
                     </li>
                   ))
                 ) : (
                   <>
-                    <li className="flex flex-col border-b border-gray-100 pb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-gold font-bold mb-1">Structure</span>
-                      <span className="text-xs text-gray-600 font-light leading-relaxed">R.C.C. Framed Structure conforming to BIS safety codes.</span>
+                    <li className="flex flex-col border-b border-charcoal/8 pb-3">
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">Structure</span>
+                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">R.C.C. Framed Structure conforming to BIS safety codes.</span>
                     </li>
-                    <li className="flex flex-col border-b border-gray-100 pb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-gold font-bold mb-1">Masonry</span>
-                      <span className="text-xs text-gray-600 font-light leading-relaxed">High durability red clay bricks or solid block cement works.</span>
+                    <li className="flex flex-col border-b border-charcoal/8 pb-3">
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">Masonry</span>
+                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">High durability red clay bricks or solid block cement works.</span>
                     </li>
                     <li className="flex flex-col pb-3">
-                      <span className="text-[10px] uppercase tracking-wider text-gold font-bold mb-1">Compliance</span>
-                      <span className="text-xs text-gray-600 font-light leading-relaxed">100% Vastu aligned layouts with approval coordinates.</span>
+                      <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">Compliance</span>
+                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">100% Vastu aligned layouts with approval coordinates.</span>
                     </li>
                   </>
                 )}
               </ul>
             </div>
 
-            {/* Quick Contact Box */}
-            <div className="bg-charcoal text-white p-8 border border-gold/15 flex flex-col items-center text-center">
-              <FileCheck size={36} className="text-gold mb-4" />
-              <h4 className="font-display text-base font-bold uppercase tracking-wider mb-2">Interested in this project?</h4>
-              <p className="text-gray-400 text-xs font-light mb-6">
+            <div className="rounded-[1.75rem] bg-charcoal text-cream p-8 flex flex-col items-center text-center">
+              <h4 className="font-serif text-xl mb-2">Interested in this project?</h4>
+              <p className="text-cream/60 text-[13px] font-light mb-6">
                 Get pricing sheets, floor plan files, and scheduled site visits direct from our sales representatives.
               </p>
-              <Button to="/contact" variant="outline" className="w-full">
-                Get Pricing details
-              </Button>
-              <a
-                href="#book"
-                className="mt-3 inline-flex items-center justify-center gap-2 w-full font-display font-medium uppercase tracking-wider text-xs px-6 py-4 bg-gold text-charcoal-dark hover:bg-gold-luxury transition-colors duration-300"
-              >
-                <CalendarCheck size={14} /> Book a Site Visit
-              </a>
+              <div className="flex flex-col w-full gap-3">
+                <Button to="/contact" variant="light" className="w-full">Get Pricing details</Button>
+                <a
+                  href="#book"
+                  className="inline-flex items-center justify-center gap-2 w-full font-display font-medium tracking-wide text-[13px] px-6 py-3.5 rounded-full border border-cream/25 text-cream hover:bg-cream hover:text-charcoal transition-colors duration-300"
+                >
+                  <CalendarCheck size={15} /> Book a Site Visit
+                </a>
+              </div>
             </div>
           </div>
-
         </div>
       </section>
 
-      {/* Booking Feature */}
+      {/* Booking */}
       <BookingWidget planId={project.id} planName={project.name} />
 
     </div>

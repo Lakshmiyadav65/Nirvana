@@ -2,9 +2,8 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle, AlertCircle } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, CheckCircle2, Leaf } from 'lucide-react';
 import Button from '@/components/Button';
-import GlassCard from '@/components/GlassCard';
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -24,16 +23,8 @@ export const Contact: React.FC = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitted(true);
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      interest: 'General Inquiry',
-      message: ''
-    });
-    setTimeout(() => {
-      setSubmitted(false);
-    }, 5000);
+    setFormData({ name: '', email: '', phone: '', interest: 'General Inquiry', message: '' });
+    setTimeout(() => setSubmitted(false), 5000);
   };
 
   const projectInterests = [
@@ -46,160 +37,121 @@ export const Contact: React.FC = () => {
     "Joint Venture Development"
   ];
 
+  const inputClass = "bg-cream border border-charcoal/10 text-sm px-4 py-3 rounded-xl focus:outline-none focus:border-gold text-charcoal placeholder:text-charcoal/40";
+
   return (
-    <div className="pt-20">
+    <div className="bg-cream">
 
       {/* Page Header */}
-      <section className="bg-charcoal-dark text-white py-24 relative overflow-hidden border-b border-gold/15">
-        <div className="absolute inset-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?auto=format&fit=crop&w=1920&q=80')] bg-cover bg-center"></div>
-        <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 text-center flex flex-col items-center">
-          <span className="text-xs uppercase tracking-[0.25em] text-gold font-bold mb-3">Get In Touch</span>
-          <h1 className="font-display text-4xl sm:text-6xl font-bold tracking-tight mb-4">
-            Contact Us
-          </h1>
-          <div className="w-16 h-[1px] bg-gold"></div>
+      <section className="pt-36 md:pt-44 pb-12 md:pb-16">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
+            <Leaf size={14} /> Get In Touch
+          </span>
+          <h1 className="font-serif text-5xl md:text-6xl text-charcoal leading-[1.05]">Contact Us</h1>
         </div>
       </section>
 
-      {/* Main Details and Form Grid */}
-      <section className="py-20 md:py-32 bg-cream">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+      {/* Details + Form */}
+      <section className="pb-24 md:pb-32">
+        <div className="max-w-7xl mx-auto px-6 md:px-10 grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-          {/* Contact Details Column */}
-          <div className="lg:col-span-5 flex flex-col space-y-8">
+          {/* Details */}
+          <div className="lg:col-span-5 flex flex-col space-y-6">
             <div>
-              <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold block mb-3">Corporate Details</span>
-              <h2 className="font-display text-3xl font-bold text-charcoal-dark tracking-tight mb-6">
-                Head Office coordinates
-              </h2>
-              <p className="text-gray-500 font-light text-sm leading-relaxed mb-8">
+              <h2 className="font-serif text-3xl text-charcoal mb-4">Head Office coordinates</h2>
+              <p className="text-charcoal/60 font-light text-sm leading-relaxed">
                 Drop by our head office or connect with our customer support teams to schedule apartment audits, project presentations, and blueprint consultations.
               </p>
             </div>
 
-            <div className="space-y-6">
-
-              <div className="flex gap-4 border border-gray-100 p-6 bg-sand transition-all duration-300 hover:border-gold/30">
-                <MapPin size={24} className="text-gold shrink-0 mt-1" />
+            <div className="space-y-4">
+              <div className="flex gap-4 rounded-2xl border border-charcoal/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
+                <MapPin size={22} className="text-gold shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-display text-sm font-bold text-charcoal-dark uppercase tracking-wider mb-2">Corporate Office</h4>
-                  <p className="text-xs text-gray-500 font-light leading-relaxed">
+                  <h4 className="font-display text-[13px] font-semibold text-charcoal mb-1.5">Corporate Office</h4>
+                  <p className="text-[13px] text-charcoal/55 font-light leading-relaxed">
                     HIG-86, Ayyappa Delight, 6th Phase, KPHB Colony, Hyderabad-500085
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4 border border-gray-100 p-6 bg-sand transition-all duration-300 hover:border-gold/30">
-                <Phone size={24} className="text-gold shrink-0 mt-1" />
+              <div className="flex gap-4 rounded-2xl border border-charcoal/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
+                <Phone size={22} className="text-gold shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-display text-sm font-bold text-charcoal-dark uppercase tracking-wider mb-2">Phone Lines</h4>
-                  <div className="flex flex-col text-xs text-gray-500 font-light space-y-1">
+                  <h4 className="font-display text-[13px] font-semibold text-charcoal mb-1.5">Phone Lines</h4>
+                  <div className="flex flex-col text-[13px] text-charcoal/55 font-light space-y-1">
                     <a href="tel:+919948983456" className="hover:text-gold transition-colors">+91 99489 83456</a>
                     <a href="tel:+919059337011" className="hover:text-gold transition-colors">+91 90593 37011</a>
                   </div>
                 </div>
               </div>
 
-              <div className="flex gap-4 border border-gray-100 p-6 bg-sand transition-all duration-300 hover:border-gold/30">
-                <Mail size={24} className="text-gold shrink-0 mt-1" />
+              <div className="flex gap-4 rounded-2xl border border-charcoal/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
+                <Mail size={22} className="text-gold shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-display text-sm font-bold text-charcoal-dark uppercase tracking-wider mb-2">Email Inbox</h4>
-                  <a href="mailto:nirvanabuildersdevelelopers@gmail.com" className="text-xs text-gray-500 font-light hover:text-gold transition-colors break-all">
+                  <h4 className="font-display text-[13px] font-semibold text-charcoal mb-1.5">Email Inbox</h4>
+                  <a href="mailto:nirvanabuildersdevelelopers@gmail.com" className="text-[13px] text-charcoal/55 font-light hover:text-gold transition-colors break-all">
                     nirvanabuildersdevelelopers@gmail.com
                   </a>
                 </div>
               </div>
-
             </div>
 
-            {/* WhatsApp direct block */}
-            <div className="bg-charcoal text-white p-8 border border-gold/15 flex flex-col items-center text-center">
-              <MessageCircle size={36} className="text-gold mb-4" />
-              <h4 className="font-display text-base font-bold uppercase tracking-wider mb-2">WhatsApp Assistant</h4>
-              <p className="text-gray-400 text-xs font-light mb-6">
+            {/* WhatsApp */}
+            <div className="bg-charcoal text-cream p-8 rounded-[1.5rem] flex flex-col items-center text-center">
+              <MessageCircle size={34} className="text-gold-light mb-4" />
+              <h4 className="font-serif text-lg mb-2">WhatsApp Assistant</h4>
+              <p className="text-cream/60 text-[13px] font-light mb-6">
                 Receive instant project brochures and layout documents directly on your WhatsApp chat.
               </p>
               <a
                 href="https://wa.me/919948983456?text=Hello%20Nirvana%20Builders,%20I%20am%20interested%20in%20your%20projects."
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center font-display font-medium uppercase tracking-wider text-xs px-6 py-4 bg-[#25D366] text-white hover:bg-[#20ba5a] transition-colors duration-300"
+                className="w-full inline-flex items-center justify-center font-display font-medium tracking-wide text-[13px] px-6 py-3.5 rounded-full bg-[#25D366] text-white hover:bg-[#20ba5a] transition-colors duration-300"
               >
                 Chat on WhatsApp
               </a>
             </div>
-
           </div>
 
-          {/* Contact Form Column */}
-          <div className="lg:col-span-7 bg-sand border border-gray-100 p-8 sm:p-12">
-            <span className="text-xs uppercase tracking-[0.2em] text-gold font-bold block mb-3">Enquiry Form</span>
-            <h2 className="font-display text-2xl font-bold text-charcoal-dark uppercase tracking-wider mb-8">
-              Send a Message
-            </h2>
+          {/* Form */}
+          <div className="lg:col-span-7 bg-sand/50 border border-charcoal/5 rounded-[1.75rem] p-8 sm:p-12">
+            <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-3">Enquiry Form</span>
+            <h2 className="font-serif text-3xl text-charcoal mb-8">Send a Message</h2>
 
             {submitted && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-gold/10 border border-gold text-gold text-xs p-4 mb-8 flex items-center gap-3"
+                className="bg-gold/10 border border-gold/40 text-charcoal text-[13px] p-4 rounded-xl mb-8 flex items-center gap-3"
               >
-                <AlertCircle size={16} />
+                <CheckCircle2 size={18} className="text-gold" />
                 <span>Thank you. Your inquiry has been received. Our sales manager will contact you shortly.</span>
               </motion.div>
             )}
 
-            <form onSubmit={handleSubmit} className="space-y-6">
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+            <form onSubmit={handleSubmit} className="space-y-5">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col">
-                  <label htmlFor="name" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Full Name</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    required
-                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
-                  />
+                  <label htmlFor="name" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Full Name</label>
+                  <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className={inputClass} />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="email" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Email Address</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    required
-                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
-                  />
+                  <label htmlFor="email" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Email Address</label>
+                  <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required className={inputClass} />
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col">
-                  <label htmlFor="phone" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Phone Number</label>
-                  <input
-                    type="tel"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleInputChange}
-                    required
-                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
-                  />
+                  <label htmlFor="phone" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Phone Number</label>
+                  <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} required className={inputClass} />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="interest" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Project Interest</label>
-                  <select
-                    id="interest"
-                    name="interest"
-                    value={formData.interest}
-                    onChange={handleInputChange}
-                    className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal"
-                  >
+                  <label htmlFor="interest" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Project Interest</label>
+                  <select id="interest" name="interest" value={formData.interest} onChange={handleInputChange} className={inputClass}>
                     {projectInterests.map((item, idx) => (
                       <option key={idx} value={item}>{item}</option>
                     ))}
@@ -208,50 +160,34 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="flex flex-col">
-                <label htmlFor="message" className="text-[10px] uppercase tracking-wider text-gray-400 font-bold mb-2">Message</label>
-                <textarea
-                  id="message"
-                  name="message"
-                  value={formData.message}
-                  onChange={handleInputChange}
-                  rows={6}
-                  required
-                  className="bg-cream border border-gray-200 text-xs px-4 py-3 focus:outline-none focus:border-gold text-charcoal resize-none"
-                ></textarea>
+                <label htmlFor="message" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Message</label>
+                <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} rows={6} required className={`${inputClass} resize-none`}></textarea>
               </div>
 
-              <div className="pt-4">
-                <Button type="submit" variant="primary" className="w-full sm:w-auto" icon={<Send size={12} />}>
+              <div className="pt-2">
+                <Button type="submit" variant="primary" icon={<Send size={14} />}>
                   Send Consultation Request
                 </Button>
               </div>
-
             </form>
           </div>
-
         </div>
       </section>
 
-      {/* Styled Office Map Placeholder */}
-      <section className="bg-charcoal border-t border-gold/15 py-12">
-        <div className="max-w-7xl mx-auto px-6 md:px-12 text-center flex flex-col items-center">
-          <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-bold mb-3">Map Coordinate</span>
-          <h3 className="font-display text-xl text-white uppercase tracking-wider mb-6">Interactive Office Location</h3>
-
-          <div className="w-full h-80 relative overflow-hidden border border-gold/15 flex items-center justify-center bg-charcoal-dark">
-            {/* Visual background map simulation */}
-            <div className="absolute inset-0 opacity-25 bg-[radial-gradient(#c89d5e_1px,transparent_1px)] [background-size:16px_16px]"></div>
-
-            {/* Elegant glass panel with location facts */}
-            <GlassCard hoverEffect={false} className="relative z-10 max-w-sm">
-              <MapPin className="text-gold mx-auto mb-4 animate-bounce" size={32} />
-              <h4 className="font-display text-sm text-white uppercase tracking-widest mb-2">Nirvana Builders</h4>
-              <p className="text-gray-400 text-[11px] leading-relaxed">
+      {/* Office Location */}
+      <section className="pb-24">
+        <div className="max-w-7xl mx-auto px-6 md:px-10">
+          <div className="relative rounded-[2.5rem] overflow-hidden bg-charcoal-dark h-80 flex items-center justify-center">
+            <div className="absolute inset-0 opacity-25 bg-[radial-gradient(#9aa86a_1px,transparent_1px)] [background-size:18px_18px]" />
+            <div className="relative z-10 text-center max-w-sm px-8">
+              <MapPin className="text-gold-light mx-auto mb-4 animate-bounce" size={30} />
+              <h4 className="font-serif text-xl text-cream mb-2">Nirvana Builders</h4>
+              <p className="text-cream/60 text-[13px] leading-relaxed font-light">
                 6th Phase, KPHB Colony, Kukatpally, <br />
                 Hyderabad, Telangana 500085
               </p>
-              <span className="text-[9px] text-gold block mt-4 tracking-widest font-semibold">17.4875° N, 78.3958° E</span>
-            </GlassCard>
+              <span className="text-[10px] text-gold-light block mt-4 tracking-[0.2em] font-semibold">17.4875° N, 78.3958° E</span>
+            </div>
           </div>
         </div>
       </section>
