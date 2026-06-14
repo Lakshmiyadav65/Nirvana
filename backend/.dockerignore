@@ -1,0 +1,23 @@
+# Keep secrets and dev cruft out of the Docker build context so `COPY . .`
+# can never bake them into an image layer. Real secrets are injected at
+# runtime via `--env-file .env`.
+.env
+.env.*
+!.env.example
+
+# Python / virtualenv / caches
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Dev-only files
+tests/
+requirements-dev.txt
+
+# VCS / editor
+.git/
+.gitignore

@@ -1,0 +1,126 @@
+@import "tailwindcss";
+
+/*
+ * Palette: "Brand Dark" — metallic gold on deep forest green.
+ * Extracted from the brand reference site (gold #e1af4a on near-black green),
+ * matching the gold-on-green identity of the Nirvana logo.
+ *
+ * Token names `charcoal`/`gold`/`cream`/`sand` are kept so the theme stays
+ * centralized here:
+ *   charcoal* = deep-green dark surfaces (page + cards)
+ *   gold*     = metallic gold accent
+ *   cream     = warm off-white foreground text
+ *   sand      = alt dark-green surface
+ */
+@theme {
+  /* Dark-green surfaces (page background -> cards) */
+  --color-charcoal-light: #05160d;
+  --color-charcoal: #001008;
+  --color-charcoal-dark: #000804;
+  --color-charcoal-pure: #000502;
+
+  /* Metallic gold accent */
+  --color-gold-light: #ffd984;
+  --color-gold: #e1af4a;
+  --color-gold-dark: #9f7932;
+  --color-gold-luxury: #ffd984;
+  --color-gold-bronze: #b6aca0;
+
+  /* Foreground (light) + alt dark-green surface */
+  --color-cream: #f2eee7;
+  --color-sand: #05160d;
+
+  --font-sans: "Inter", sans-serif;
+  /* Display/headline face — a clean modern sans (matches the hero reference),
+     replacing the previous serif so headlines align with the rest of the site.
+     Token name kept as `serif` so the swap stays centralized here. */
+  --font-serif: "Outfit", sans-serif;
+  --font-display: "Outfit", sans-serif;
+
+  --shadow-luxury: 0 14px 40px -14px rgba(225, 175, 74, 0.16);
+  --shadow-luxury-lg: 0 24px 60px -18px rgba(225, 175, 74, 0.26);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    @apply bg-charcoal-dark text-cream font-sans antialiased selection:bg-gold/30 selection:text-charcoal-dark;
+  }
+
+  /* Headlines: weight + tight tracking for a modern sans display look. */
+  h1, h2, h3, h4 {
+    font-weight: 600;
+    letter-spacing: -0.015em;
+  }
+
+  /* Custom Premium Scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #000804;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #9f7932;
+    border-radius: 4px;
+    border: 2px solid #000804;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #e1af4a;
+  }
+}
+
+/* Glassmorphism helpers */
+.glass-panel {
+  background: rgba(0, 16, 8, 0.55);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(225, 175, 74, 0.2);
+}
+
+.glass-panel-light {
+  background: rgba(5, 22, 13, 0.6);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(225, 175, 74, 0.14);
+}
+
+/* Custom styling for Swiper pagination */
+.swiper-pagination-bullet {
+  background: #f2eee7 !important;
+  opacity: 0.35 !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: #e1af4a !important;
+  opacity: 1 !important;
+  width: 24px !important;
+  border-radius: 4px !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Lenis smooth scroll */
+html.lenis,
+html.lenis body {
+  height: auto;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-smooth iframe {
+  pointer-events: none;
+}
