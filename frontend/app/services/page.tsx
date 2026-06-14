@@ -2,7 +2,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Building2, Home, Briefcase, Layers, FileText, Compass, CheckCircle2, ArrowRight, Leaf } from 'lucide-react';
+import { Building2, Home, Briefcase, Layers, FileText, Compass, CheckCircle2, ArrowRight } from 'lucide-react';
 import { servicesData } from '@/data/services';
 import Button from '@/components/Button';
 
@@ -34,7 +34,7 @@ export const Services: React.FC = () => {
       <section className="pt-28 md:pt-44 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
-            <Leaf size={14} /> Our Core Expertise
+            Our Core Expertise
           </span>
           <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05] mb-6">Services</h1>
           <p className="text-cream/60 font-light text-lg max-w-2xl leading-relaxed">

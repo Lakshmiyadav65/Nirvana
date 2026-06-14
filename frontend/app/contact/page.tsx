@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Phone, MapPin, Send, MessageCircle, CheckCircle2, Leaf } from 'lucide-react';
+import { Mail, Phone, MapPin, Send, MessageCircle, CheckCircle2 } from 'lucide-react';
 import Button from '@/components/Button';
 
 export const Contact: React.FC = () => {
@@ -46,7 +46,7 @@ export const Contact: React.FC = () => {
       <section className="pt-28 md:pt-44 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
-            <Leaf size={14} /> Get In Touch
+            Get In Touch
           </span>
           <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05]">Contact Us</h1>
         </div>

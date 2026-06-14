@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight, Maximize2, Leaf } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, Maximize2 } from 'lucide-react';
 
 interface GalleryItem {
   id: number;
@@ -63,7 +63,7 @@ export const Gallery: React.FC = () => {
       <section className="pt-28 md:pt-44 pb-10 md:pb-14">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
-            <Leaf size={14} /> Cinematic Visuals
+            Cinematic Visuals
           </span>
           <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05]">Media Gallery</h1>
         </div>
