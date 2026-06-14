@@ -58,7 +58,7 @@ export default function HeroScene() {
             style={{ fontFamily: "'Playfair Display', serif" }}
             className="text-6xl sm:text-7xl lg:text-[6.5rem] text-cream leading-[0.92] tracking-tight mb-5"
           >
-            Elevating<br />Spaces
+            Building<br />Landmarks
           </motion.h1>
 
           <motion.p
@@ -67,7 +67,7 @@ export default function HeroScene() {
             transition={{ duration: 0.8, delay: 0.62 }}
             className="text-sm sm:text-base uppercase tracking-[0.28em] text-gold font-display font-medium mb-6"
           >
-            Into Living Masterpieces
+            From the Ground Up
           </motion.p>
 
           <motion.p
@@ -76,7 +76,7 @@ export default function HeroScene() {
             transition={{ duration: 0.8, delay: 0.74 }}
             className="text-cream/75 font-light text-base md:text-lg max-w-xl leading-relaxed mb-9"
           >
-            Crafting architectural sanctuaries that fuse quiet luxury with structural brilliance — luxury apartments, independent villas &amp; commercial landmarks across Hyderabad.
+            We turn land into enduring landmarks — engineering and constructing luxury apartments, independent villas &amp; commercial spaces from the ground up across Hyderabad.
           </motion.p>
 
           <motion.div
@@ -101,16 +101,6 @@ export default function HeroScene() {
             </Link>
           </motion.div>
         </div>
-      </div>
-
-      {/* Scroll indicator — centered */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 flex flex-col items-center gap-2 text-cream/50">
-        <span className="text-[10px] uppercase tracking-[0.25em] font-display">Scroll</span>
-        <motion.span
-          animate={{ scaleY: [1, 1.9, 1], opacity: [0.5, 1, 0.5] }}
-          transition={{ repeat: Infinity, duration: 1.8 }}
-          className="w-px h-7 bg-gold origin-top"
-        />
       </div>
     </section>
   );
