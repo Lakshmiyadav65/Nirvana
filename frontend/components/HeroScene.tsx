@@ -55,8 +55,8 @@ export default function HeroScene() {
             initial={{ opacity: 0, y: 34 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.45, ease: [0.16, 1, 0.3, 1] }}
-            style={{ fontFamily: "'Playfair Display', serif" }}
-            className="text-6xl sm:text-7xl lg:text-[6.5rem] text-cream leading-[0.92] tracking-tight mb-5"
+            style={{ fontFamily: "'Bodoni Moda', serif" }}
+            className="text-6xl sm:text-7xl lg:text-[6.5rem] font-semibold text-cream leading-[0.95] tracking-tight mb-5"
           >
             Building<br />Landmarks
           </motion.h1>
