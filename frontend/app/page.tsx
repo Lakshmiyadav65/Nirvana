@@ -43,10 +43,10 @@ export const Home: React.FC = () => {
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
         <motion.div
           {...fadeUp}
-          className="rounded-[2rem] bg-sand/70 border border-gold/5 px-8 sm:px-12 py-12 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 md:divide-x md:divide-cream/10"
+          className="rounded-[2rem] bg-sand/70 border border-gold/5 px-6 sm:px-8 py-10 grid grid-cols-2 lg:grid-cols-5 gap-x-4 gap-y-9 lg:divide-x lg:divide-cream/10"
         >
           {stats.map((s, idx) => (
-            <div key={idx} className="md:px-4 first:md:pl-0">
+            <div key={idx} className="lg:px-4 first:lg:pl-0 last:lg:pr-0">
               <Counter value={s.value} suffix={s.suffix} label={s.label} />
             </div>
           ))}

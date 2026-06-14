@@ -44,11 +44,18 @@ export const Counter: React.FC<CounterProps> = ({
   }, [isInView, value, duration]);
 
   return (
-    <div ref={ref} className="text-center md:text-left">
-      <span className="font-serif text-4xl sm:text-5xl text-gold tracking-tight block mb-1">
-        {count.toLocaleString()}{suffix}
+    <div ref={ref} className="flex flex-col text-center md:text-left">
+      <span className="flex items-baseline justify-center md:justify-start gap-1 whitespace-nowrap leading-none mb-2">
+        <span className="font-serif text-gold text-[2rem] xl:text-[2.5rem] tracking-tight">
+          {count.toLocaleString('en-US')}
+        </span>
+        {suffix && (
+          <span className="font-serif text-gold/80 text-base xl:text-xl tracking-tight">
+            {suffix}
+          </span>
+        )}
       </span>
-      <span className="font-display text-[11px] uppercase tracking-[0.18em] text-cream/55 font-medium">
+      <span className="font-display text-[10px] sm:text-[11px] uppercase tracking-[0.16em] text-cream/55 font-medium">
         {label}
       </span>
     </div>
