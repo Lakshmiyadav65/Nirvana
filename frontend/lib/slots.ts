@@ -1,85 +1,48 @@
-// Client-side available-time generation for the booking feature.
+// Slot helpers for the booking widget.
 //
-// NOTE: This mirrors the planned backend logic (Mon–Sat, 10:00–18:00 hourly,
-// next 14 days). It is used while the FastAPI backend is paused so the booking
-// UI is fully functional standalone. When the backend is enabled, the plan
-// detail page will fetch real slots from `GET /plans/{id}` and this generator
-// is no longer the source of truth.
+// The backend (FastAPI) is the authoritative source of bookable times. It
+// computes slots in Asia/Kolkata and returns preformatted IST strings
+// (`label`, `date_label`) which we render VERBATIM — we never call
+// toLocale*/toDateString on the instants, so every visitor sees the real
+// Hyderabad wall-clock time regardless of their browser timezone.
 
-export interface TimeSlot {
-  id: string; // ISO string of the start time
-  start: Date;
-  end: Date;
+import type { SlotDTO } from './api';
+
+export interface TimeSlot extends SlotDTO {
+  id: string; // alias of slot_id, for stable React keys
 }
 
 export interface DayGroup {
-  key: string;
-  dateLabel: string;
+  key: string;       // the IST date_label (also the group key)
+  dateLabel: string; // rendered verbatim on the day selector
   slots: TimeSlot[];
 }
 
-const OPEN_HOUR = 10; // first slot starts at 10:00
-const CLOSE_HOUR = 18; // last slot starts at 17:00 and ends 18:00
-const DAYS_AHEAD = 14;
-
-/** Generate the bookable time slots starting from `now`. */
-export function generateSlots(now: Date = new Date()): TimeSlot[] {
-  const slots: TimeSlot[] = [];
-  const startDay = new Date(now.getFullYear(), now.getMonth(), now.getDate());
-
-  for (let offset = 0; offset < DAYS_AHEAD; offset++) {
-    const day = new Date(startDay);
-    day.setDate(startDay.getDate() + offset);
-
-    if (day.getDay() === 0) continue; // Sunday: closed
-
-    for (let hour = OPEN_HOUR; hour < CLOSE_HOUR; hour++) {
-      const start = new Date(day);
-      start.setHours(hour, 0, 0, 0);
-
-      if (start.getTime() <= now.getTime()) continue; // skip past times today
-
-      const end = new Date(start);
-      end.setHours(hour + 1);
-
-      slots.push({ id: start.toISOString(), start, end });
-    }
-  }
-
-  return slots;
+/** Adapt server slot DTOs into the shape the widget renders. */
+export function toTimeSlots(slots: SlotDTO[]): TimeSlot[] {
+  return slots.map((s) => ({ ...s, id: s.slot_id }));
 }
 
-/** Group slots by calendar day for display. */
+/** Group slots by their preformatted IST day. */
 export function groupByDay(slots: TimeSlot[]): DayGroup[] {
   const groups = new Map<string, TimeSlot[]>();
-
   for (const slot of slots) {
-    const key = slot.start.toDateString();
-    if (!groups.has(key)) groups.set(key, []);
-    groups.get(key)!.push(slot);
+    if (!groups.has(slot.date_label)) groups.set(slot.date_label, []);
+    groups.get(slot.date_label)!.push(slot);
   }
-
   return Array.from(groups.entries()).map(([key, daySlots]) => ({
     key,
-    dateLabel: new Date(key).toLocaleDateString(undefined, {
-      weekday: 'short',
-      day: 'numeric',
-      month: 'short',
-    }),
+    dateLabel: key,
     slots: daySlots,
   }));
 }
 
-export function formatTime(date: Date): string {
-  return date.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+/** Time button label — the server's verbatim IST time string. */
+export function formatTime(slot: TimeSlot): string {
+  return slot.label;
 }
 
-export function formatDateTime(date: Date): string {
-  return date.toLocaleString(undefined, {
-    weekday: 'long',
-    day: 'numeric',
-    month: 'long',
-    hour: '2-digit',
-    minute: '2-digit',
-  });
+/** "Mon, 15 Jun · 10:00 AM" — built from the server's verbatim IST strings. */
+export function formatDateTime(slot: TimeSlot): string {
+  return `${slot.date_label} · ${slot.label}`;
 }

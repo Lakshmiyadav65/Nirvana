@@ -5,12 +5,13 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { Calendar, Clock, CheckCircle2, AlertCircle, CalendarCheck } from 'lucide-react';
 import Button from './Button';
 import {
-  generateSlots,
   groupByDay,
   formatTime,
   formatDateTime,
+  toTimeSlots,
   type TimeSlot,
 } from '@/lib/slots';
+import { getPlanWithSlots, createBooking, SlotTakenError } from '@/lib/api';
 
 interface BookingWidgetProps {
   planId: string;
@@ -36,21 +37,32 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
   const [error, setError] = useState<string | null>(null);
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success'>('idle');
   const [confirmation, setConfirmation] = useState<Confirmation | null>(null);
+  const [loadError, setLoadError] = useState(false);
 
-  // Generate slots on the client only, to avoid SSR/CSR hydration mismatch
-  // (the available times depend on the current time).
+  // Fetch the authoritative available slots from the backend for this plan.
   useEffect(() => {
-    const generated = generateSlots();
-    setSlots(generated);
-    const groups = groupByDay(generated);
-    setActiveDayKey(groups[0]?.key ?? null);
-  }, []);
+    let cancelled = false;
+    setLoadError(false);
+    getPlanWithSlots(planId)
+      .then((data) => {
+        if (cancelled) return;
+        const fetched = toTimeSlots(data.slots);
+        setSlots(fetched);
+        setActiveDayKey(groupByDay(fetched)[0]?.key ?? null);
+      })
+      .catch(() => {
+        if (!cancelled) setLoadError(true);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [planId]);
 
   const dayGroups = useMemo(() => groupByDay(slots), [slots]);
   const activeGroup = dayGroups.find((g) => g.key === activeDayKey) ?? null;
   const selectedSlot = slots.find((s) => s.id === selectedSlotId) ?? null;
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!selectedSlot) {
       setError('Please select an available time slot.');
@@ -68,21 +80,32 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
     setStatus('submitting');
 
     // ── Booking submit ──────────────────────────────────────────────
-    // The FastAPI backend is currently paused, so the booking is confirmed
-    // client-side. When the backend is enabled, replace this block with:
-    //   await createBooking({ plan_id: planId, slot_id: selectedSlot.id,
-    //                         customer_name: name, customer_email: email })
-    // and surface a 409 as "slot no longer available".
-    window.setTimeout(() => {
-      setBookedIds((prev) => new Set(prev).add(selectedSlot.id));
+    // The backend revalidates the slot and atomically claims it; a 409 means
+    // someone booked it first, surfaced here as "no longer available".
+    try {
+      const result = await createBooking({
+        plan_id: planId,
+        slot_id: selectedSlot.slot_id,
+        customer_name: name.trim(),
+        customer_email: email.trim(),
+      });
       setConfirmation({
         planName,
-        when: formatDateTime(selectedSlot.start),
-        name: name.trim(),
-        email: email.trim(),
+        when: `${result.date_label} · ${result.label}`,
+        name: result.customer_name,
+        email: result.customer_email,
       });
       setStatus('success');
-    }, 700);
+    } catch (err) {
+      if (err instanceof SlotTakenError) {
+        setBookedIds((prev) => new Set(prev).add(selectedSlot.slot_id));
+        setSelectedSlotId(null);
+        setError('That slot is no longer available — please choose another time.');
+      } else {
+        setError('Something went wrong while confirming. Please try again.');
+      }
+      setStatus('idle');
+    }
   };
 
   const resetForBookAnother = () => {
@@ -154,7 +177,11 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                     <Calendar size={14} /> Select a date
                   </span>
                   {dayGroups.length === 0 ? (
-                    <p className="text-cream/40 text-sm font-light">Loading available dates…</p>
+                    <p className="text-cream/40 text-sm font-light">
+                      {loadError
+                        ? 'Unable to load available dates right now. Please try again later.'
+                        : 'Loading available dates…'}
+                    </p>
                   ) : (
                     <div className="flex gap-2.5 overflow-x-auto pb-2">
                       {dayGroups.map((group) => (
@@ -205,7 +232,7 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                                 : 'bg-transparent text-cream/80 border-cream/15 hover:border-gold/50'
                             }`}
                           >
-                            {formatTime(slot.start)}
+                            {formatTime(slot)}
                           </button>
                         );
                       })}
@@ -244,7 +271,7 @@ export const BookingWidget: React.FC<BookingWidgetProps> = ({ planId, planName }
                 {selectedSlot && (
                   <p className="text-[13px] text-cream/60 font-light flex items-center gap-2">
                     <CheckCircle2 size={15} className="text-gold-light" />
-                    Selected: <span className="text-cream">{formatDateTime(selectedSlot.start)}</span>
+                    Selected: <span className="text-cream">{formatDateTime(selectedSlot)}</span>
                   </p>
                 )}
                 {error && (
