@@ -29,7 +29,7 @@ export default function HeroScene() {
   const selectCls = 'bg-transparent text-sm text-cream font-medium focus:outline-none cursor-pointer w-full';
 
   return (
-    <section ref={ref} className="relative h-[100svh] min-h-[660px] w-full overflow-hidden bg-charcoal-dark">
+    <section ref={ref} className="relative min-h-[100svh] w-full overflow-hidden bg-charcoal-dark">
       {/* Background image with Ken-Burns + scroll parallax */}
       <motion.div style={{ y: bgY, scale: bgScale }} className="absolute inset-0 will-change-transform">
         <motion.img
@@ -66,7 +66,7 @@ export default function HeroScene() {
             initial={{ opacity: 0, y: 64, scale: 1.06 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 1.3, ease: [0.16, 1, 0.3, 1], delay: 0.15 }}
-            className="font-serif font-bold text-cream text-center leading-[0.85] tracking-tight whitespace-nowrap text-[clamp(3.5rem,18vw,15rem)] drop-shadow-[0_12px_45px_rgba(11,16,8,0.5)]"
+            className="font-serif font-bold text-cream text-center leading-[0.85] tracking-tight whitespace-nowrap text-[clamp(3rem,16vw,15rem)] drop-shadow-[0_12px_45px_rgba(11,16,8,0.5)]"
           >
             Nirvana
           </motion.h1>
@@ -78,7 +78,7 @@ export default function HeroScene() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.35, duration: 0.8 }}
-            className="text-center font-serif text-2xl sm:text-3xl md:text-[2.4rem] leading-snug text-cream max-w-3xl mx-auto mb-8"
+            className="text-center font-serif text-xl sm:text-2xl md:text-[2.4rem] leading-snug text-cream max-w-3xl mx-auto mb-8"
           >
             Discover our luxury apartments, independent villas &amp; commercial properties
           </motion.h2>

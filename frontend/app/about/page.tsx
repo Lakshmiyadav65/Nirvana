@@ -41,7 +41,7 @@ export const About: React.FC = () => {
     <div className="bg-charcoal-dark">
 
       {/* Page Header */}
-      <section className="pt-36 md:pt-44 pb-12 md:pb-16">
+      <section className="pt-28 md:pt-44 pb-12 md:pb-16">
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
             <Leaf size={14} /> The Nirvana Heritage
