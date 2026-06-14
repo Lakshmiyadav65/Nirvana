@@ -30,7 +30,46 @@ export const Footer: React.FC = () => {
 
   return (
     <footer className="bg-charcoal-dark text-cream/70 font-sans">
-      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-20 pb-10">
+
+      {/* City skyline silhouette — the skyline we build, with a gold crane */}
+      <div className="relative w-full overflow-hidden" aria-hidden="true">
+        {/* soft golden-hour glow behind the skyline */}
+        <div
+          className="pointer-events-none absolute inset-x-0 bottom-0 h-full"
+          style={{ background: 'radial-gradient(72% 120% at 50% 100%, rgba(225,175,74,0.13), transparent 62%)' }}
+        />
+        <svg
+          viewBox="0 0 1440 180"
+          preserveAspectRatio="xMidYMax meet"
+          className="relative block w-full h-auto"
+          fill="none"
+        >
+          {/* buildings */}
+          <path
+            d="M0 180 V120 H60 V150 H95 V80 H150 V110 H180 V130 H230 V70 H260 V100 H300 V145 H330 V95 H380 V40 H430 V110 H450 V135 H490 V75 H520 V105 H560 V50 H625 V120 H660 V90 H700 V150 H740 V100 H780 V30 H855 V110 H890 V140 H930 V85 H965 V115 H1010 V60 H1050 V100 H1090 V130 H1130 V70 H1160 V110 H1210 V45 H1280 V120 H1320 V150 H1360 V95 H1400 V130 H1440 V180 Z"
+            fill="#072018"
+          />
+          {/* gold rim catching light along the rooftops */}
+          <path
+            d="M0 120 H60 V150 H95 V80 H150 V110 H180 V130 H230 V70 H260 V100 H300 V145 H330 V95 H380 V40 H430 V110 H450 V135 H490 V75 H520 V105 H560 V50 H625 V120 H660 V90 H700 V150 H740 V100 H780 V30 H855 V110 H890 V140 H930 V85 H965 V115 H1010 V60 H1050 V100 H1090 V130 H1130 V70 H1160 V110 H1210 V45 H1280 V120 H1320 V150 H1360 V95 H1400 V130 H1440"
+            stroke="rgba(225,175,74,0.30)"
+            strokeWidth="1.4"
+          />
+          {/* gold tower crane — Nirvana building the skyline */}
+          <g stroke="#e6c46a" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" fill="none">
+            <line x1="730" y1="150" x2="730" y2="26" />   {/* mast */}
+            <line x1="730" y1="26" x2="730" y2="14" />    {/* apex */}
+            <line x1="686" y1="32" x2="824" y2="32" />    {/* jib */}
+            <line x1="730" y1="14" x2="686" y2="32" />    {/* tie-bar left */}
+            <line x1="730" y1="14" x2="824" y2="32" />    {/* tie-bar right */}
+            <line x1="690" y1="32" x2="690" y2="44" />    {/* counterweight */}
+            <line x1="806" y1="32" x2="806" y2="58" />    {/* hoist cable */}
+            <line x1="800" y1="58" x2="812" y2="58" />    {/* hook */}
+          </g>
+        </svg>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-6 md:px-10 pt-12 pb-10">
 
         {/* Top: brand + newsletter */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 pb-14 border-b border-cream/10">
