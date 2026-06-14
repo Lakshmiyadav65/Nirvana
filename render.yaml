@@ -1,0 +1,40 @@
+# Render Blueprint — deploys the FastAPI backend as a web service.
+# https://render.com/docs/blueprint-spec
+#
+# Secret values (sync: false) are entered in the Render dashboard, never
+# committed. Non-secret config is set here.
+services:
+  - type: web
+    name: nirvana-backend
+    runtime: python
+    rootDir: backend
+    region: singapore          # closest Render region to India
+    plan: free
+    branch: main
+    autoDeploy: true
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app.main:app --host 0.0.0.0 --port $PORT
+    healthCheckPath: /health
+    envVars:
+      - key: MONGO_URI          # mongodb+srv://...  (Atlas — set in dashboard)
+        sync: false
+      - key: MONGO_DB
+        value: nirvana
+      - key: CORS_ORIGINS       # comma-separated; include your Vercel domain
+        sync: false
+      - key: BOOKING_TIMEZONE
+        value: Asia/Kolkata
+      - key: SMTP_HOST          # smtp.gmail.com
+        sync: false
+      - key: SMTP_PORT
+        value: "587"
+      - key: SMTP_USERNAME      # the Gmail address
+        sync: false
+      - key: SMTP_PASSWORD      # 16-char Gmail App Password
+        sync: false
+      - key: SMTP_USE_TLS
+        value: "true"
+      - key: EMAIL_FROM
+        value: Nirvana Bookings <inturilakshmipoojitha@gmail.com>
+      - key: ADMIN_EMAIL        # inbox that receives booking notifications
+        sync: false
