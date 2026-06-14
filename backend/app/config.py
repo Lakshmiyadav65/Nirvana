@@ -36,7 +36,12 @@ class Settings(BaseSettings):
     slot_days_ahead: int = 14
 
     # ---- Email (admin booking notification) ----
-    smtp_host: str = ""             # empty => dev fallback: log instead of send
+    # Sending priority: Resend (HTTPS API) -> SMTP -> log-only dev fallback.
+    # Resend is preferred on hosts that block outbound SMTP (e.g. Render).
+    resend_api_key: SecretStr = SecretStr("")
+    resend_from: str = "Nirvana Bookings <onboarding@resend.dev>"
+
+    smtp_host: str = ""             # empty => SMTP disabled (dev uses Resend or logs)
     smtp_port: int = 587
     smtp_username: str = ""
     smtp_password: SecretStr = SecretStr("")
@@ -53,12 +58,14 @@ class Settings(BaseSettings):
         return [o.strip() for o in self.cors_origins.split(",") if o.strip()]
 
     @model_validator(mode="after")
-    def _require_admin_email_when_smtp_enabled(self) -> "Settings":
+    def _require_admin_email_when_email_enabled(self) -> "Settings":
         # Fail fast: if real mail sending is enabled, an admin recipient is
-        # mandatory — otherwise notifications would be silently misrouted to the
-        # no-reply placeholder and swallowed.
-        if self.smtp_host and not self.admin_email:
-            raise ValueError("ADMIN_EMAIL is required when SMTP_HOST is set.")
+        # mandatory — otherwise notifications would be silently misrouted and lost.
+        email_enabled = bool(self.smtp_host) or bool(self.resend_api_key.get_secret_value())
+        if email_enabled and not self.admin_email:
+            raise ValueError(
+                "ADMIN_EMAIL is required when email sending is enabled (RESEND_API_KEY or SMTP_HOST)."
+            )
         return self
 
 

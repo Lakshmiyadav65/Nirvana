@@ -1,14 +1,18 @@
 """Best-effort admin notification on a new booking.
 
 Failure isolation by construction: the booking is already committed before this
-runs (scheduled via FastAPI ``BackgroundTasks``), and the entire SMTP exchange
-is wrapped in try/except — a down/slow/misconfigured mail server can never lose,
-delay, or roll back a confirmed booking. With ``SMTP_HOST`` empty the message is
-logged instead of sent, so local dev and CI need zero mail config.
+runs (scheduled via FastAPI ``BackgroundTasks``), and the entire send is wrapped
+in try/except — a down/slow/misconfigured mailer can never lose, delay, or roll
+back a confirmed booking.
 
-The email is multipart: a plain-text part (fallback / accessibility) plus a
-branded HTML part (dark-green + gold, table-based with inline styles for broad
-email-client compatibility).
+Sending priority:
+  1. Resend (HTTPS API) — preferred; works on hosts that block outbound SMTP
+     (e.g. Render, which firewalls ports 25/465/587).
+  2. SMTP (aiosmtplib) — handy for local dev with a Gmail App Password.
+  3. Log-only fallback — no provider configured (local dev / CI).
+
+The email is multipart: a branded HTML body (dark-green + gold, table layout
+with inline styles) plus a plain-text fallback.
 """
 from __future__ import annotations
 
@@ -20,7 +24,7 @@ from zoneinfo import ZoneInfo
 
 from motor.motor_asyncio import AsyncIOMotorDatabase
 
-from ..config import get_settings
+from ..config import Settings, get_settings
 
 logger = logging.getLogger("nirvana.email")
 
@@ -157,56 +161,79 @@ def _html_body(b: dict) -> str:
 </html>"""
 
 
-def _render(booking: dict) -> EmailMessage:
-    s = get_settings()
+async def _send_via_resend(s: Settings, subject: str, text: str, html_body: str, to: str) -> None:
+    import httpx
+
+    async with httpx.AsyncClient(timeout=15.0) as client:
+        resp = await client.post(
+            "https://api.resend.com/emails",
+            headers={"Authorization": f"Bearer {s.resend_api_key.get_secret_value()}"},
+            json={
+                "from": s.resend_from,
+                "to": [to],
+                "subject": subject,
+                "html": html_body,
+                "text": text,
+            },
+        )
+    if resp.status_code >= 400:
+        # Surface the provider error (e.g. unverified recipient in test mode).
+        logger.error("Resend API error %s: %s", resp.status_code, resp.text[:300])
+        resp.raise_for_status()
+
+
+async def _send_via_smtp(s: Settings, subject: str, text: str, html_body: str, to: str) -> None:
+    import aiosmtplib
+
     msg = EmailMessage()
-    msg["Subject"] = f"New site visit booking — {booking['plan_name']}"
+    msg["Subject"] = subject
     msg["From"] = s.email_from
-    msg["To"] = s.admin_email or s.email_from
-    msg.set_content(_plain_text(booking))               # text/plain fallback
-    msg.add_alternative(_html_body(booking), subtype="html")  # branded HTML
-    return msg
+    msg["To"] = to
+    msg.set_content(text)
+    msg.add_alternative(html_body, subtype="html")
+
+    # Port 465 is implicit TLS (handshake on connect); 587 uses STARTTLS.
+    implicit_tls = s.smtp_port == 465
+    await aiosmtplib.send(
+        msg,
+        hostname=s.smtp_host,
+        port=s.smtp_port,
+        username=s.smtp_username or None,
+        password=s.smtp_password.get_secret_value() or None,
+        use_tls=implicit_tls,
+        start_tls=(s.smtp_use_tls and not implicit_tls),
+    )
 
 
 async def send_admin_notification(db: AsyncIOMotorDatabase | None, booking: dict) -> None:
     s = get_settings()
     oid = booking.get("_id")
-    try:
-        msg = _render(booking)
+    subject = f"New site visit booking — {booking['plan_name']}"
+    text = _plain_text(booking)
+    html_body = _html_body(booking)
+    to = s.admin_email or s.smtp_username
 
-        if not s.smtp_host:
-            # Dev fallback: log non-PII metadata only. The full body (which
-            # contains the customer's name + email) goes to DEBUG, off by default.
+    try:
+        if s.resend_api_key.get_secret_value():
+            await _send_via_resend(s, subject, text, html_body, to)
+            provider = "resend"
+        elif s.smtp_host:
+            await _send_via_smtp(s, subject, text, html_body, to)
+            provider = "smtp"
+        else:
+            # Dev fallback: log non-PII metadata only; full body to DEBUG.
             logger.info(
-                "[DEV] SMTP_HOST empty — booking email not sent (plan_id=%s booking_id=%s slot=%s %s).",
+                "[DEV] no email provider configured — booking email not sent (plan_id=%s booking_id=%s).",
                 booking.get("plan_id"),
                 booking.get("booking_id"),
-                booking.get("date_label"),
-                booking.get("label"),
             )
-            logger.debug("Unsent booking email (text):\n%s", _plain_text(booking))
+            logger.debug("Unsent booking email (text):\n%s", text)
             return
 
-        import aiosmtplib
-
-        # Port 465 is implicit TLS (handshake on connect); 587 uses STARTTLS.
-        # aiosmtplib rejects use_tls and start_tls both being True, so they are
-        # mutually exclusive here.
-        implicit_tls = s.smtp_port == 465
-        await aiosmtplib.send(
-            msg,
-            hostname=s.smtp_host,
-            port=s.smtp_port,
-            username=s.smtp_username or None,
-            password=s.smtp_password.get_secret_value() or None,
-            use_tls=implicit_tls,
-            start_tls=(s.smtp_use_tls and not implicit_tls),
-        )
+        logger.info("Booking notification sent via %s (booking_id=%s).", provider, booking.get("booking_id"))
         if db is not None and oid is not None:
             await db.bookings.update_one({"_id": oid}, {"$set": {"email_sent": True}})
     except Exception as exc:  # never surface email failure to the request
-        # Log the error type without the full traceback body, which could carry
-        # recipient addresses; persist only the exception class for follow-up.
         logger.error("Failed to send booking notification email: %s", type(exc).__name__)
         try:
             if db is not None and oid is not None:
