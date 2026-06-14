@@ -14,8 +14,6 @@ export const Navbar: React.FC = () => {
 
   useEffect(() => {
     const onScroll = () => {
-      // On the home page the nav stays transparent over the full-bleed hero,
-      // turning solid only once you scroll past most of it.
       const threshold = isHome ? window.innerHeight * 0.8 : 24;
       setIsScrolled(window.scrollY > threshold);
     };
@@ -37,8 +35,7 @@ export const Navbar: React.FC = () => {
     { name: 'Contact', path: '/contact' }
   ];
 
-  // Light/transparent treatment while floating over the hero image.
-  const overHero = isHome && !isScrolled;
+  const atTopHome = isHome && !isScrolled;
 
   return (
     <>
@@ -48,23 +45,23 @@ export const Navbar: React.FC = () => {
         transition={{ duration: 0.5, ease: 'easeOut' }}
         className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
           isScrolled
-            ? 'bg-cream/85 backdrop-blur-xl border-b border-charcoal/8 py-3 shadow-[0_8px_30px_-15px_rgba(46,55,25,0.25)]'
-            : isHome
+            ? 'bg-charcoal-dark/85 backdrop-blur-xl border-b border-gold/12 py-3 shadow-[0_10px_30px_-15px_rgba(0,0,0,0.7)]'
+            : atTopHome
               ? 'bg-transparent py-5'
-              : 'bg-cream/40 backdrop-blur-md py-5'
+              : 'bg-charcoal-dark/40 backdrop-blur-md py-5'
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            <span className="flex items-center justify-center rounded-xl bg-[#08291f] h-11 w-11 shrink-0 ring-1 ring-gold/25 shadow-sm overflow-hidden">
+            <span className="flex items-center justify-center rounded-xl bg-[#08291f] h-11 w-11 shrink-0 ring-1 ring-gold/30 shadow-sm overflow-hidden">
               <img src="/logo-mark.png" alt="Nirvana Builders & Developers" className="h-7 w-auto" />
             </span>
             <span className="flex flex-col leading-none">
-              <span className={`font-serif text-xl tracking-tight font-semibold transition-colors duration-300 ${overHero ? 'text-cream group-hover:text-gold-light' : 'text-charcoal group-hover:text-gold'}`}>
+              <span className="font-serif text-xl tracking-tight font-semibold text-cream group-hover:text-gold-light transition-colors duration-300">
                 Nirvana
               </span>
-              <span className={`font-display text-[8px] sm:text-[9px] uppercase tracking-[0.26em] font-semibold mt-1 ${overHero ? 'text-cream/70' : 'text-gold'}`}>
+              <span className="font-display text-[8px] sm:text-[9px] uppercase tracking-[0.26em] font-semibold mt-1 text-gold">
                 Builders &amp; Developers
               </span>
             </span>
@@ -79,16 +76,14 @@ export const Navbar: React.FC = () => {
                   key={link.name}
                   href={link.path}
                   className={`relative font-display text-[13px] tracking-wide transition-colors duration-300 ${
-                    isActive
-                      ? overHero ? 'text-cream' : 'text-gold'
-                      : overHero ? 'text-cream/75 hover:text-cream' : 'text-charcoal/65 hover:text-charcoal'
+                    isActive ? 'text-gold' : 'text-cream/70 hover:text-cream'
                   }`}
                 >
                   {link.name}
                   {isActive && (
                     <motion.span
                       layoutId="navDot"
-                      className={`absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full ${overHero ? 'bg-cream' : 'bg-gold'}`}
+                      className="absolute -bottom-2 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-gold"
                       transition={{ type: 'spring', stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -101,16 +96,10 @@ export const Navbar: React.FC = () => {
           <div className="hidden lg:block">
             <Link
               href="/contact"
-              className={`group inline-flex items-center gap-2 font-display text-[13px] tracking-wide pl-6 pr-2 py-2 rounded-full transition-colors duration-300 ${
-                overHero
-                  ? 'bg-cream/10 border border-cream/40 text-cream backdrop-blur-md hover:bg-cream hover:text-charcoal'
-                  : 'bg-charcoal text-cream hover:bg-gold'
-              }`}
+              className="group inline-flex items-center gap-2 font-display text-[13px] tracking-wide pl-6 pr-2 py-2 rounded-full bg-gold text-charcoal-dark hover:bg-gold-light transition-colors duration-300"
             >
               Get Consultation
-              <span className={`w-8 h-8 rounded-full flex items-center justify-center transition-colors duration-300 ${
-                overHero ? 'bg-cream/20 text-cream group-hover:bg-charcoal group-hover:text-cream' : 'bg-gold group-hover:bg-cream text-cream group-hover:text-charcoal'
-              }`}>
+              <span className="w-8 h-8 rounded-full bg-charcoal-dark text-gold flex items-center justify-center">
                 <ArrowUpRight size={15} />
               </span>
             </Link>
@@ -119,7 +108,7 @@ export const Navbar: React.FC = () => {
           {/* Mobile Toggle */}
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className={`lg:hidden transition-colors focus:outline-none ${overHero ? 'text-cream hover:text-gold-light' : 'text-charcoal hover:text-gold'}`}
+            className="lg:hidden text-cream hover:text-gold transition-colors focus:outline-none"
             aria-label="Toggle Menu"
           >
             {isOpen ? <X size={24} /> : <Menu size={24} />}
@@ -135,7 +124,7 @@ export const Navbar: React.FC = () => {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.3 }}
-            className="fixed inset-0 z-40 bg-cream flex flex-col justify-center items-center lg:hidden"
+            className="fixed inset-0 z-40 bg-charcoal-dark flex flex-col justify-center items-center lg:hidden"
           >
             <div className="flex flex-col items-center space-y-7">
               {navLinks.map((link, index) => (
@@ -148,7 +137,7 @@ export const Navbar: React.FC = () => {
                   <Link
                     href={link.path}
                     onClick={() => setIsOpen(false)}
-                    className="font-serif text-3xl text-charcoal hover:text-gold transition-colors"
+                    className="font-serif text-3xl text-cream hover:text-gold transition-colors"
                   >
                     {link.name}
                   </Link>
@@ -164,7 +153,7 @@ export const Navbar: React.FC = () => {
                 <Link
                   href="/contact"
                   onClick={() => setIsOpen(false)}
-                  className="inline-flex items-center gap-2 bg-charcoal text-cream font-display text-sm tracking-wide px-7 py-3.5 rounded-full"
+                  className="inline-flex items-center gap-2 bg-gold text-charcoal-dark font-display text-sm tracking-wide px-7 py-3.5 rounded-full"
                 >
                   Get Consultation
                   <ArrowUpRight size={16} />

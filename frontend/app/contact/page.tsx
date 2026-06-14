@@ -37,10 +37,10 @@ export const Contact: React.FC = () => {
     "Joint Venture Development"
   ];
 
-  const inputClass = "bg-cream border border-charcoal/10 text-sm px-4 py-3 rounded-xl focus:outline-none focus:border-gold text-charcoal placeholder:text-charcoal/40";
+  const inputClass = "bg-charcoal-dark border border-gold/10 text-sm px-4 py-3 rounded-xl focus:outline-none focus:border-gold text-cream placeholder:text-cream/40";
 
   return (
-    <div className="bg-cream">
+    <div className="bg-charcoal-dark">
 
       {/* Page Header */}
       <section className="pt-36 md:pt-44 pb-12 md:pb-16">
@@ -48,7 +48,7 @@ export const Contact: React.FC = () => {
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
             <Leaf size={14} /> Get In Touch
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-charcoal leading-[1.05]">Contact Us</h1>
+          <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05]">Contact Us</h1>
         </div>
       </section>
 
@@ -59,39 +59,39 @@ export const Contact: React.FC = () => {
           {/* Details */}
           <div className="lg:col-span-5 flex flex-col space-y-6">
             <div>
-              <h2 className="font-serif text-3xl text-charcoal mb-4">Head Office coordinates</h2>
-              <p className="text-charcoal/60 font-light text-sm leading-relaxed">
+              <h2 className="font-serif text-3xl text-cream mb-4">Head Office coordinates</h2>
+              <p className="text-cream/60 font-light text-sm leading-relaxed">
                 Drop by our head office or connect with our customer support teams to schedule apartment audits, project presentations, and blueprint consultations.
               </p>
             </div>
 
             <div className="space-y-4">
-              <div className="flex gap-4 rounded-2xl border border-charcoal/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
+              <div className="flex gap-4 rounded-2xl border border-gold/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
                 <MapPin size={22} className="text-gold shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-display text-[13px] font-semibold text-charcoal mb-1.5">Corporate Office</h4>
-                  <p className="text-[13px] text-charcoal/55 font-light leading-relaxed">
+                  <h4 className="font-display text-[13px] font-semibold text-cream mb-1.5">Corporate Office</h4>
+                  <p className="text-[13px] text-cream/55 font-light leading-relaxed">
                     HIG-86, Ayyappa Delight, 6th Phase, KPHB Colony, Hyderabad-500085
                   </p>
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-charcoal/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
+              <div className="flex gap-4 rounded-2xl border border-gold/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
                 <Phone size={22} className="text-gold shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-display text-[13px] font-semibold text-charcoal mb-1.5">Phone Lines</h4>
-                  <div className="flex flex-col text-[13px] text-charcoal/55 font-light space-y-1">
+                  <h4 className="font-display text-[13px] font-semibold text-cream mb-1.5">Phone Lines</h4>
+                  <div className="flex flex-col text-[13px] text-cream/55 font-light space-y-1">
                     <a href="tel:+919948983456" className="hover:text-gold transition-colors">+91 99489 83456</a>
                     <a href="tel:+919059337011" className="hover:text-gold transition-colors">+91 90593 37011</a>
                   </div>
                 </div>
               </div>
 
-              <div className="flex gap-4 rounded-2xl border border-charcoal/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
+              <div className="flex gap-4 rounded-2xl border border-gold/5 bg-sand/50 p-6 transition-all duration-300 hover:shadow-luxury">
                 <Mail size={22} className="text-gold shrink-0 mt-1" />
                 <div>
-                  <h4 className="font-display text-[13px] font-semibold text-charcoal mb-1.5">Email Inbox</h4>
-                  <a href="mailto:nirvanabuildersdevelelopers@gmail.com" className="text-[13px] text-charcoal/55 font-light hover:text-gold transition-colors break-all">
+                  <h4 className="font-display text-[13px] font-semibold text-cream mb-1.5">Email Inbox</h4>
+                  <a href="mailto:nirvanabuildersdevelelopers@gmail.com" className="text-[13px] text-cream/55 font-light hover:text-gold transition-colors break-all">
                     nirvanabuildersdevelelopers@gmail.com
                   </a>
                 </div>
@@ -117,15 +117,15 @@ export const Contact: React.FC = () => {
           </div>
 
           {/* Form */}
-          <div className="lg:col-span-7 bg-sand/50 border border-charcoal/5 rounded-[1.75rem] p-8 sm:p-12">
+          <div className="lg:col-span-7 bg-sand/50 border border-gold/5 rounded-[1.75rem] p-8 sm:p-12">
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-3">Enquiry Form</span>
-            <h2 className="font-serif text-3xl text-charcoal mb-8">Send a Message</h2>
+            <h2 className="font-serif text-3xl text-cream mb-8">Send a Message</h2>
 
             {submitted && (
               <motion.div
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-gold/10 border border-gold/40 text-charcoal text-[13px] p-4 rounded-xl mb-8 flex items-center gap-3"
+                className="bg-gold/10 border border-gold/40 text-cream text-[13px] p-4 rounded-xl mb-8 flex items-center gap-3"
               >
                 <CheckCircle2 size={18} className="text-gold" />
                 <span>Thank you. Your inquiry has been received. Our sales manager will contact you shortly.</span>
@@ -135,22 +135,22 @@ export const Contact: React.FC = () => {
             <form onSubmit={handleSubmit} className="space-y-5">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col">
-                  <label htmlFor="name" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Full Name</label>
+                  <label htmlFor="name" className="text-[11px] uppercase tracking-wider text-cream/50 font-semibold mb-2">Full Name</label>
                   <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} required className={inputClass} />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="email" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Email Address</label>
+                  <label htmlFor="email" className="text-[11px] uppercase tracking-wider text-cream/50 font-semibold mb-2">Email Address</label>
                   <input type="email" id="email" name="email" value={formData.email} onChange={handleInputChange} required className={inputClass} />
                 </div>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                 <div className="flex flex-col">
-                  <label htmlFor="phone" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Phone Number</label>
+                  <label htmlFor="phone" className="text-[11px] uppercase tracking-wider text-cream/50 font-semibold mb-2">Phone Number</label>
                   <input type="tel" id="phone" name="phone" value={formData.phone} onChange={handleInputChange} required className={inputClass} />
                 </div>
                 <div className="flex flex-col">
-                  <label htmlFor="interest" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Project Interest</label>
+                  <label htmlFor="interest" className="text-[11px] uppercase tracking-wider text-cream/50 font-semibold mb-2">Project Interest</label>
                   <select id="interest" name="interest" value={formData.interest} onChange={handleInputChange} className={inputClass}>
                     {projectInterests.map((item, idx) => (
                       <option key={idx} value={item}>{item}</option>
@@ -160,7 +160,7 @@ export const Contact: React.FC = () => {
               </div>
 
               <div className="flex flex-col">
-                <label htmlFor="message" className="text-[11px] uppercase tracking-wider text-charcoal/50 font-semibold mb-2">Message</label>
+                <label htmlFor="message" className="text-[11px] uppercase tracking-wider text-cream/50 font-semibold mb-2">Message</label>
                 <textarea id="message" name="message" value={formData.message} onChange={handleInputChange} rows={6} required className={`${inputClass} resize-none`}></textarea>
               </div>
 

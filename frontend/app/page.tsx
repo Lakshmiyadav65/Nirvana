@@ -34,7 +34,7 @@ export const Home: React.FC = () => {
   const bentoSpan = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7'];
 
   return (
-    <div className="relative overflow-x-hidden bg-cream">
+    <div className="relative overflow-x-hidden bg-charcoal-dark">
 
       {/* ───────────────── Hero (3D scroll scene) ───────────────── */}
       <HeroScene />
@@ -43,7 +43,7 @@ export const Home: React.FC = () => {
       <section className="max-w-7xl mx-auto px-6 md:px-10 pb-20 md:pb-28">
         <motion.div
           {...fadeUp}
-          className="rounded-[2rem] bg-sand/70 border border-charcoal/5 px-8 sm:px-12 py-12 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 md:divide-x md:divide-charcoal/10"
+          className="rounded-[2rem] bg-sand/70 border border-gold/5 px-8 sm:px-12 py-12 grid grid-cols-2 md:grid-cols-5 gap-y-10 gap-x-6 md:divide-x md:divide-cream/10"
         >
           {stats.map((s, idx) => (
             <div key={idx} className="md:px-4 first:md:pl-0">
@@ -69,10 +69,10 @@ export const Home: React.FC = () => {
 
           <motion.div {...fadeUp} className="lg:col-span-6 flex flex-col space-y-6">
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display">About Nirvana</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1]">
               Responsible Building, Sustainable Practices
             </h2>
-            <p className="text-charcoal/65 leading-relaxed font-light text-lg">
+            <p className="text-cream/65 leading-relaxed font-light text-lg">
               “Nirvana Builders &amp; Developers has a history of responsible business conduct and strongly believes that true business success is measured not only by profits but also by sustainable and ethical practices.”
             </p>
 
@@ -82,8 +82,8 @@ export const Home: React.FC = () => {
                   <Award size={18} />
                 </div>
                 <div>
-                  <h4 className="font-display font-semibold text-sm text-charcoal mb-1">Our Mission</h4>
-                  <p className="text-[13px] text-charcoal/55 leading-relaxed font-light">
+                  <h4 className="font-display font-semibold text-sm text-cream mb-1">Our Mission</h4>
+                  <p className="text-[13px] text-cream/55 leading-relaxed font-light">
                     To provide active, value-added services to customers without compromising quality.
                   </p>
                 </div>
@@ -93,8 +93,8 @@ export const Home: React.FC = () => {
                   <ShieldCheck size={18} />
                 </div>
                 <div>
-                  <h4 className="font-display font-semibold text-sm text-charcoal mb-1">Our Vision</h4>
-                  <p className="text-[13px] text-charcoal/55 leading-relaxed font-light">
+                  <h4 className="font-display font-semibold text-sm text-cream mb-1">Our Vision</h4>
+                  <p className="text-[13px] text-cream/55 leading-relaxed font-light">
                     To become a benchmark in building residential and commercial spaces.
                   </p>
                 </div>
@@ -114,11 +114,11 @@ export const Home: React.FC = () => {
           <motion.div {...fadeUp} className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-12">
             <div>
               <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Portfolio Highlights</span>
-              <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">Featured Developments</h2>
+              <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1]">Featured Developments</h2>
             </div>
-            <Link href="/projects" className="group inline-flex items-center gap-2 text-charcoal font-display text-sm hover:text-gold transition-colors">
+            <Link href="/projects" className="group inline-flex items-center gap-2 text-cream font-display text-sm hover:text-gold transition-colors">
               View All Projects
-              <span className="w-9 h-9 rounded-full border border-charcoal/15 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-cream transition-all">
+              <span className="w-9 h-9 rounded-full border border-gold/15 flex items-center justify-center group-hover:bg-gold group-hover:border-gold group-hover:text-cream transition-all">
                 <ArrowUpRight size={16} />
               </span>
             </Link>
@@ -168,8 +168,8 @@ export const Home: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div {...fadeUp} className="max-w-2xl mb-14">
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Our Offerings</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1] mb-5">Pioneering Real Estate Solutions</h2>
-            <p className="text-charcoal/60 font-light text-lg">
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1] mb-5">Pioneering Real Estate Solutions</h2>
+            <p className="text-cream/60 font-light text-lg">
               From luxurious apartments and commercial buildings to precision structural planning, we build structures that endure.
             </p>
           </motion.div>
@@ -180,17 +180,17 @@ export const Home: React.FC = () => {
                 key={service.id}
                 {...fadeUp}
                 transition={{ duration: 0.7, delay: index * 0.08, ease: 'easeOut' }}
-                className="group bg-sand/60 rounded-[1.75rem] p-9 border border-charcoal/5 hover:bg-charcoal hover:border-charcoal transition-colors duration-500 flex flex-col"
+                className="group bg-sand/60 rounded-[1.75rem] p-9 border border-gold/5 hover:bg-charcoal hover:border-gold transition-colors duration-500 flex flex-col"
               >
                 <div className="w-14 h-14 rounded-2xl bg-gold/12 group-hover:bg-gold/20 flex items-center justify-center text-gold mb-7 transition-colors duration-500">
                   {index === 0 && <Building2 size={26} strokeWidth={1.5} />}
                   {index === 1 && <HomeIcon size={26} strokeWidth={1.5} />}
                   {index === 2 && <Award size={26} strokeWidth={1.5} />}
                 </div>
-                <h3 className="font-serif text-2xl text-charcoal group-hover:text-cream transition-colors duration-500 mb-3">
+                <h3 className="font-serif text-2xl text-cream group-hover:text-cream transition-colors duration-500 mb-3">
                   {service.title}
                 </h3>
-                <p className="text-charcoal/55 group-hover:text-cream/65 text-sm leading-relaxed font-light mb-7 transition-colors duration-500">
+                <p className="text-cream/55 group-hover:text-cream/65 text-sm leading-relaxed font-light mb-7 transition-colors duration-500">
                   {service.description}
                 </p>
                 <Link href="/services" className="mt-auto inline-flex items-center gap-2 text-[13px] font-display text-gold group-hover:text-gold-light transition-colors">

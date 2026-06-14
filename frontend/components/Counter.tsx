@@ -48,7 +48,7 @@ export const Counter: React.FC<CounterProps> = ({
       <span className="font-serif text-4xl sm:text-5xl text-gold tracking-tight block mb-1">
         {count.toLocaleString()}{suffix}
       </span>
-      <span className="font-display text-[11px] uppercase tracking-[0.18em] text-charcoal/55 font-medium">
+      <span className="font-display text-[11px] uppercase tracking-[0.18em] text-cream/55 font-medium">
         {label}
       </span>
     </div>

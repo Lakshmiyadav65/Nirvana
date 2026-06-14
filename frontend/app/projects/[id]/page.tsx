@@ -20,21 +20,21 @@ export default function ProjectDetails() {
 
   if (!project) {
     return (
-      <div className="pt-44 pb-28 text-center bg-cream min-h-[60vh] flex flex-col justify-center items-center px-6">
-        <h2 className="font-serif text-4xl text-charcoal mb-4">Project Not Found</h2>
-        <p className="text-charcoal/55 mb-8 max-w-md">The project you are looking for does not exist or has been relocated.</p>
+      <div className="pt-44 pb-28 text-center bg-charcoal-dark min-h-[60vh] flex flex-col justify-center items-center px-6">
+        <h2 className="font-serif text-4xl text-cream mb-4">Project Not Found</h2>
+        <p className="text-cream/55 mb-8 max-w-md">The project you are looking for does not exist or has been relocated.</p>
         <Button to="/projects" variant="outline">Back to Projects</Button>
       </div>
     );
   }
 
   return (
-    <div className="bg-cream">
+    <div className="bg-charcoal-dark">
 
       {/* Back link */}
       <section className="pt-28 md:pt-32 pb-2">
         <div className="max-w-7xl mx-auto px-6 md:px-10 flex justify-between items-center">
-          <Link href="/projects" className="group inline-flex items-center gap-2 text-charcoal/60 hover:text-gold transition-colors text-sm font-display">
+          <Link href="/projects" className="group inline-flex items-center gap-2 text-cream/60 hover:text-gold transition-colors text-sm font-display">
             <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
             Back to Projects
           </Link>
@@ -50,7 +50,7 @@ export default function ProjectDetails() {
           <span className="text-[11px] uppercase tracking-[0.22em] text-gold font-semibold font-display mb-3 block">
             {project.type}
           </span>
-          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-charcoal leading-[1.04] max-w-4xl">
+          <h1 className="font-serif text-4xl sm:text-5xl md:text-6xl text-cream leading-[1.04] max-w-4xl">
             {project.name}
           </h1>
         </div>
@@ -82,9 +82,9 @@ export default function ProjectDetails() {
               { label: 'Built-up Area', value: project.area, icon: <Minimize2 size={15} className="text-gold" /> },
               { label: 'Delivery', value: project.year, icon: <Calendar size={15} className="text-gold" /> },
             ].map((m) => (
-              <div key={m.label} className="rounded-2xl bg-sand/50 border border-charcoal/5 px-6 py-5">
-                <span className="text-[10px] uppercase tracking-[0.18em] text-charcoal/45 font-semibold block mb-1.5">{m.label}</span>
-                <span className="flex items-center gap-2 font-serif text-lg text-charcoal">{m.icon}{m.value}</span>
+              <div key={m.label} className="rounded-2xl bg-sand/50 border border-gold/5 px-6 py-5">
+                <span className="text-[10px] uppercase tracking-[0.18em] text-cream/45 font-semibold block mb-1.5">{m.label}</span>
+                <span className="flex items-center gap-2 font-serif text-lg text-cream">{m.icon}{m.value}</span>
               </div>
             ))}
           </div>
@@ -97,16 +97,16 @@ export default function ProjectDetails() {
 
           <div className="lg:col-span-7 flex flex-col space-y-10">
             <div>
-              <h2 className="font-serif text-3xl text-charcoal mb-5">Overview &amp; Architecture</h2>
-              <p className="text-charcoal/65 leading-relaxed font-light text-lg">{project.description}</p>
+              <h2 className="font-serif text-3xl text-cream mb-5">Overview &amp; Architecture</h2>
+              <p className="text-cream/65 leading-relaxed font-light text-lg">{project.description}</p>
             </div>
 
             {project.features && project.features.length > 0 && (
               <div>
-                <h3 className="font-serif text-2xl text-charcoal mb-5">Key Amenities &amp; Features</h3>
+                <h3 className="font-serif text-2xl text-cream mb-5">Key Amenities &amp; Features</h3>
                 <ul className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {project.features.map((feature, i) => (
-                    <li key={i} className="flex gap-2.5 text-[14px] text-charcoal/60 font-light">
+                    <li key={i} className="flex gap-2.5 text-[14px] text-cream/60 font-light">
                       <CheckCircle2 size={16} className="text-gold shrink-0 mt-0.5" />
                       <span>{feature}</span>
                     </li>
@@ -117,29 +117,29 @@ export default function ProjectDetails() {
           </div>
 
           <div className="lg:col-span-5 flex flex-col space-y-6">
-            <div className="rounded-[1.75rem] bg-sand/50 border border-charcoal/5 p-8">
-              <h3 className="font-serif text-2xl text-charcoal border-b border-charcoal/10 pb-4 mb-5">Technical Specifications</h3>
+            <div className="rounded-[1.75rem] bg-sand/50 border border-gold/5 p-8">
+              <h3 className="font-serif text-2xl text-cream border-b border-gold/10 pb-4 mb-5">Technical Specifications</h3>
               <ul className="space-y-4">
                 {project.specs && project.specs.length > 0 ? (
                   project.specs.map((spec, i) => (
-                    <li key={i} className="flex flex-col border-b border-charcoal/8 pb-3 last:border-0 last:pb-0">
+                    <li key={i} className="flex flex-col border-b border-gold/8 pb-3 last:border-0 last:pb-0">
                       <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">{spec.label}</span>
-                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">{spec.value}</span>
+                      <span className="text-[13px] text-cream/60 font-light leading-relaxed">{spec.value}</span>
                     </li>
                   ))
                 ) : (
                   <>
-                    <li className="flex flex-col border-b border-charcoal/8 pb-3">
+                    <li className="flex flex-col border-b border-gold/8 pb-3">
                       <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">Structure</span>
-                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">R.C.C. Framed Structure conforming to BIS safety codes.</span>
+                      <span className="text-[13px] text-cream/60 font-light leading-relaxed">R.C.C. Framed Structure conforming to BIS safety codes.</span>
                     </li>
-                    <li className="flex flex-col border-b border-charcoal/8 pb-3">
+                    <li className="flex flex-col border-b border-gold/8 pb-3">
                       <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">Masonry</span>
-                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">High durability red clay bricks or solid block cement works.</span>
+                      <span className="text-[13px] text-cream/60 font-light leading-relaxed">High durability red clay bricks or solid block cement works.</span>
                     </li>
                     <li className="flex flex-col pb-3">
                       <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold mb-1">Compliance</span>
-                      <span className="text-[13px] text-charcoal/60 font-light leading-relaxed">100% Vastu aligned layouts with approval coordinates.</span>
+                      <span className="text-[13px] text-cream/60 font-light leading-relaxed">100% Vastu aligned layouts with approval coordinates.</span>
                     </li>
                   </>
                 )}
@@ -155,7 +155,7 @@ export default function ProjectDetails() {
                 <Button to="/contact" variant="light" className="w-full">Get Pricing details</Button>
                 <a
                   href="#book"
-                  className="inline-flex items-center justify-center gap-2 w-full font-display font-medium tracking-wide text-[13px] px-6 py-3.5 rounded-full border border-cream/25 text-cream hover:bg-cream hover:text-charcoal transition-colors duration-300"
+                  className="inline-flex items-center justify-center gap-2 w-full font-display font-medium tracking-wide text-[13px] px-6 py-3.5 rounded-full border border-cream/25 text-cream hover:bg-charcoal-dark hover:text-cream transition-colors duration-300"
                 >
                   <CalendarCheck size={15} /> Book a Site Visit
                 </a>

@@ -27,11 +27,11 @@ export const Button: React.FC<ButtonProps> = ({
     "relative inline-flex items-center justify-center gap-2 font-display font-medium tracking-wide text-[13px] px-7 py-3.5 rounded-full transition-all duration-300";
 
   const variants = {
-    primary: "bg-gold text-cream hover:bg-gold-dark shadow-luxury hover:shadow-luxury-lg",
-    secondary: "bg-charcoal text-cream hover:bg-charcoal-light",
-    outline: "border border-gold/40 text-gold hover:bg-gold hover:text-cream",
-    glass: "backdrop-blur-md bg-cream/10 border border-cream/30 text-cream hover:bg-cream hover:text-charcoal",
-    light: "bg-cream text-charcoal hover:bg-gold hover:text-cream shadow-luxury"
+    primary: "bg-gold text-charcoal-dark hover:bg-gold-light shadow-luxury hover:shadow-luxury-lg",
+    secondary: "bg-charcoal-light text-cream border border-cream/10 hover:bg-charcoal-light/70",
+    outline: "border border-gold/40 text-gold hover:bg-gold hover:text-charcoal-dark",
+    glass: "backdrop-blur-md bg-cream/10 border border-cream/25 text-cream hover:bg-cream hover:text-charcoal-dark",
+    light: "bg-cream text-charcoal-dark hover:bg-gold hover:text-charcoal-dark shadow-luxury"
   };
 
   const content = (

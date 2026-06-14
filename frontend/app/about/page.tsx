@@ -38,7 +38,7 @@ export const About: React.FC = () => {
   ];
 
   return (
-    <div className="bg-cream">
+    <div className="bg-charcoal-dark">
 
       {/* Page Header */}
       <section className="pt-36 md:pt-44 pb-12 md:pb-16">
@@ -46,7 +46,7 @@ export const About: React.FC = () => {
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
             <Leaf size={14} /> The Nirvana Heritage
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-charcoal leading-[1.05]">About Us</h1>
+          <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05]">About Us</h1>
         </div>
       </section>
 
@@ -55,26 +55,26 @@ export const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10 grid lg:grid-cols-12 gap-14 items-center">
           <motion.div {...fadeUp} className="lg:col-span-7 flex flex-col space-y-6">
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display">Who We Are</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1]">
               History of Responsible Conduct &amp; Construction Quality
             </h2>
-            <p className="text-charcoal/65 leading-relaxed font-light text-lg">
+            <p className="text-cream/65 leading-relaxed font-light text-lg">
               Nirvana Builders &amp; Developers has a history of responsible business conduct and strongly believes that true business success is measured not only by profits but also by sustainable and ethical practices.
             </p>
-            <p className="text-charcoal/60 leading-relaxed font-light">
+            <p className="text-cream/60 leading-relaxed font-light">
               Since our inception, our focus has remained on designing spaces that inspire comfort. By utilizing certified engineering standards, complying strictly with regulatory laws, and committing to eco-friendly development, we deliver residential blocks and commercial complexes that maintain their longevity and value for decades.
             </p>
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 pt-2">
               <div className="border-l-2 border-gold/40 pl-5">
                 <span className="text-gold uppercase tracking-[0.2em] text-[11px] font-semibold font-display block mb-2">Our Mission</span>
-                <p className="text-[13px] text-charcoal/55 leading-relaxed font-light">
+                <p className="text-[13px] text-cream/55 leading-relaxed font-light">
                   “To provide active, value-added services to customers without compromising quality.”
                 </p>
               </div>
               <div className="border-l-2 border-gold/40 pl-5">
                 <span className="text-gold uppercase tracking-[0.2em] text-[11px] font-semibold font-display block mb-2">Our Vision</span>
-                <p className="text-[13px] text-charcoal/55 leading-relaxed font-light">
+                <p className="text-[13px] text-cream/55 leading-relaxed font-light">
                   “To become a benchmark in building residential and commercial spaces.”
                 </p>
               </div>
@@ -99,8 +99,8 @@ export const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div {...fadeUp} className="max-w-2xl mb-14">
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Our Core Principles</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1] mb-5">Our Ethical Value System</h2>
-            <p className="text-charcoal/60 font-light text-lg">
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1] mb-5">Our Ethical Value System</h2>
+            <p className="text-cream/60 font-light text-lg">
               We operate under six foundational values that govern how we interact with customers, partners, and our concrete structural layouts.
             </p>
           </motion.div>
@@ -111,13 +111,13 @@ export const About: React.FC = () => {
                 key={i}
                 {...fadeUp}
                 transition={{ duration: 0.6, delay: (i % 3) * 0.08, ease: 'easeOut' }}
-                className="rounded-2xl bg-cream border border-charcoal/5 p-8 hover:shadow-luxury transition-all duration-500"
+                className="rounded-2xl bg-charcoal-dark border border-gold/5 p-8 hover:shadow-luxury transition-all duration-500"
               >
                 <div className="w-12 h-12 rounded-full bg-gold/12 flex items-center justify-center text-gold mb-6">
                   {v.icon}
                 </div>
-                <h3 className="font-serif text-xl text-charcoal mb-3">{v.name}</h3>
-                <p className="text-charcoal/55 text-[13px] leading-relaxed font-light">{v.desc}</p>
+                <h3 className="font-serif text-xl text-cream mb-3">{v.name}</h3>
+                <p className="text-cream/55 text-[13px] leading-relaxed font-light">{v.desc}</p>
               </motion.div>
             ))}
           </div>
@@ -129,7 +129,7 @@ export const About: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           <motion.div {...fadeUp} className="max-w-2xl mb-14">
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Our Journey</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">Milestones &amp; Deliveries</h2>
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1]">Milestones &amp; Deliveries</h2>
           </motion.div>
 
           <div className="relative max-w-3xl">
@@ -144,8 +144,8 @@ export const About: React.FC = () => {
                 >
                   <div className="absolute left-0 top-1.5 w-[15px] h-[15px] rounded-full bg-gold border-4 border-cream shadow" />
                   <span className="font-serif text-3xl text-gold block mb-1 leading-none">{item.year}</span>
-                  <h4 className="font-display font-semibold text-charcoal text-base mb-2">{item.title}</h4>
-                  <p className="text-charcoal/55 text-sm leading-relaxed font-light">{item.desc}</p>
+                  <h4 className="font-display font-semibold text-cream text-base mb-2">{item.title}</h4>
+                  <p className="text-cream/55 text-sm leading-relaxed font-light">{item.desc}</p>
                 </motion.div>
               ))}
             </div>

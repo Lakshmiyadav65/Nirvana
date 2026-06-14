@@ -25,8 +25,8 @@ export default function HeroScene() {
   const browse = () => router.push('/projects');
 
   const fieldWrap = 'flex items-center gap-3 px-4 py-2 flex-1 min-w-0';
-  const labelCls = 'text-[10px] uppercase tracking-[0.14em] text-charcoal/45 font-semibold font-display';
-  const selectCls = 'bg-transparent text-sm text-charcoal font-medium focus:outline-none cursor-pointer w-full';
+  const labelCls = 'text-[10px] uppercase tracking-[0.14em] text-cream/45 font-semibold font-display';
+  const selectCls = 'bg-transparent text-sm text-cream font-medium focus:outline-none cursor-pointer w-full';
 
   return (
     <section ref={ref} className="relative h-[100svh] min-h-[660px] w-full overflow-hidden bg-charcoal-dark">
@@ -88,7 +88,7 @@ export default function HeroScene() {
             initial={{ opacity: 0, y: 24 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.5, duration: 0.8 }}
-            className="bg-cream/95 backdrop-blur-md rounded-[1.5rem] md:rounded-full shadow-luxury-lg p-3 md:p-2 md:pl-3 flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-1 max-w-4xl mx-auto"
+            className="bg-charcoal-dark/95 backdrop-blur-md rounded-[1.5rem] md:rounded-full shadow-luxury-lg p-3 md:p-2 md:pl-3 flex flex-col md:flex-row items-stretch md:items-center gap-2 md:gap-1 max-w-4xl mx-auto"
           >
             <div className={fieldWrap}>
               <MapPin size={17} className="text-gold shrink-0" />
@@ -102,7 +102,7 @@ export default function HeroScene() {
               </div>
             </div>
 
-            <div className="hidden md:block w-px h-9 bg-charcoal/10" />
+            <div className="hidden md:block w-px h-9 bg-cream/15" />
 
             <div className={fieldWrap}>
               <HomeIcon size={17} className="text-gold shrink-0" />
@@ -119,7 +119,7 @@ export default function HeroScene() {
 
             <button
               onClick={browse}
-              className="group inline-flex items-center justify-center gap-2 bg-charcoal text-cream font-display text-[13px] tracking-wide px-7 py-4 rounded-full hover:bg-gold transition-colors duration-300 shrink-0"
+              className="group inline-flex items-center justify-center gap-2 bg-gold text-charcoal-dark font-display text-[13px] tracking-wide px-7 py-4 rounded-full hover:bg-gold-light transition-colors duration-300 shrink-0"
             >
               <Search size={16} />
               Browse Properties

@@ -28,7 +28,7 @@ export const Services: React.FC = () => {
   };
 
   return (
-    <div className="bg-cream">
+    <div className="bg-charcoal-dark">
 
       {/* Page Header */}
       <section className="pt-36 md:pt-44 pb-12 md:pb-16">
@@ -36,8 +36,8 @@ export const Services: React.FC = () => {
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
             <Leaf size={14} /> Our Core Expertise
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-charcoal leading-[1.05] mb-6">Services</h1>
-          <p className="text-charcoal/60 font-light text-lg max-w-2xl leading-relaxed">
+          <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05] mb-6">Services</h1>
+          <p className="text-cream/60 font-light text-lg max-w-2xl leading-relaxed">
             At Nirvana Builders &amp; Developers, we deliver premium construction and real estate services under strict timelines, compliance standards, and ethical joint-ventures. Here is an overview of what we bring to every concrete foundation.
           </p>
         </div>
@@ -52,26 +52,26 @@ export const Services: React.FC = () => {
                 key={s.id}
                 {...fadeUp}
                 transition={{ duration: 0.7, delay: (idx % 2) * 0.08, ease: 'easeOut' }}
-                className="group rounded-[1.75rem] bg-sand/50 border border-charcoal/5 p-8 sm:p-10 hover:bg-cream hover:shadow-luxury transition-all duration-500 flex flex-col"
+                className="group rounded-[1.75rem] bg-sand/50 border border-gold/5 p-8 sm:p-10 hover:bg-charcoal-dark hover:shadow-luxury transition-all duration-500 flex flex-col"
               >
                 <div className="flex items-center gap-5 mb-7">
                   <div className="w-16 h-16 rounded-2xl bg-gold/12 flex items-center justify-center shrink-0">
                     {getIcon(s.iconName)}
                   </div>
-                  <h3 className="font-serif text-2xl sm:text-[1.7rem] text-charcoal leading-tight">
+                  <h3 className="font-serif text-2xl sm:text-[1.7rem] text-cream leading-tight">
                     {s.title}
                   </h3>
                 </div>
 
-                <p className="text-charcoal/60 font-light text-sm mb-7 leading-relaxed">
+                <p className="text-cream/60 font-light text-sm mb-7 leading-relaxed">
                   {s.longDescription}
                 </p>
 
-                <div className="border-t border-charcoal/8 pt-6 mb-8">
+                <div className="border-t border-gold/8 pt-6 mb-8">
                   <span className="text-[10px] uppercase tracking-[0.2em] text-gold font-semibold font-display block mb-4">Key Parameters</span>
                   <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3">
                     {s.features.map((feature, i) => (
-                      <li key={i} className="flex gap-2.5 text-[13px] text-charcoal/60 font-light">
+                      <li key={i} className="flex gap-2.5 text-[13px] text-cream/60 font-light">
                         <CheckCircle2 size={15} className="text-gold shrink-0 mt-0.5" />
                         <span>{feature}</span>
                       </li>

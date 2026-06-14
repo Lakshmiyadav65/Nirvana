@@ -28,7 +28,7 @@ export const Testimonials: React.FC = () => {
 
   return (
     <section
-      className="py-20 md:py-32 bg-cream"
+      className="py-20 md:py-32 bg-charcoal-dark"
       onMouseEnter={() => setPaused(true)}
       onMouseLeave={() => setPaused(false)}
     >
@@ -37,13 +37,13 @@ export const Testimonials: React.FC = () => {
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <span className="text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display block mb-4">Client Endorsements</span>
-            <h2 className="font-serif text-4xl md:text-5xl text-charcoal leading-[1.1]">Testimonials</h2>
+            <h2 className="font-serif text-4xl md:text-5xl text-cream leading-[1.1]">Testimonials</h2>
           </div>
           <div className="flex items-center gap-3">
             <div className="flex gap-0.5 text-gold">
               {[...Array(5)].map((_, i) => <Star key={i} size={16} fill="currentColor" />)}
             </div>
-            <span className="font-display text-sm text-charcoal/60">5.0 &middot; Trusted by homeowners</span>
+            <span className="font-display text-sm text-cream/60">5.0 &middot; Trusted by homeowners</span>
           </div>
         </div>
 
@@ -94,7 +94,7 @@ export const Testimonials: React.FC = () => {
                   className={`group text-left rounded-2xl border p-4 sm:p-5 transition-all duration-300 flex items-center gap-4 ${
                     isActive
                       ? 'bg-sand border-gold/40 shadow-luxury'
-                      : 'bg-cream border-charcoal/8 hover:border-gold/30 hover:bg-sand/50'
+                      : 'bg-charcoal-dark border-gold/8 hover:border-gold/30 hover:bg-sand/50'
                   }`}
                 >
                   <span className={`w-11 h-11 rounded-full flex items-center justify-center font-display font-semibold text-sm shrink-0 transition-colors duration-300 ${
@@ -103,10 +103,10 @@ export const Testimonials: React.FC = () => {
                     {initials(item.name)}
                   </span>
                   <div className="min-w-0 flex-1">
-                    <h4 className="font-display font-semibold text-[13px] text-charcoal truncate">{item.name}</h4>
-                    <span className="text-[11px] text-charcoal/50 truncate block">{item.project}</span>
+                    <h4 className="font-display font-semibold text-[13px] text-cream truncate">{item.name}</h4>
+                    <span className="text-[11px] text-cream/50 truncate block">{item.project}</span>
                   </div>
-                  <ArrowUpRight size={16} className={`shrink-0 transition-opacity duration-300 ${isActive ? 'text-gold opacity-100' : 'text-charcoal/30 opacity-0 group-hover:opacity-100'}`} />
+                  <ArrowUpRight size={16} className={`shrink-0 transition-opacity duration-300 ${isActive ? 'text-gold opacity-100' : 'text-cream/30 opacity-0 group-hover:opacity-100'}`} />
                 </button>
               );
             })}

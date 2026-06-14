@@ -38,7 +38,7 @@ export const Projects: React.FC = () => {
   });
 
   return (
-    <div className="bg-cream">
+    <div className="bg-charcoal-dark">
 
       {/* Page Header */}
       <section className="pt-36 md:pt-44 pb-10 md:pb-14">
@@ -46,7 +46,7 @@ export const Projects: React.FC = () => {
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
             <Leaf size={14} /> Construction Excellence
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-charcoal leading-[1.05]">Our Projects</h1>
+          <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05]">Our Projects</h1>
         </div>
       </section>
 
@@ -61,7 +61,7 @@ export const Projects: React.FC = () => {
                 className={`font-display text-[12px] tracking-wide px-4 py-2.5 rounded-full transition-all duration-300 ${
                   activeFilter === tab.id
                     ? 'bg-charcoal text-cream'
-                    : 'bg-sand/60 text-charcoal/60 hover:bg-sand hover:text-charcoal'
+                    : 'bg-sand/60 text-cream/60 hover:bg-sand hover:text-cream'
                 }`}
               >
                 {tab.label}
@@ -75,9 +75,9 @@ export const Projects: React.FC = () => {
               placeholder="Search project, sector, year..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-sand/50 border border-charcoal/8 text-sm pl-11 pr-4 py-3 rounded-full focus:outline-none focus:border-gold text-charcoal placeholder:text-charcoal/40"
+              className="w-full bg-sand/50 border border-gold/8 text-sm pl-11 pr-4 py-3 rounded-full focus:outline-none focus:border-gold text-cream placeholder:text-cream/40"
             />
-            <Search className="absolute left-4 top-3.5 text-charcoal/40" size={15} />
+            <Search className="absolute left-4 top-3.5 text-cream/40" size={15} />
           </div>
         </div>
       </section>
@@ -87,7 +87,7 @@ export const Projects: React.FC = () => {
         <div className="max-w-7xl mx-auto px-6 md:px-10">
           {filteredProjects.length === 0 ? (
             <div className="text-center py-20">
-              <span className="text-charcoal/40 text-sm font-light">No projects found matching the criteria.</span>
+              <span className="text-cream/40 text-sm font-light">No projects found matching the criteria.</span>
             </div>
           ) : (
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-7">
@@ -101,7 +101,7 @@ export const Projects: React.FC = () => {
                     transition={{ duration: 0.3 }}
                     key={project.id}
                   >
-                    <Link href={`/projects/${project.id}`} className="group block rounded-[1.5rem] overflow-hidden bg-cream border border-charcoal/5 hover:shadow-luxury transition-all duration-500 h-full">
+                    <Link href={`/projects/${project.id}`} className="group block rounded-[1.5rem] overflow-hidden bg-charcoal-dark border border-gold/5 hover:shadow-luxury transition-all duration-500 h-full">
                       <div className="h-64 overflow-hidden relative">
                         <img
                           src={project.mainImage}
@@ -122,14 +122,14 @@ export const Projects: React.FC = () => {
                         <span className="text-[10px] uppercase tracking-[0.18em] text-gold font-semibold font-display mb-2 block">
                           {project.type}
                         </span>
-                        <h3 className="font-serif text-xl text-charcoal group-hover:text-gold transition-colors mb-3 leading-tight">
+                        <h3 className="font-serif text-xl text-cream group-hover:text-gold transition-colors mb-3 leading-tight">
                           {project.name}
                         </h3>
-                        <p className="text-charcoal/55 font-light text-[13px] line-clamp-2 mb-6">
+                        <p className="text-cream/55 font-light text-[13px] line-clamp-2 mb-6">
                           {project.description}
                         </p>
 
-                        <div className="border-t border-charcoal/8 pt-5 grid grid-cols-3 gap-2 text-[11px] text-charcoal/55 font-medium">
+                        <div className="border-t border-gold/8 pt-5 grid grid-cols-3 gap-2 text-[11px] text-cream/55 font-medium">
                           <span className="flex items-center gap-1.5">
                             <MapPin size={12} className="text-gold shrink-0" />
                             <span className="truncate">{project.location.split(',')[0]}</span>

@@ -57,7 +57,7 @@ export const Gallery: React.FC = () => {
   ] as const;
 
   return (
-    <div className="bg-cream">
+    <div className="bg-charcoal-dark">
 
       {/* Page Header */}
       <section className="pt-36 md:pt-44 pb-10 md:pb-14">
@@ -65,7 +65,7 @@ export const Gallery: React.FC = () => {
           <span className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.28em] text-gold font-semibold font-display mb-6">
             <Leaf size={14} /> Cinematic Visuals
           </span>
-          <h1 className="font-serif text-5xl md:text-6xl text-charcoal leading-[1.05]">Media Gallery</h1>
+          <h1 className="font-serif text-5xl md:text-6xl text-cream leading-[1.05]">Media Gallery</h1>
         </div>
       </section>
 
@@ -80,7 +80,7 @@ export const Gallery: React.FC = () => {
                 className={`font-display text-[12px] tracking-wide px-5 py-2.5 rounded-full transition-all duration-300 ${
                   activeCategory === tab.id
                     ? 'bg-charcoal text-cream'
-                    : 'bg-sand/60 text-charcoal/60 hover:bg-sand hover:text-charcoal'
+                    : 'bg-sand/60 text-cream/60 hover:bg-sand hover:text-cream'
                 }`}
               >
                 {tab.label}

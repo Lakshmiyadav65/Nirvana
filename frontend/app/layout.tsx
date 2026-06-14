@@ -27,10 +27,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           rel="stylesheet"
         />
       </head>
-      <body className="bg-cream text-charcoal antialiased overflow-x-hidden">
+      <body className="bg-charcoal-dark text-cream antialiased overflow-x-hidden">
         <SmoothScroll>
           <ScrollProgress />
-          <div className="flex flex-col min-h-screen bg-cream text-charcoal">
+          <div className="flex flex-col min-h-screen bg-charcoal-dark text-cream">
             <ScrollToTop />
             <Navbar />
 
