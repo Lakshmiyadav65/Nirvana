@@ -10,6 +10,7 @@ import { projectsData } from '@/data/projects';
 import { servicesData } from '@/data/services';
 import HeroScene from '@/components/HeroScene';
 import Testimonials from '@/components/Testimonials';
+import ProjectShowcase from '@/components/ProjectShowcase';
 
 const fadeUp = {
   initial: { opacity: 0, y: 42, filter: 'blur(6px)' },
@@ -206,6 +207,9 @@ export const Home: React.FC = () => {
           </motion.div>
         </div>
       </section>
+
+      {/* ───────────────── Project films (video showcase) ───────────────── */}
+      <ProjectShowcase />
 
       {/* ───────────────── Testimonials ───────────────── */}
       <Testimonials />
